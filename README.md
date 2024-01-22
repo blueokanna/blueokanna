@@ -9,10 +9,14 @@
 - 📫 How to reach me **blueokanna@gmail.com**
   
 <h3 align="left">Project Profile:<h3>
-<p align="center"><img align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=blueokanna&show_icons=true&theme=synthwave&locale=en&layout=compact" alt="blueokanna" /></p>
+  
+<div style="display: flex; justify-content: space-between;">
+    <p align="left"><img align="center" height="195vh" src="https://github-readme-stats.vercel.app/api/top-langs?username=blueokanna&show_icons=true&theme=dark&locale=en&layout=compact" alt="blueokanna" /></p>
+    <p align="center"><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=blueokanna&theme=dark" alt="blueokanna" /></p>
+    <p align="right"><img align="center" src="https://github-readme-stats.vercel.app/api?username=blueokanna&show_icons=true&theme=dark&bg_color=505050&locale=en" alt="blueokanna" /></p>
+</div>
 
-<p align="center">&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=blueokanna&show_icons=true&theme=radical&bg_color=505050&locale=en" alt="blueokanna" /></p>
-
+  
 <p align="left">
 </p>
 
