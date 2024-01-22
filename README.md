@@ -1,16 +1,12 @@
-<h1 align="center">Hey There! 👋 name is Blueokanna</h1>
+<h1 align="center">Hey There! 👋 My name is Blueokanna</h1>
 <h3 align="center">For back-end developers, my preferred language is Java, and I'm passionate about open source!</h3>
 
 
 - 🌱 I’m currently learning **Rust**
-
-- 👨‍💻 All of my projects are available at [https://github.com/blueokanna?tab=repositories](https://github.com/blueokanna?tab=repositories)
-
+  
 - 💬 Ask me about **Java**
 
 - 📫 How to reach me **blueokanna@gmail.com**
-
-- 👯 Know about my identity [University Student](University Student)
   
 <h3 align="left">Project Profile:<h3>
 <p align="center"><img align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=blueokanna&show_icons=true&theme=synthwave&locale=en&layout=compact" alt="blueokanna" /></p>
