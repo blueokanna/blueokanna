@@ -8,8 +8,9 @@
 
 - 📫 How to reach me **blueokanna@gmail.com**
   
-<h3 align="left">[Personal Profile](https://blueokanna.github.io/blueokanna/readme.html)<h3>
-  
+[Personal Profile](https://github.com/blueokanna/blueokanna/blob/main/readme.html)
+
+
 <p align="left">
 </p>
 
