@@ -25,9 +25,13 @@
 <p><br></p>
 <h2>🏳️‍🌈 Github Personal Project:</h2>
 <p></p>
-<div align="center"><img class="slider-img" height="195vh" src="https://github-readme-stats.vercel.app/api/top-langs?username=blueokanna&show_icons=true&theme=dark&locale=en&layout=compact" alt="blueokanna" /></div>
-<br>
-<div align="center"><img class="slider-img" src="https://github-readme-stats.vercel.app/api?username=blueokanna&show_icons=true&theme=onedark&bg_color=151515&locale=en" alt="blueokanna" /></div>
+
+<div align="center">
+    <img class="slider-img" src="https://github-readme-stats.vercel.app/api/top-langs?username=blueokanna&show_icons=true&theme=dark&locale=en&layout=compact" alt="blueokanna" width="32%" height="32%"> &nbsp;&nbsp;&nbsp;
+    <img class="slider-img" src="https://github-readme-stats.vercel.app/api?username=blueokanna&show_icons=true&theme=onedark&bg_color=151515&locale=en" alt="blueokanna" width="42.3%" height="42.1%">
+ 
+</div>
+
 <p><br></p>
 
 <p align="left">
