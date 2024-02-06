@@ -10,8 +10,8 @@
   
 <h3 align="left">Project Profile:<h3>
   
-| <p align="left"><img align="center" height="195vh" src="https://github-readme-stats.vercel.app/api/top-langs?username=blueokanna&show_icons=true&theme=dark&locale=en&layout=compact" alt="blueokanna" /></p> | <p align="center"><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=blueokanna&theme=dark" alt="blueokanna" /></p> | <p align="right"><img align="center" src="https://github-readme-stats.vercel.app/api?username=blueokanna&show_icons=true&theme=onedark&bg_color=151515&locale=en" alt="blueokanna" /></p> |
-| --- | --- | --- |
+[Personal Profile](https://github.com/blueokanna/blueokanna/readme.html)
+
 
 
   
