@@ -1,6 +1,6 @@
 <h1 align="center">Hey There! 👋 My name is Blueokanna</h1>
 
-<p align="center" style="font-size: 1.5em;">
+<p align="center" style="font-size: 2em;">
   <strong>Code is the extension of our thoughts, backend is the backbone of our systems！💪💪</strong> 
 </p>
 <br>
@@ -15,9 +15,9 @@
 | :-------------: | :-------------: | :----- |
 | 1 | Name | 👨‍🦱 blueokanna |
 | 2 | Gender  | 👦 Male |
-| 3 | Email | 📫 blueokanna@gmail.com |
+| 3 | Email Content | 📫 blueokanna@gmail.com |
 | 4 | Experience | 🌱 I’m currently learning **Rust** |
-| 5 | Best Language | ☕ Java > C/C++ > Rust > Nodejs |
+| 5 | Language Level | ☕ Java > C/C++ > Rust > Nodejs |
 
 </div>
 
