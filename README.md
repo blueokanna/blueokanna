@@ -17,7 +17,7 @@
 | 2 | Gender  | 👦 Male |
 | 3 | Email Content | 📫 blueokanna@gmail.com |
 | 4 | Experience | 🌱 I’m currently learning **Rust** and **Flutter**|
-| 5 | Language Level | ☕ Java > C/C++ > Rust > Nodejs > Flutter |
+| 5 | Language Level | ☕ Java > Rust > C/C++ > Flutter |
 
 </div>
 
