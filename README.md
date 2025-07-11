@@ -27,8 +27,8 @@
 <p></p>
 
 <div align="center">
-    <img class="slider-img" src="https://github-readme-stats.vercel.app/api/top-langs?username=blueokanna&show_icons=true&theme=dark&locale=en&layout=compact" alt="blueokanna" width="32%" height="100%"> &nbsp;&nbsp;&nbsp;
-    <img class="slider-img" src="https://github-readme-stats.vercel.app/api?username=blueokanna&show_icons=true&theme=onedark&bg_color=151515&locale=en" alt="blueokanna" width="42.3%" height="100%">
+    <img class="slider-img" src="https://github-readme-stats.vercel.app/api/top-langs?username=blueokanna&show_icons=true&theme=dark&locale=en&layout=compact" alt="blueokanna" width="32%" height="150%"> &nbsp;&nbsp;&nbsp;
+    <img class="slider-img" src="https://github-readme-stats.vercel.app/api?username=blueokanna&show_icons=true&theme=onedark&bg_color=151515&locale=en" alt="blueokanna" width="42.3%" height="150%">
  
 </div>
 
