@@ -3,13 +3,27 @@ name: metrics
 on:
   schedule:
     - cron: "0 0 * * *"
+  push:
+    branches:
+      - main
+      - master
+    paths-ignore:
+      - "assets/metrics.svg"
   workflow_dispatch:
+  repository_dispatch:
+    types:
+      - metrics_update
 
 permissions:
   contents: write
 
+concurrency:
+  group: metrics-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   github-metrics:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - name: Generate metrics
