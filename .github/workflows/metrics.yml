@@ -35,6 +35,7 @@ jobs:
           user: blueokanna
           template: classic
           base: header, activity, community, repositories
+          base_indepth: yes
 
           config_timezone: Asia/Shanghai
           config_display: large
@@ -42,14 +43,15 @@ jobs:
           plugin_languages: yes
           plugin_languages_indepth: yes
           plugin_languages_details: bytes-size, percentage
+          plugin_languages_limit: 5
 
           plugin_isocalendar: yes
           plugin_isocalendar_duration: half-year
 
-          plugin_habits: yes
-          plugin_habits_from: 200
-          plugin_habits_facts: yes
-          plugin_habits_charts: yes
+          plugin_repositories: yes
+          plugin_repositories_pinned: 1
+          plugin_repositories_starred: 1
+          plugin_repositories_order: starred, pinned
 
           plugin_followup: yes
           plugin_followup_sections: repositories
