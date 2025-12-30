@@ -27,11 +27,23 @@ jobs:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
+      - name: Check METRICS_TOKEN
+        id: token
+        shell: bash
+        run: |
+          if [[ -n "${{ secrets.METRICS_TOKEN }}" ]]; then
+            echo "has_token=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_token=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Generate metrics
+        if: steps.token.outputs.has_token == 'true'
         uses: lowlighter/metrics@latest
         with:
           filename: assets/metrics.svg
           token: ${{ secrets.METRICS_TOKEN }}
+          committer_token: ${{ github.token }}
 
           user: blueokanna
           template: classic
@@ -54,7 +66,13 @@ jobs:
           plugin_isocalendar: yes
           plugin_isocalendar_duration: half-year
 
+          plugin_repositories: yes
+          plugin_repositories_starred: 3
+          plugin_repositories_pinned: 2
+          plugin_repositories_order: starred, pinned
+
       - name: Generate highlights (top starred/forked/active)
+        if: steps.token.outputs.has_token == 'true'
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.METRICS_TOKEN }}
@@ -181,6 +199,50 @@ jobs:
               repo,
               path: 'assets/highlights.svg',
               message: 'chore: update highlights.svg',
+              content: contentB64,
+              sha,
+            });
+
+      - name: Placeholder (missing METRICS_TOKEN)
+        if: steps.token.outputs.has_token != 'true'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ github.token }}
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            const [owner, repo] = process.env.GITHUB_REPOSITORY.split('/');
+
+            const width = 960;
+            const height = 190;
+            const svg = `<?xml version="1.0" encoding="UTF-8"?>
+            <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
+              <defs>
+                <linearGradient id="g" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#22d3ee" stop-opacity="0.9" />
+                  <stop offset="1" stop-color="#a78bfa" stop-opacity="0.9" />
+                </linearGradient>
+              </defs>
+              <rect x="14" y="14" width="${width - 28}" height="${height - 28}" rx="14" fill="#0d1117" stroke="url(#g)" stroke-width="1.6" />
+              <text x="28" y="38" fill="#22d3ee" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace" font-size="16" font-weight="700">$ cat highlights.txt</text>
+              <text x="28" y="74" fill="#9ca3af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace" font-size="14">METRICS_TOKEN is not set.</text>
+              <text x="28" y="102" fill="#9ca3af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace" font-size="14">Add it in: Settings → Secrets and variables → Actions → New repository secret</text>
+              <text x="28" y="130" fill="#9ca3af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace" font-size="14">Then run Actions → metrics → Run workflow</text>
+            </svg>`;
+
+            const contentB64 = Buffer.from(svg, 'utf8').toString('base64');
+            let sha;
+            try {
+              const existing = await github.rest.repos.getContent({ owner, repo, path: 'assets/highlights.svg' });
+              sha = existing.data.sha;
+            } catch (e) {
+              sha = undefined;
+            }
+            await github.rest.repos.createOrUpdateFileContents({
+              owner,
+              repo,
+              path: 'assets/highlights.svg',
+              message: 'chore: placeholder highlights.svg (missing METRICS_TOKEN)',
               content: contentB64,
               sha,
             });
