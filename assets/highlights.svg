@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="190" viewBox="0 0 960 190">
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="250" viewBox="0 0 960 250">
   <defs>
     <linearGradient id="g" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0" stop-color="#22d3ee" stop-opacity="0.9" />
@@ -9,7 +9,7 @@
       <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#000" flood-opacity="0.35" />
     </filter>
   </defs>
-  <rect x="14" y="14" width="932" height="162" rx="14" fill="#0d1117" stroke="url(#g)" stroke-width="1.6" filter="url(#s)" />
+  <rect x="14" y="14" width="932" height="222" rx="14" fill="#0d1117" stroke="url(#g)" stroke-width="1.6" filter="url(#s)" />
   <text x="28" y="38" fill="#22d3ee" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace" font-size="16" font-weight="700">$ cat highlights.txt</text>
   <text x="28" y="54" fill="#c9d1d9" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace" font-size="14">SYSTEM:: featured (recent → stars)</text>
 <text x="28" y="82" fill="#9ca3af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace" font-size="14">#1 blueokanna/blueokanna  ★0  ⑂0  push:2025-12-30</text>
