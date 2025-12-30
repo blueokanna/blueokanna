@@ -175,10 +175,10 @@ jobs:
             ];
 
             const width = 960;
-            const height = 190;
             const padX = 28;
             const startY = 54;
             const lineH = 28;
+            const height = startY + lineH * lines.length + 28; // dynamic height so all lines show
             const svg = `<?xml version="1.0" encoding="UTF-8"?>
             <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
               <defs>
