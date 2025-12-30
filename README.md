@@ -26,7 +26,7 @@
 ### 📊 Activity & Stats
 
 <p align="center">
-  <img src="assets/highlights.svg" alt="highlights" width="900" />
+  <img src="assets/highlights.svg" alt="featured repos (recent → stars)" width="900" />
 </p>
 
 <p align="center">

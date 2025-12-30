@@ -60,18 +60,13 @@ jobs:
 
           plugin_languages: yes
           plugin_languages_details: bytes-size, percentage
-          plugin_languages_limit: 5
+          plugin_languages_limit: 8
           plugin_languages_other: yes
 
           plugin_isocalendar: yes
           plugin_isocalendar_duration: half-year
 
-          plugin_repositories: yes
-          plugin_repositories_starred: 3
-          plugin_repositories_pinned: 2
-          plugin_repositories_order: starred, pinned
-
-      - name: Generate highlights (top starred/forked/active)
+      - name: Generate highlights (recently updated, then stars)
         if: steps.token.outputs.has_token == 'true'
         uses: actions/github-script@v7
         with:
@@ -117,14 +112,6 @@ jobs:
               return repos;
             }
 
-            function pickTop(repos, key) {
-              return repos.reduce((best, r) => {
-                if (!best) return r;
-                if ((r[key] ?? 0) > (best[key] ?? 0)) return r;
-                return best;
-              }, null);
-            }
-
             function escapeXml(s) {
               return String(s ?? '')
                 .replace(/&/g, '&amp;')
@@ -134,25 +121,27 @@ jobs:
                 .replace(/'/g, '&apos;');
             }
 
-            function fmtRepoLine(label, r) {
-              if (!r) return `${label}: (no data)`;
+            function fmtRepoLine(idx, r) {
               const name = `${login}/${r.name}`;
               const stars = r.stargazerCount ?? 0;
               const forks = r.forkCount ?? 0;
               const pushed = r.pushedAt ? new Date(r.pushedAt).toISOString().slice(0, 10) : 'n/a';
-              return `${label}: ${name}  ★${stars}  ⑂${forks}  push:${pushed}`;
+              return `#${idx} ${name}  ★${stars}  ⑂${forks}  push:${pushed}`;
             }
 
             const repos = await fetchAllRepos();
-            const active = repos[0] || null;
-            const topStarred = pickTop(repos, 'stargazerCount');
-            const topForked = pickTop(repos, 'forkCount');
+            const sorted = repos.sort((a, b) => {
+              const ta = a.pushedAt ? Date.parse(a.pushedAt) : 0;
+              const tb = b.pushedAt ? Date.parse(b.pushedAt) : 0;
+              if (tb !== ta) return tb - ta; // recent first
+              const sa = a.stargazerCount ?? 0;
+              const sb = b.stargazerCount ?? 0;
+              return sb - sa; // then stars
+            }).slice(0, 5);
 
             const lines = [
-              'SYSTEM:: repo highlights (live)',
-              fmtRepoLine('TOP_STARRED', topStarred),
-              fmtRepoLine('TOP_FORKED ', topForked),
-              fmtRepoLine('MOST_ACTIVE', active),
+              'SYSTEM:: featured (recent → stars)',
+              ...sorted.map((r, i) => fmtRepoLine(i + 1, r)),
             ];
 
             const width = 960;
