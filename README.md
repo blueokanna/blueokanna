@@ -26,6 +26,10 @@
 ### 📊 Activity & Stats
 
 <p align="center">
+  <img src="assets/highlights.svg" alt="highlights" width="900" />
+</p>
+
+<p align="center">
   <img src="assets/metrics.svg" alt="metrics" width="900" />
 </p>
 
