@@ -38,11 +38,7 @@
 ### 🛠️ Tech Stack
 
 <p align="center">
-  <img src="https://skillicons.dev/icons?i=rust,flutter,java,c,cpp,sqlite,linux,git,postman,arduino&perline=10&theme=dark" alt="stack" />
-</p>
-
-<p align="center">
-  <sub>Flipper Zero: icon not available on skillicons → listed here as hardware.</sub>
+  <img src="https://skillicons.dev/icons?i=rust,flutter,java,c,cpp,sqlite,linux,git,postman,arduino,kali,githubactions,windows,ipfs" alt="tech stack" />
 </p>
 
 ---
