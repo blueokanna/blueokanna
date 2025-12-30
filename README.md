@@ -1,93 +1,97 @@
-﻿<!-- Blueokanna | Hacker-style GitHub Overview -->
+﻿<!-- Blueokanna | Clean Hacker Profile (GitHub-friendly) -->
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&height=200&color=gradient&customColorList=6,12,20&text=BLUEOKANNA&fontSize=60&fontColor=22d3ee&animation=twinkling&fontAlignY=35&desc=Backend%20Engineer%20%7C%20Rust%20%C2%B7%20Java%20%C2%B7%20Open%20Source&descSize=20&descAlignY=55" alt="Header" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&height=220&color=gradient&customColorList=12,16,20,24&section=header&text=Backend%20Engineer&fontSize=42&fontColor=22d3ee&animation=twinkling&fontAlignY=36&desc=Rust%20%C2%B7%20Java%20%C2%B7%20Open%20Source%20%C2%B7%20Flutter&descSize=18&descAlignY=58" alt="Header" />
 </p>
 
+<p align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=20&pause=900&color=22D3EE&center=true&vCenter=true&width=560&lines=Shipping+reliable+backend+systems;API-first+%7C+Performance-minded;Learning%3A+Rust+%2B+Flutter" alt="typing" />
+</p>
+
+<p align="center">
+  <img src="https://komarev.com/ghpvc/?username=blueokanna&label=views&color=22d3ee&style=flat" alt="views" />
+  <img src="https://img.shields.io/github/followers/blueokanna?label=followers&style=flat&color=22d3ee" alt="followers" />
+  <img src="https://img.shields.io/github/stars/blueokanna?label=stars&style=flat&color=22d3ee" alt="stars" />
+  <img src="https://img.shields.io/github/repo-size/blueokanna/blueokanna?label=profile-repo&style=flat&color=22d3ee" alt="repo size" />
+</p>
+
+---
+
 <div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1200&color=22D3EE&center=true&vCenter=true&width=500&lines=Backend+Engineer;Rust+%2B+Java;Open+Source+Enthusiast;API+First%2C+Performance+Driven" alt="Typing tagline" />
+  <svg width="900" height="160" viewBox="0 0 900 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="About card">
+    <defs>
+      <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#0d1117"/>
+        <stop offset="1" stop-color="#0b1220"/>
+      </linearGradient>
+      <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#22d3ee"/>
+        <stop offset="1" stop-color="#0ea5e9"/>
+      </linearGradient>
+      <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="6" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+    <rect x="10" y="10" width="880" height="140" rx="16" fill="url(#card)" stroke="#1f2937"/>
+    <rect x="28" y="36" width="844" height="3" rx="2" fill="url(#line)" filter="url(#soft)"/>
+
+    <text x="32" y="30" fill="#22d3ee" font-family="monospace" font-size="14">$ whoami</text>
+    <text x="32" y="70" fill="#c9d1d9" font-family="monospace" font-size="14">backend engineer · open-source contributor · performance minded</text>
+    <text x="32" y="96" fill="#c9d1d9" font-family="monospace" font-size="14">main: Rust / Java · tools: Linux / Git / Postman · db: SQLite</text>
+    <text x="32" y="122" fill="#7c8a9d" font-family="monospace" font-size="14">learning: Rust deeper · Flutter UI</text>
+    <text x="32" y="146" fill="#7c8a9d" font-family="monospace" font-size="14">contact: blueokanna@gmail.com</text>
+  </svg>
 </div>
 
 ---
 
-### 📊 Activity & Stats
+### 📊 Activity & Stats (real)
 
-<div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=blueokanna&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=22d3ee&icon_color=22d3ee&text_color=e2e8f0" height="180" alt="GitHub Stats" />
-  <img src="https://github-readme-streak-stats.herokuapp.com?user=blueokanna&theme=tokyonight&hide_border=true&background=0d1117&ring=22d3ee&fire=22d3ee&currStreakLabel=22d3ee" height="180" alt="Streak Stats" />
-</div>
+<p align="center">
+  <!-- More stable than some third-party cards; still fully based on your repos -->
+  <img src="https://github-readme-stats.vercel.app/api?username=blueokanna&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117" alt="stats" />
+</p>
 
-<div align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=blueokanna&show_icons=true&theme=tokyonight&hide_border=true&layout=compact&bg_color=0d1117&title_color=22d3ee&text_color=e2e8f0" height="180" alt="Top Languages" />
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=blueokanna&theme=tokyonight&utcOffset=8" height="180" alt="Productive Time" />
-</div>
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=blueokanna&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117&langs_count=8" alt="langs" />
+</p>
 
----
+<p align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=blueokanna&theme=github-compact&hide_border=true&bg_color=0d1117" alt="activity" />
+</p>
 
-### 🧠 About Me (Rust flavor)
-```rust
-use std::collections::HashMap;
-
-fn blueokanna() -> HashMap<&'static str, &'static str> {
-    HashMap::from([
-        ("role", "Backend Engineer"),
-        ("stack", "Rust + Java"),
-        ("learning", "Rust · Flutter"),
-        ("passion", "Open Source"),
-        ("contact", "blueokanna@gmail.com"),
-    ])
-}
-```
-
-- 🔐 Backend-first, API-first, reliability and perf focused
-- 🧭 Loves observability, clean contracts, DX tooling
-- 🤝 Open to collab on OSS and backend utilities
+<!-- Optional: ultra-stable, self-hosted metrics (generated by GitHub Actions) -->
+<p align="center">
+  <img src="./assets/metrics.svg" alt="metrics" />
+</p>
 
 ---
 
-### 🛠️ Tech Arsenal
-<div align="center">
-  <img src="https://skillicons.dev/icons?i=rust,flutter,java,c,cpp,sqlite,linux,git,postman,arduino&perline=5&theme=dark" alt="Tech stack" />
-</div>
+### 🛠️ Tech Stack
 
-<br/>
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=rust,flutter,java,c,cpp,sqlite,linux,git,postman,arduino&perline=10&theme=dark" alt="stack" />
+</p>
 
-<div align="center">
-  
-| 🎯 Focus Area | 🔧 Technologies |
-|:-------------:|:-----------------|
-| **Backend** | Rust, Java, C/C++ |
-| **Database** | SQLite |
-| **Mobile/UI** | Flutter |
-| **DevOps** | Linux, Git, Postman |
-| **Hardware** | Arduino, Flipper Zero |
+<p align="center">
+  <sub>Flipper Zero: icon not available on skillicons → listed here as hardware.</sub>
+</p>
 
-</div>
+---
 
-### 🎯 What I like building
-- Reliable APIs and services that are boring to operate
-- Tooling that makes contributors happy
-- Small automations that remove toil
+### 💛 Support
 
-### 🤝 Support
-<div align="center">
+<p align="center">
   <a href="https://www.buymeacoffee.com/blueokanna">
     <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="50" width="210" alt="Buy Me A Coffee" />
   </a>
-</div>
+</p>
 
----
+<p align="center">
+  <img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=dark" alt="quote" />
+</p>
 
-<div align="center">
-  <svg width="100%" height="80" viewBox="0 0 1200 80" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="footer-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="#0f172a" />
-        <stop offset="50%" stop-color="#0ea5e9" />
-        <stop offset="100%" stop-color="#22d3ee" />
-      </linearGradient>
-    </defs>
-    <rect width="1200" height="80" fill="url(#footer-grad)" rx="10" />
-    <text x="50%" y="50%" text-anchor="middle" fill="#e2e8f0" font-size="16" font-family="'Fira Code', monospace">© 2025 Blueokanna · Built with ❤️ and Rust</text>
-  </svg>
-</div>
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&height=140&color=gradient&customColorList=12,16,20,24&section=footer&text=%C2%A9%202025&fontSize=18&fontColor=c9d1d9&desc=Made%20with%20%E2%9D%A4%EF%B8%8F%20and%20Rust&descSize=14&descAlignY=68&fontAlignY=38" alt="footer" />
+</p>
