@@ -26,11 +26,11 @@
 ### 📊 Activity & Stats
 
 <p align="center">
-  <img src="assets/highlights.svg?v=29623222479" alt="featured repos (recent → stars)" width="900" />
+  <img src="assets/highlights.svg?v=29667129108" alt="featured repos (recent → stars)" width="900" />
 </p>
 
 <p align="center">
-  <img src="assets/metrics.svg?v=29623222479" alt="metrics" width="900" />
+  <img src="assets/metrics.svg?v=29667129108" alt="metrics" width="900" />
 </p>
 
 ---
