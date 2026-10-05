@@ -12,13 +12,13 @@
   there are no markdown headings here.
 
   Statistics are collected from the GitHub API by the daily workflow and drawn
-  into assets/telemetry.svg.
+  into assets/telemetry.svg?v=37273718788.
 -->
 
 <div align="center">
 
 <a href="https://github.com/blueokanna">
-  <img src="assets/banner.svg?v=37272773841" alt="blueokanna" width="100%" />
+  <img src="assets/banner.svg?v=37273718788" alt="blueokanna" width="100%" />
 </a>
 
 <a href="https://github.com/blueokanna"><img src="https://img.shields.io/github/followers/blueokanna?style=flat-square&amp;color=66c0f4&amp;labelColor=0a1524&amp;label=FOLLOWERS" alt="followers" /></a>
@@ -26,11 +26,11 @@
 <img src="https://img.shields.io/github/last-commit/blueokanna/blueokanna?style=flat-square&amp;color=cfe4ff&amp;labelColor=0a1524&amp;label=LAST-COMMIT" alt="last commit" />
 <img src="https://komarev.com/ghpvc/?username=blueokanna&amp;label=VIEWS&amp;color=66c0f4&amp;style=flat-square" alt="views" />
 
-<img src="assets/telemetry.svg?v=1" alt="github statistics and most used languages" width="100%" />
+<img src="assets/telemetry.svg?v=37273718788" alt="github statistics and most used languages" width="100%" />
 
-<img src="assets/about.svg?v=1" alt="arsenal" width="100%" />
+<img src="assets/about.svg?v=37273718788" alt="arsenal" width="100%" />
 
-<img src="assets/footer.svg?v=1" alt="footer" width="100%" />
+<img src="assets/footer.svg?v=37273718788" alt="footer" width="100%" />
 
 <a href="https://www.buymeacoffee.com/blueokanna">
   <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="42" width="178" alt="Buy Me A Coffee" />
