@@ -6,8 +6,8 @@ import { esc, monoWidth } from '../lib/svg.mjs';
 const W = 1200;
 const H = 150;
 
-const TITLE = '// synchronising metrics · 数据同步中';
-const CHIPS = ['languages', 'isocalendar', 'repositories'];
+const TITLE = '// rendering profile assets';
+const CHIPS = ['banner', 'profile', 'cards'];
 
 function chips() {
   const width = 104;
@@ -106,8 +106,8 @@ export function render({ renderedAt }) {
       </text>
     </g>
 
-    <text x="40" y="128" font-size="11" fill="${P.faint}">sources: github api · refresh daily 00:00 UTC / 08:00 ${esc(IDENTITY.timezoneLabel.split(' ')[0])} · rendered ${esc(renderedAt)}</text>
-    <text x="${W - 40}" y="128" font-size="11" fill="${P.faint}" text-anchor="end">smil · 60fps · 0 js</text>
+    <text x="40" y="128" font-size="11" fill="${P.faint}">pipeline: node · output: static svg · refresh: daily 00:00 UTC / 08:00 ${esc(IDENTITY.timezoneLabel.split(' ')[0])}</text>
+    <text x="${W - 40}" y="128" font-size="11" fill="${P.faint}" text-anchor="end">smil · 60fps · 0 js · rendered ${esc(renderedAt)}</text>
   </g>
 
   <rect x="12" y="12" width="${W - 24}" height="${H - 24}" rx="14" fill="none" stroke="url(#edge)" stroke-width="1.2" opacity="0.7"/>

@@ -39,7 +39,7 @@ function badges() {
     { label: 'shield', path: `<path d="M11 17 v-6 a6 6 0 0 1 12 0 v6 M9 17 h16 v9 h-16 z" fill="none" stroke="${P.accent2}" stroke-width="1.6" stroke-linejoin="round"/>` },
     { label: 'pulse', path: `<path d="M9 17 h5 l3 -5 l3 10 l3 -5 h5" fill="none" stroke="${P.accent1}" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>` },
     { label: 'code', path: `<path d="M13 13 l-5 7 5 7 M27 13 l5 7 -5 7 M23 11 l-4 18" fill="none" stroke="${P.ice}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>` },
-    { label: 'rose', path: `<path d="M20 21 c-6 -4 -9 -7 -7 -10 c1.5 -2.4 6 -1.6 7 0.6 c1 -2.2 5.5 -3 7 -0.6 c2 3 -1 6 -7 10 z" fill="${P.rose}" opacity="0.9"/>` },
+    { label: 'card', path: `<rect x="12" y="9" width="16" height="12" rx="2" fill="none" stroke="${P.accent1}" stroke-width="1.5"/><path d="M12 25 h10 M26 25 h2" stroke="${P.accent1}" stroke-width="1.5" stroke-linecap="round"/>` },
   ];
 
   return glyphs.map((glyph, index) => {
@@ -81,8 +81,8 @@ export function render({ account, avatar, renderedAt }) {
     </linearGradient>
     <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="${P.accent1}"/>
-      <stop offset="0.5" stop-color="${P.accent3}"/>
-      <stop offset="1" stop-color="${P.gold}"/>
+      <stop offset="0.5" stop-color="${P.accent2}"/>
+      <stop offset="1" stop-color="${P.accent3}"/>
     </linearGradient>
     <linearGradient id="flow" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0" stop-color="${P.accent1}" stop-opacity="0"/>

@@ -1,52 +1,48 @@
 # `scripts/` — profile asset pipeline
 
-Everything under `assets/` is a build artifact. The sources live here, the CI job
+Everything under `assets/` is a build artifact. The sources live here, the job
 `.github/workflows/profile.yml` runs the build once a day and commits whatever
 changed, in a single atomic commit.
 
 ```
 scripts/
   render.mjs            build entry point -> writes assets/*.svg
-  pack-artwork.mjs      encrypts a prepared artwork derivative into assets/artwork/
+  pack-artwork.mjs      encrypts a prepared backdrop into assets/artwork/
   artwork-crypto.mjs    AES-256-GCM container format (seal/open)
-  lib/config.mjs        identity, palette, stack, generated file list
+  lib/config.mjs        identity, palette, stack, artwork slots, generated files
   lib/github.mjs        account + avatar lookup
   lib/svg.mjs           escaping, data URIs, measured monospace widths
   templates/*.mjs       one module per rendered card
 ```
 
-No dependencies. Node 20+ is enough (`node:crypto`, `node:fs`, `fetch`).
+No dependencies: Node 20+ and `node:crypto`, `node:fs`, `fetch` are enough.
 
 ## Regenerating locally
 
 ```bash
 ARTWORK_AES_KEY=<64 hex chars> GITHUB_TOKEN=<token> node scripts/render.mjs
-node scripts/render.mjs --only loading,about,divider,footer   # skip the artwork
+node scripts/render.mjs --only loading,about,divider,footer   # skip the backdrop
 ```
 
 `--only` is the fast path while iterating on a card: it leaves the artwork
-templates alone, so no key is required.
+template alone, so no key is required. Every write goes through a temp file and
+a rename, so a crashed run cannot leave a half-written card in `assets/`.
 
-## How the artwork is protected
+## The backdrop
 
-The repository only ever stores ciphertext. Nothing in the pipeline writes a
-decrypted image to disk — `render.mjs` unpacks into memory and emits the SVG,
-which has to be public for GitHub to display it.
+One slot exists. The banner is the only asset that carries artwork, and it is
+stored as ciphertext:
 
 ```bash
-# prepare a derivative (any tool), then pack it
-ARTWORK_AES_KEY=<hex> node scripts/pack-artwork.mjs --id hanayome-hero --in hero.jpg
-node scripts/pack-artwork.mjs --verify hanayome-hero
+ARTWORK_AES_KEY=<hex> node scripts/pack-artwork.mjs --id hero-night --in hero.jpg
+node scripts/pack-artwork.mjs --verify hero-night
 ```
 
-| slot                 | pixels    | used by            |
-| -------------------- | --------- | ------------------ |
-| `hanayome-hero`      | 1200×640  | `assets/banner.svg`  |
-| `hanayome-portrait`  | 640×1138  | `assets/artwork.svg` |
-| `hanayome-detail-a`  | 240×240   | `assets/artwork.svg` |
-| `hanayome-detail-b`  | 240×240   | `assets/artwork.svg` |
+| slot          | pixels   | used by             |
+| ------------- | -------- | ------------------- |
+| `hero-night`  | 1200×640 | `assets/banner.svg` |
 
-Container layout (`assets/artwork/*.jpg.enc`):
+Container layout (`assets/artwork/<id>.jpg.enc`):
 
 ```
 0  4  magic "BKA1"
@@ -59,25 +55,28 @@ Container layout (`assets/artwork/*.jpg.enc`):
 36 ..  ciphertext
 ```
 
-Additional authenticated data is `BKA1|<asset id>|v1`, so a blob cannot be
-renamed or swapped with another slot — authentication fails instead. The
-decoder fails closed on a bad magic, an unknown version, a truncated body or a
-failed tag.
+The additional authenticated data is `BKA1|<asset id>|v1`, so a blob cannot be
+renamed or moved to another slot — authentication fails instead of decrypting
+the wrong image. The decoder fails closed on a bad magic, an unknown version, a
+truncated body or a failed tag, and `pack-artwork.mjs` refuses to write a blob
+it cannot reopen.
 
 ### Key handling
 
-* Store the key as the `ARTWORK_AES_KEY` repository secret (64 hex chars).
-* Never pass it on a command line that gets logged; use the environment or
-  `--key-file` for local runs.
-* Rotating: repack every slot with the new key, commit, update the secret in the
-  same order — old ciphertext simply stops authenticating.
-* A missing key is not fatal: artwork is skipped and the previous committed
-  banners stay in place.
+* The key lives in the `ARTWORK_AES_KEY` repository secret — 64 hex characters.
+* It is read from the environment or `--key-file`, never from a command line
+  that ends up in a process list or a log.
+* Rotation: repack the slot with the new key, commit, then update the secret.
+  Old ciphertext simply stops authenticating against the new key.
+* A missing key is not fatal: the backdrop is skipped and the previously
+  committed banner stays in place. An *invalid* blob is fatal, and the run stops
+  before anything is committed.
 
 ## What is and is not public
 
-Ciphertext is committed, decrypted artwork is not. The rendered SVG necessarily
-contains the published derivative, because GitHub renders it as a plain image —
-anyone with the profile open can extract that copy. That is why the published
-derivatives are watermarked and downscaled, and why the originals are not
-stored in this repository at all.
+Ciphertext is committed; the decrypted image never touches the working tree,
+because `render.mjs` unpacks it in memory and emits the SVG. That SVG has to be
+public — GitHub renders it as a plain image, so anyone with the profile open can
+extract the pixels it contains. The published copy is therefore a downscaled,
+watermarked derivative, and the full-resolution original is not stored in this
+repository at all.

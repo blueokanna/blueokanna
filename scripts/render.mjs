@@ -31,7 +31,6 @@ import { fetchAccount, fetchAvatar } from './lib/github.mjs';
 
 import * as banner from './templates/banner.mjs';
 import * as profile from './templates/profile.mjs';
-import * as artwork from './templates/artwork.mjs';
 import * as loading from './templates/loading.mjs';
 import * as about from './templates/about.mjs';
 import * as divider from './templates/divider.mjs';
@@ -42,9 +41,6 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 /** Asset id -> template slot. Adding artwork is a one line change here. */
 const ARTWORK_SLOTS = [
   { file: ARTWORK.hero, slot: 'hero' },
-  { file: ARTWORK.portrait, slot: 'portrait' },
-  { file: ARTWORK.detailA, slot: 'detailA' },
-  { file: ARTWORK.detailB, slot: 'detailB' },
 ];
 
 async function writeAtomic(relativePath, contents) {
@@ -113,17 +109,6 @@ async function main() {
     results.push(['assets/banner.svg', await writeAtomic('assets/banner.svg', banner.render({ hero: artworkData.decoded.hero, renderedAt }))]);
   } else if (!artworkData) {
     skipped.push('assets/banner.svg');
-  }
-
-  if (artworkData && wanted('artwork')) {
-    const svg = artwork.render({
-      portrait: artworkData.decoded.portrait,
-      detailA: artworkData.decoded.detailA,
-      detailB: artworkData.decoded.detailB,
-    });
-    results.push(['assets/artwork.svg', await writeAtomic('assets/artwork.svg', svg)]);
-  } else if (!artworkData) {
-    skipped.push('assets/artwork.svg');
   }
 
   if (wanted('profile')) {

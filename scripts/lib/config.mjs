@@ -1,9 +1,10 @@
 /**
  * Single source of truth for identity, palette and paths.
  *
- * Every template imports from here so a change to identity or colour lands in
- * all generated assets at once — the palette is tuned to the hanayome artwork
- * (moonlit cathedral blue, silver light, periwinkle ribbon).
+ * Every template imports from here so an identity or colour change lands in
+ * all generated assets at once. The palette is steel blue on near-black — it
+ * picks up the hero artwork's moonlight and reads as instrumentation rather
+ * than decoration.
  */
 
 export const IDENTITY = {
@@ -17,26 +18,24 @@ export const IDENTITY = {
   timezone: 'Asia/Singapore',
   timezoneLabel: 'SGT UTC+8',
   edition: 'BLUEOKANNA EDITION',
-  artworkCipher: 'AES-256-GCM',
+  heroCipher: 'AES-256-GCM',
   year: '2026',
 };
 
 export const PALETTE = {
-  ink0: '#060d18',
-  ink1: '#0b1727',
-  ink2: '#101f33',
-  line: '#1e3555',
+  ink0: '#050c16',
+  ink1: '#0a1524',
+  ink2: '#0f2035',
+  line: '#1c3350',
   lineBright: '#2b4a72',
-  silver: '#eef4ff',
-  ice: '#b6d2f5',
-  muted: '#7e97b8',
-  faint: '#4a6285',
-  accent1: '#dbe9ff',
-  accent2: '#a9c8f2',
-  accent3: '#7ea6e0',
-  glow: '#9cc0f0',
-  gold: '#e8cf9a',
-  rose: '#f4f8ff',
+  silver: '#e8f1ff',
+  ice: '#a9c8ee',
+  muted: '#7a93b4',
+  faint: '#47607e',
+  accent1: '#cfe4ff',
+  accent2: '#66c0f4',
+  accent3: '#4d8fd6',
+  glow: '#6db4ea',
 };
 
 export const STACK = [
@@ -44,11 +43,9 @@ export const STACK = [
   'Kali', 'IPFS', 'Arduino', 'Postman', 'Actions', 'Windows', 'Android',
 ];
 
+/** Encrypted artwork slots. Only the hero exists: it is the banner backdrop. */
 export const ARTWORK = {
-  hero: 'hanayome-hero',
-  portrait: 'hanayome-portrait',
-  detailA: 'hanayome-detail-a',
-  detailB: 'hanayome-detail-b',
+  hero: 'hero-night',
 };
 
 export const PATHS = {
@@ -61,7 +58,6 @@ export const PATHS = {
 export const GENERATED = [
   'assets/banner.svg',
   'assets/profile.svg',
-  'assets/artwork.svg',
   'assets/loading.svg',
   'assets/about.svg',
   'assets/divider.svg',

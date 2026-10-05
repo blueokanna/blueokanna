@@ -1,27 +1,27 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="150" viewBox="0 0 1200 150" role="img" aria-label="syncing github metrics">
   <defs>
     <linearGradient id="panel" x1="0" y1="0" x2="0.4" y2="1">
-      <stop offset="0" stop-color="#0b1727"/>
+      <stop offset="0" stop-color="#0a1524"/>
       <stop offset="1" stop-color="#0a1424"/>
     </linearGradient>
     <linearGradient id="fill" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#7ea6e0"/>
-      <stop offset="0.55" stop-color="#a9c8f2"/>
-      <stop offset="1" stop-color="#dbe9ff"/>
+      <stop offset="0" stop-color="#4d8fd6"/>
+      <stop offset="0.55" stop-color="#66c0f4"/>
+      <stop offset="1" stop-color="#cfe4ff"/>
     </linearGradient>
     <linearGradient id="shine" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#eef4ff" stop-opacity="0"/>
-      <stop offset="0.5" stop-color="#eef4ff" stop-opacity="0.55"/>
-      <stop offset="1" stop-color="#eef4ff" stop-opacity="0"/>
+      <stop offset="0" stop-color="#e8f1ff" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#e8f1ff" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#e8f1ff" stop-opacity="0"/>
     </linearGradient>
     <linearGradient id="edge" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#dbe9ff"/>
-      <stop offset="0.6" stop-color="#7ea6e0"/>
-      <stop offset="1" stop-color="#a9c8f2"/>
+      <stop offset="0" stop-color="#cfe4ff"/>
+      <stop offset="0.6" stop-color="#4d8fd6"/>
+      <stop offset="1" stop-color="#66c0f4"/>
     </linearGradient>
     <radialGradient id="bloom" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#9cc0f0" stop-opacity="0.22"/>
-      <stop offset="1" stop-color="#9cc0f0" stop-opacity="0"/>
+      <stop offset="0" stop-color="#6db4ea" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#6db4ea" stop-opacity="0"/>
     </radialGradient>
     <clipPath id="frame">
       <rect x="12" y="12" width="1176" height="126" rx="14"/>
@@ -36,35 +36,35 @@
     <circle cx="1120" cy="10" r="150" fill="url(#bloom)">
       <animate attributeName="opacity" values="0.7;1;0.7" dur="7s" repeatCount="indefinite"/>
     </circle>
-    <rect x="12" y="0" width="1176" height="2" fill="#a9c8f2" opacity="0.22">
+    <rect x="12" y="0" width="1176" height="2" fill="#66c0f4" opacity="0.22">
       <animate attributeName="y" values="12;136;12" dur="13s" repeatCount="indefinite"/>
     </rect>
   </g>
 
   <g class="mono">
-    <text x="40" y="48" font-size="12" fill="#b6d2f5">// synchronising metrics · 数据同步中</text>
-    <circle cx="286" cy="44" r="3.4" fill="#dbe9ff">
+    <text x="40" y="48" font-size="12" fill="#a9c8ee">// rendering profile assets</text>
+    <circle cx="250" cy="44" r="3.4" fill="#cfe4ff">
       <animate attributeName="opacity" values="1;0.15;1" dur="1.5s" repeatCount="indefinite"/>
     </circle>
     
-      <rect x="820" y="32" width="104" height="24" rx="12" fill="#101f33" stroke="#1e3555" stroke-width="1"/>
-      <rect x="820" y="32" width="104" height="24" rx="12" fill="none" stroke="#a9c8f2" stroke-width="1.2" opacity="0.16">
+      <rect x="820" y="32" width="104" height="24" rx="12" fill="#0f2035" stroke="#1c3350" stroke-width="1"/>
+      <rect x="820" y="32" width="104" height="24" rx="12" fill="none" stroke="#66c0f4" stroke-width="1.2" opacity="0.16">
         <animate attributeName="opacity" values="0.16;0.9;0.36" keyTimes="0;0.4;1" dur="5s" begin="0.0s" repeatCount="indefinite"/>
       </rect>
-      <text x="872" y="48" font-size="11" fill="#b6d2f5" text-anchor="middle">languages</text>
-      <rect x="938" y="32" width="104" height="24" rx="12" fill="#101f33" stroke="#1e3555" stroke-width="1"/>
-      <rect x="938" y="32" width="104" height="24" rx="12" fill="none" stroke="#a9c8f2" stroke-width="1.2" opacity="0.16">
+      <text x="872" y="48" font-size="11" fill="#a9c8ee" text-anchor="middle">banner</text>
+      <rect x="938" y="32" width="104" height="24" rx="12" fill="#0f2035" stroke="#1c3350" stroke-width="1"/>
+      <rect x="938" y="32" width="104" height="24" rx="12" fill="none" stroke="#66c0f4" stroke-width="1.2" opacity="0.16">
         <animate attributeName="opacity" values="0.16;0.9;0.36" keyTimes="0;0.4;1" dur="5s" begin="1.6s" repeatCount="indefinite"/>
       </rect>
-      <text x="990" y="48" font-size="11" fill="#b6d2f5" text-anchor="middle">isocalendar</text>
-      <rect x="1056" y="32" width="104" height="24" rx="12" fill="#101f33" stroke="#1e3555" stroke-width="1"/>
-      <rect x="1056" y="32" width="104" height="24" rx="12" fill="none" stroke="#a9c8f2" stroke-width="1.2" opacity="0.16">
+      <text x="990" y="48" font-size="11" fill="#a9c8ee" text-anchor="middle">profile</text>
+      <rect x="1056" y="32" width="104" height="24" rx="12" fill="#0f2035" stroke="#1c3350" stroke-width="1"/>
+      <rect x="1056" y="32" width="104" height="24" rx="12" fill="none" stroke="#66c0f4" stroke-width="1.2" opacity="0.16">
         <animate attributeName="opacity" values="0.16;0.9;0.36" keyTimes="0;0.4;1" dur="5s" begin="3.2s" repeatCount="indefinite"/>
       </rect>
-      <text x="1108" y="48" font-size="11" fill="#b6d2f5" text-anchor="middle">repositories</text>
+      <text x="1108" y="48" font-size="11" fill="#a9c8ee" text-anchor="middle">cards</text>
 
-    <rect x="40" y="88" width="880" height="10" rx="5" fill="#060d18" stroke="#1e3555" stroke-width="1"/>
-    <g stroke="#1e3555" stroke-width="1" opacity="0.6">
+    <rect x="40" y="88" width="880" height="10" rx="5" fill="#050c16" stroke="#1c3350" stroke-width="1"/>
+    <g stroke="#1c3350" stroke-width="1" opacity="0.6">
       <path d="M128 90 V96"/><path d="M216 90 V96"/><path d="M304 90 V96"/><path d="M392 90 V96"/><path d="M480 90 V96"/><path d="M568 90 V96"/><path d="M656 90 V96"/><path d="M744 90 V96"/><path d="M832 90 V96"/>
     </g>
     <rect x="41" y="89" width="6" height="8" rx="4" fill="url(#fill)">
@@ -76,22 +76,22 @@
     </rect>
 
     <g font-size="15">
-      <text x="1140" y="99" fill="#7ea6e0" text-anchor="end" opacity="0">
+      <text x="1140" y="99" fill="#4d8fd6" text-anchor="end" opacity="0">
         [ 21% ]
         <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.06;0.1;0.3;0.33" dur="9s" repeatCount="indefinite"/>
       </text>
-      <text x="1140" y="99" fill="#dbe9ff" text-anchor="end" opacity="0">
+      <text x="1140" y="99" fill="#cfe4ff" text-anchor="end" opacity="0">
         [ 64% ]
         <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.36;0.4;0.62;0.65" dur="9s" repeatCount="indefinite"/>
       </text>
-      <text x="1140" y="99" fill="#eef4ff" text-anchor="end" font-weight="700" opacity="0">
+      <text x="1140" y="99" fill="#e8f1ff" text-anchor="end" font-weight="700" opacity="0">
         [ 100% ]
         <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.68;0.72;0.97;1" dur="9s" repeatCount="indefinite"/>
       </text>
     </g>
 
-    <text x="40" y="128" font-size="11" fill="#4a6285">sources: github api · refresh daily 00:00 UTC / 08:00 SGT · rendered Mon Oct 05 2026 13:46:30 GMT+0800 (中国标准时间)</text>
-    <text x="1160" y="128" font-size="11" fill="#4a6285" text-anchor="end">smil · 60fps · 0 js</text>
+    <text x="40" y="128" font-size="11" fill="#47607e">pipeline: node · output: static svg · refresh: daily 00:00 UTC / 08:00 SGT</text>
+    <text x="1160" y="128" font-size="11" fill="#47607e" text-anchor="end">smil · 60fps · 0 js · rendered Mon Oct 05 2026 13:55:39 GMT+0800 (中国标准时间)</text>
   </g>
 
   <rect x="12" y="12" width="1176" height="126" rx="14" fill="none" stroke="url(#edge)" stroke-width="1.2" opacity="0.7"/>
