@@ -1,29 +1,30 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="330" viewBox="0 0 1200 330" role="img" aria-label="whoami — identity and arsenal">
   <defs>
     <linearGradient id="abg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#04060c"/>
-      <stop offset="0.55" stop-color="#091120"/>
-      <stop offset="1" stop-color="#0c0918"/>
+      <stop offset="0" stop-color="#05070f"/>
+      <stop offset="0.55" stop-color="#0a1120"/>
+      <stop offset="1" stop-color="#130a1c"/>
     </linearGradient>
-    <linearGradient id="aedge" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="aedge" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0" stop-color="#22d3ee"/>
-      <stop offset="0.55" stop-color="#6366f1"/>
-      <stop offset="1" stop-color="#a855f7"/>
+      <stop offset="0.55" stop-color="#818cf8"/>
+      <stop offset="1" stop-color="#f472b6"/>
     </linearGradient>
     <linearGradient id="apill" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#22d3ee" stop-opacity="0.55"/>
-      <stop offset="1" stop-color="#a855f7" stop-opacity="0.55"/>
+      <stop offset="0" stop-color="#22d3ee" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#f472b6" stop-opacity="0.5"/>
     </linearGradient>
-    <linearGradient id="aval" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#22d3ee"/>
-      <stop offset="1" stop-color="#a855f7"/>
+    <linearGradient id="aflow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#f9a8d4" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
     </linearGradient>
     <radialGradient id="ahalo" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#6366f1" stop-opacity="0.4"/>
-      <stop offset="1" stop-color="#6366f1" stop-opacity="0"/>
+      <stop offset="0" stop-color="#818cf8" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#818cf8" stop-opacity="0"/>
     </radialGradient>
     <pattern id="agrid" width="36" height="36" patternUnits="userSpaceOnUse">
-      <path d="M36 0 H0 V36" fill="none" stroke="#1c3a5e" stroke-width="1" stroke-opacity="0.45"/>
+      <path d="M36 0 H0 V36" fill="none" stroke="#1b3a5e" stroke-width="1"/>
     </pattern>
     <clipPath id="aframe">
       <rect x="12" y="12" width="1176" height="306" rx="18"/>
@@ -35,165 +36,148 @@
 
   <rect x="12" y="12" width="1176" height="306" rx="18" fill="url(#abg)"/>
   <g clip-path="url(#aframe)">
-    <rect x="-36" y="-36" width="1272" height="380" fill="url(#agrid)" opacity="0.4">
-      <animateTransform attributeName="transform" type="translate" values="0 0;36 36" dur="8s" repeatCount="indefinite"/>
+    <rect x="-36" y="-36" width="1272" height="380" fill="url(#agrid)" opacity="0.22">
+      <animateTransform attributeName="transform" type="translate" values="0 0;36 36" dur="13s" repeatCount="indefinite"/>
     </rect>
-    <circle cx="80" cy="300" r="220" fill="url(#ahalo)">
-      <animate attributeName="opacity" values="0.7;1;0.7" dur="9s" repeatCount="indefinite"/>
+    <circle cx="120" cy="310" r="230" fill="url(#ahalo)">
+      <animate attributeName="opacity" values="0.7;1;0.7" dur="10s" repeatCount="indefinite"/>
     </circle>
 
-    <rect x="12" y="12" width="1176" height="44" fill="#060a14" fill-opacity="0.94"/>
     <path d="M12 56 H1188" stroke="#16243c" stroke-width="1"/>
-    <circle cx="36" cy="34" r="4.6" fill="#ff5f57"/>
-    <circle cx="52" cy="34" r="4.6" fill="#ffbd2e"/>
-    <circle cx="68" cy="34" r="4.6" fill="#27c93f"/>
-    <text class="mono" x="92" y="39" fill="#7c8a9d" font-size="13">profile · whoami --verbose</text>
-    <text class="mono" x="700" y="39" fill="#3f5876" font-size="12">read-only  ·  public data  ·  no telemetry</text>
-    <circle cx="1112" cy="34" r="4" fill="#27c93f">
-      <animate attributeName="opacity" values="1;0.2;1" dur="1.7s" repeatCount="indefinite"/>
+    <text class="mono" x="40" y="40" font-size="13" fill="#7c8a9d">profile · whoami --verbose</text>
+    <text class="mono" x="700" y="40" font-size="12" fill="#3f5876">public data · read-only · no telemetry</text>
+    <circle cx="1112" cy="35" r="4" fill="#34d399">
+      <animate attributeName="opacity" values="1;0.2;1" dur="2.6s" repeatCount="indefinite"/>
     </circle>
-    <text class="mono" x="1124" y="39" fill="#27c93f" font-size="12" letter-spacing="1">LIVE</text>
+    <text class="mono" x="1124" y="40" font-size="12" fill="#34d399" letter-spacing="1">LIVE</text>
 
-    <rect x="12" y="0" width="1176" height="2" fill="#22d3ee" opacity="0.28">
-      <animate attributeName="y" values="12;318;12" dur="10s" repeatCount="indefinite"/>
-    </rect>
     <path d="M720 76 V300" stroke="#16243c" stroke-width="1" stroke-dasharray="5 7"/>
+    <rect x="12" y="0" width="1176" height="2" fill="#22d3ee" opacity="0.22">
+      <animate attributeName="y" values="12;318;12" dur="15s" repeatCount="indefinite"/>
+    </rect>
   </g>
 
   <g class="mono">
-    <text x="40" y="82" fill="#3f5876" font-size="12" letter-spacing="3">IDENTITY</text>
-    <path d="M132 78 H700" stroke="#16243c" stroke-width="1"/>
+    <text x="40" y="84" font-size="12" letter-spacing="3" fill="#3f5876">IDENTITY</text>
+    <path d="M132 80 H700" stroke="#16243c" stroke-width="1"/>
 
     <g font-size="13">
       <g fill="#7c8a9d">
-        <text x="40" y="118">user</text>
-        <text x="40" y="148">role</text>
-        <text x="40" y="178">stack</text>
-        <text x="40" y="208">platform</text>
-        <text x="40" y="238">mail</text>
-        <text x="40" y="268">source</text>
+        <text x="40" y="122">user</text>
+        <text x="40" y="156">role</text>
+        <text x="40" y="190">stack</text>
+        <text x="40" y="224">platform</text>
+        <text x="40" y="258">mail</text>
+        <text x="40" y="292">source</text>
       </g>
-      <g fill="#22d3ee" fill-opacity="0.85">
-        <text x="170" y="118">›</text>
-        <text x="170" y="148">›</text>
-        <text x="170" y="178">›</text>
-        <text x="170" y="208">›</text>
-        <text x="170" y="238">›</text>
-        <text x="170" y="268">›</text>
+      <g fill="#22d3ee" fill-opacity="0.8">
+        <text x="170" y="122">›</text>
+        <text x="170" y="156">›</text>
+        <text x="170" y="190">›</text>
+        <text x="170" y="224">›</text>
+        <text x="170" y="258">›</text>
+        <text x="170" y="292">›</text>
       </g>
-      <text x="192" y="118" fill="#c9d1d9" opacity="0">blueokanna
-        <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.03;0.08;0.95;1" dur="13s" repeatCount="indefinite"/>
+      <text x="192" y="122" fill="#c9d1d9" opacity="0">blueokanna
+        <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.03;0.08;0.95;1" dur="15s" repeatCount="indefinite"/>
       </text>
-      <text x="192" y="148" fill="#c9d1d9" opacity="0">backend engineer · systems &amp; performance
-        <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.1;0.15;0.95;1" dur="13s" repeatCount="indefinite"/>
+      <text x="192" y="156" fill="#c9d1d9" opacity="0">backend engineer · systems &amp; performance
+        <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.1;0.15;0.95;1" dur="15s" repeatCount="indefinite"/>
       </text>
-      <text x="192" y="178" fill="#c9d1d9" opacity="0">rust · java · flutter · c / c++
-        <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.17;0.22;0.95;1" dur="13s" repeatCount="indefinite"/>
+      <text x="192" y="190" fill="#c9d1d9" opacity="0">rust · java · flutter · c / c++
+        <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.17;0.22;0.95;1" dur="15s" repeatCount="indefinite"/>
       </text>
-      <text x="192" y="208" fill="#c9d1d9" opacity="0">linux · windows · android
-        <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.24;0.29;0.95;1" dur="13s" repeatCount="indefinite"/>
+      <text x="192" y="224" fill="#c9d1d9" opacity="0">linux · windows · android
+        <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.24;0.29;0.95;1" dur="15s" repeatCount="indefinite"/>
       </text>
-      <text x="192" y="238" fill="#7dd3fc" opacity="0">blueokanna@gmail.com
-        <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.31;0.36;0.95;1" dur="13s" repeatCount="indefinite"/>
+      <text x="192" y="258" fill="#7dd3fc" opacity="0">blueokanna@gmail.com
+        <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.31;0.36;0.95;1" dur="15s" repeatCount="indefinite"/>
       </text>
-      <text x="192" y="268" fill="#a78bfa" opacity="0">github.com/blueokanna
-        <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.38;0.43;0.95;1" dur="13s" repeatCount="indefinite"/>
+      <text x="192" y="292" fill="#f9a8d4" opacity="0">github.com/blueokanna
+        <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.38;0.43;0.95;1" dur="15s" repeatCount="indefinite"/>
       </text>
-      <rect x="352" y="256" width="8" height="14" fill="#22d3ee" opacity="0">
-        <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.44;0.48;0.95;1" dur="13s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="1;0;1" dur="1.1s" repeatCount="indefinite"/>
-      </rect>
+      <g opacity="0">
+        <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.44;0.48;0.95;1" dur="15s" repeatCount="indefinite"/>
+        <rect x="352" y="280" width="8" height="14" fill="#f9a8d4">
+          <animate attributeName="opacity" values="1;0;1" dur="1.1s" repeatCount="indefinite"/>
+        </rect>
+      </g>
     </g>
 
-    <text x="748" y="82" fill="#3f5876" font-size="12" letter-spacing="3">ARSENAL</text>
-    <path d="M852 78 H1156" stroke="#16243c" stroke-width="1"/>
+    <text x="748" y="84" font-size="12" letter-spacing="3" fill="#3f5876">ARSENAL</text>
+    <path d="M852 80 H1156" stroke="#16243c" stroke-width="1"/>
 
     <g font-size="13" text-anchor="middle">
-      <rect x="730" y="100" width="90" height="30" rx="8" fill="#0b1524" stroke="url(#apill)" stroke-width="1.2">
-        <animate attributeName="stroke-opacity" values="1;0.35;1" dur="4s" repeatCount="indefinite"/>
+      <rect x="730" y="102" width="90" height="30" rx="8" fill="#0b1524" stroke="url(#apill)" stroke-width="1.2">
+        <animate attributeName="stroke-opacity" values="1;0.4;1" dur="5s" repeatCount="indefinite"/>
       </rect>
-      <text x="775" y="120" fill="#c9d1d9">Rust</text>
+      <text x="775" y="122" fill="#c9d1d9">Rust</text>
 
-      <rect x="832" y="100" width="90" height="30" rx="8" fill="#0b1524" stroke="url(#apill)" stroke-width="1.2">
-        <animate attributeName="stroke-opacity" values="1;0.35;1" dur="4s" begin="0.3s" repeatCount="indefinite"/>
+      <rect x="832" y="102" width="90" height="30" rx="8" fill="#0b1524" stroke="url(#apill)" stroke-width="1.2">
+        <animate attributeName="stroke-opacity" values="1;0.4;1" dur="5s" begin="0.4s" repeatCount="indefinite"/>
       </rect>
-      <text x="877" y="120" fill="#c9d1d9">Java</text>
+      <text x="877" y="122" fill="#c9d1d9">Java</text>
 
-      <rect x="934" y="100" width="100" height="30" rx="8" fill="#0b1524" stroke="url(#apill)" stroke-width="1.2">
-        <animate attributeName="stroke-opacity" values="1;0.35;1" dur="4s" begin="0.6s" repeatCount="indefinite"/>
+      <rect x="934" y="102" width="100" height="30" rx="8" fill="#0b1524" stroke="url(#apill)" stroke-width="1.2">
+        <animate attributeName="stroke-opacity" values="1;0.4;1" dur="5s" begin="0.8s" repeatCount="indefinite"/>
       </rect>
-      <text x="984" y="120" fill="#c9d1d9">C / C++</text>
+      <text x="984" y="122" fill="#c9d1d9">C / C++</text>
 
-      <rect x="1046" y="100" width="110" height="30" rx="8" fill="#0b1524" stroke="url(#apill)" stroke-width="1.2">
-        <animate attributeName="stroke-opacity" values="1;0.35;1" dur="4s" begin="0.9s" repeatCount="indefinite"/>
+      <rect x="1046" y="102" width="110" height="30" rx="8" fill="#0b1524" stroke="url(#apill)" stroke-width="1.2">
+        <animate attributeName="stroke-opacity" values="1;0.4;1" dur="5s" begin="1.2s" repeatCount="indefinite"/>
       </rect>
-      <text x="1101" y="120" fill="#c9d1d9">Flutter</text>
+      <text x="1101" y="122" fill="#c9d1d9">Flutter</text>
 
-      <rect x="730" y="138" width="96" height="30" rx="8" fill="#0b1524" stroke="url(#apill)" stroke-width="1.2">
-        <animate attributeName="stroke-opacity" values="1;0.35;1" dur="4s" begin="1.2s" repeatCount="indefinite"/>
+      <rect x="730" y="144" width="96" height="30" rx="8" fill="#0b1524" stroke="url(#apill)" stroke-width="1.2">
+        <animate attributeName="stroke-opacity" values="1;0.4;1" dur="5s" begin="1.6s" repeatCount="indefinite"/>
       </rect>
-      <text x="778" y="158" fill="#c9d1d9">SQLite</text>
+      <text x="778" y="164" fill="#c9d1d9">SQLite</text>
 
-      <rect x="838" y="138" width="88" height="30" rx="8" fill="#0b1524" stroke="url(#apill)" stroke-width="1.2">
-        <animate attributeName="stroke-opacity" values="1;0.35;1" dur="4s" begin="1.5s" repeatCount="indefinite"/>
+      <rect x="838" y="144" width="88" height="30" rx="8" fill="#0b1524" stroke="url(#apill)" stroke-width="1.2">
+        <animate attributeName="stroke-opacity" values="1;0.4;1" dur="5s" begin="2s" repeatCount="indefinite"/>
       </rect>
-      <text x="882" y="158" fill="#c9d1d9">Linux</text>
+      <text x="882" y="164" fill="#c9d1d9">Linux</text>
 
-      <rect x="938" y="138" width="70" height="30" rx="8" fill="#0b1524" stroke="url(#apill)" stroke-width="1.2">
-        <animate attributeName="stroke-opacity" values="1;0.35;1" dur="4s" begin="1.8s" repeatCount="indefinite"/>
+      <rect x="938" y="144" width="70" height="30" rx="8" fill="#0b1524" stroke="url(#apill)" stroke-width="1.2">
+        <animate attributeName="stroke-opacity" values="1;0.4;1" dur="5s" begin="2.4s" repeatCount="indefinite"/>
       </rect>
-      <text x="973" y="158" fill="#c9d1d9">Git</text>
+      <text x="973" y="164" fill="#c9d1d9">Git</text>
 
-      <rect x="1020" y="138" width="78" height="30" rx="8" fill="#0b1524" stroke="url(#apill)" stroke-width="1.2">
-        <animate attributeName="stroke-opacity" values="1;0.35;1" dur="4s" begin="2.1s" repeatCount="indefinite"/>
+      <rect x="1020" y="144" width="78" height="30" rx="8" fill="#0b1524" stroke="url(#apill)" stroke-width="1.2">
+        <animate attributeName="stroke-opacity" values="1;0.4;1" dur="5s" begin="2.8s" repeatCount="indefinite"/>
       </rect>
-      <text x="1059" y="158" fill="#c9d1d9">Kali</text>
-
-      <rect x="730" y="176" width="78" height="30" rx="8" fill="#0b1524" stroke="url(#apill)" stroke-width="1.2">
-        <animate attributeName="stroke-opacity" values="1;0.35;1" dur="4s" begin="2.4s" repeatCount="indefinite"/>
-      </rect>
-      <text x="769" y="196" fill="#c9d1d9">IPFS</text>
-
-      <rect x="820" y="176" width="96" height="30" rx="8" fill="#0b1524" stroke="url(#apill)" stroke-width="1.2">
-        <animate attributeName="stroke-opacity" values="1;0.35;1" dur="4s" begin="2.7s" repeatCount="indefinite"/>
-      </rect>
-      <text x="868" y="196" fill="#c9d1d9">Arduino</text>
-
-      <rect x="928" y="176" width="96" height="30" rx="8" fill="#0b1524" stroke="url(#apill)" stroke-width="1.2">
-        <animate attributeName="stroke-opacity" values="1;0.35;1" dur="4s" begin="3s" repeatCount="indefinite"/>
-      </rect>
-      <text x="976" y="196" fill="#c9d1d9">Postman</text>
-
-      <rect x="1036" y="176" width="110" height="30" rx="8" fill="#0b1524" stroke="url(#apill)" stroke-width="1.2">
-        <animate attributeName="stroke-opacity" values="1;0.35;1" dur="4s" begin="3.3s" repeatCount="indefinite"/>
-      </rect>
-      <text x="1091" y="196" fill="#c9d1d9">Actions</text>
+      <text x="1059" y="164" fill="#c9d1d9">Kali</text>
     </g>
 
-    <path d="M730 224 H1156" stroke="#16243c" stroke-width="1"/>
+    <path d="M730 194 H1120" stroke="#16243c" stroke-width="1"/>
 
     <g font-size="10" letter-spacing="2" text-anchor="middle">
-      <rect x="730" y="244" width="130" height="56" rx="10" fill="#0a1322" stroke="#16243c" stroke-width="1"/>
-      <text x="795" y="272" fill="#22d3ee" font-size="16" letter-spacing="1">∞</text>
-      <text x="795" y="290" fill="#3f5876">REPOS</text>
+      <rect x="730" y="212" width="126" height="52" rx="10" fill="#0a1322" stroke="#16243c" stroke-width="1"/>
+      <text x="793" y="238" fill="#22d3ee" font-size="16" letter-spacing="1">∞</text>
+      <text x="793" y="256" fill="#3f5876">REPOS</text>
 
-      <rect x="874" y="244" width="130" height="56" rx="10" fill="#0a1322" stroke="#16243c" stroke-width="1"/>
-      <text x="939" y="272" fill="#38bdf8" font-size="16" letter-spacing="1">12</text>
-      <text x="939" y="290" fill="#3f5876">STACK</text>
+      <rect x="868" y="212" width="126" height="52" rx="10" fill="#0a1322" stroke="#16243c" stroke-width="1"/>
+      <text x="931" y="238" fill="#818cf8" font-size="16" letter-spacing="1">12</text>
+      <text x="931" y="256" fill="#3f5876">STACK</text>
 
-      <rect x="1018" y="244" width="130" height="56" rx="10" fill="#0a1322" stroke="#16243c" stroke-width="1"/>
-      <text x="1083" y="272" fill="#a78bfa" font-size="16" letter-spacing="1">99.9%</text>
-      <text x="1083" y="290" fill="#3f5876">UPTIME</text>
+      <rect x="1006" y="212" width="126" height="52" rx="10" fill="#0a1322" stroke="#16243c" stroke-width="1"/>
+      <text x="1069" y="238" fill="#f472b6" font-size="16" letter-spacing="1">99.9%</text>
+      <text x="1069" y="256" fill="#3f5876">UPTIME</text>
     </g>
-    <rect x="730" y="302" width="130" height="2" rx="1" fill="url(#aval)" opacity="0.9">
-      <animate attributeName="opacity" values="0.9;0.25;0.9" dur="3.4s" repeatCount="indefinite"/>
-    </rect>
+
+    <path d="M730 284 H1120" stroke="#16243c" stroke-width="1.4" stroke-linecap="round"/>
+    <path d="M730 284 H1120" stroke="url(#aflow)" stroke-width="2" stroke-linecap="round" stroke-dasharray="120 1400">
+      <animate attributeName="stroke-dashoffset" values="0;-1520" dur="7s" repeatCount="indefinite"/>
+    </path>
+    <circle cx="1128" cy="284" r="3" fill="#f9a8d4">
+      <animate attributeName="opacity" values="1;0.2;1" dur="3s" repeatCount="indefinite"/>
+    </circle>
   </g>
 
-  <rect x="12" y="12" width="1176" height="306" rx="18" fill="none" stroke="url(#aedge)" stroke-width="1.5" opacity="0.85"/>
+  <rect x="12" y="12" width="1176" height="306" rx="18" fill="none" stroke="url(#aedge)" stroke-width="1.4" opacity="0.8"/>
   <g stroke="url(#aedge)" stroke-width="2" fill="none">
-    <path d="M22 254 V306 Q22 310 26 310 H66"/>
-    <path d="M1178 306 Q1178 310 1174 310 H1134 V254"/>
-    <animate attributeName="opacity" values="0.9;0.3;0.9" dur="5s" repeatCount="indefinite"/>
+    <path d="M22 250 V300 Q22 304 26 304 H66"/>
+    <path d="M1178 300 Q1178 304 1174 304 H1134 V250"/>
+    <animate attributeName="opacity" values="0.85;0.3;0.85" dur="6s" repeatCount="indefinite"/>
   </g>
 </svg>

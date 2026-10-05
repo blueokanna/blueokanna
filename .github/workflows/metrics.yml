@@ -11,6 +11,9 @@
 #   3. Pick an expiry you will actually rotate. PATs expire silently and the
 #      render then dies with "Bad credentials" halfway through the run.
 #
+# Rendering runs once a day (00:00 UTC) plus manual dispatches only, so the
+# workflow never burns minutes on unrelated pushes.
+#
 # Every run verifies the token before rendering: when it is missing or expired
 # the job stays green, keeps the last committed assets/metrics.svg and writes a
 # warning plus the exact fix into the run summary instead of failing mid-render.
@@ -20,16 +23,7 @@ name: metrics
 on:
   schedule:
     - cron: "0 0 * * *"
-  push:
-    branches:
-      - main
-      - master
-    paths-ignore:
-      - "assets/metrics.svg"
   workflow_dispatch:
-  repository_dispatch:
-    types:
-      - metrics_update
 
 permissions:
   contents: write
