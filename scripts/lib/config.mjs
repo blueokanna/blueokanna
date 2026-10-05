@@ -43,10 +43,22 @@ export const STACK = [
   'Kali', 'IPFS', 'Arduino', 'Postman', 'Actions', 'Windows', 'Android',
 ];
 
-/** Encrypted artwork slots: the banner backdrop and the soft card backdrop. */
+/**
+ * Encrypted artwork slots.
+ *
+ *  hero     the banner crop, sharp, watermarked
+ *  page     the whole vertical artwork; every wide card draws a slice of this
+ *           one image so the backdrop reads as a single sheet behind the page
+ */
 export const ARTWORK = {
   hero: 'hero-night',
-  backdrop: 'backdrop-soft',
+  page: 'canvas-page',
+};
+
+/** Page-canvas geometry: source width, and the slice offset per card. */
+export const CANVAS = {
+  width: 640,
+  height: 1138,
 };
 
 export const PATHS = {
@@ -58,7 +70,7 @@ export const PATHS = {
 /** Assets regenerated on every run; the commit step diffs exactly these. */
 export const GENERATED = [
   'assets/banner.svg',
-  'assets/loading.svg',
+  'assets/telemetry.svg',
   'assets/about.svg',
   'assets/divider.svg',
   'assets/footer.svg',

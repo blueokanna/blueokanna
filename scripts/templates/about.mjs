@@ -1,7 +1,7 @@
 /** Arsenal: the stack as measured-width pills plus region and timezone tiles. */
 
 import { IDENTITY, PALETTE as P, STACK } from '../lib/config.mjs';
-import { esc, monoWidth } from '../lib/svg.mjs';
+import { esc, monoWidth, watermarkDefs, watermarkRect } from '../lib/svg.mjs';
 
 const W = 1200;
 const H = 290;
@@ -59,7 +59,7 @@ function tiles() {
   }).join('');
 }
 
-export function render({ backdrop }) {
+export function render({ canvas, renderedAt }) {
   return `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="arsenal">
   <defs>
     <linearGradient id="panel" x1="0" y1="0" x2="0.4" y2="1">
@@ -76,6 +76,11 @@ export function render({ backdrop }) {
       <stop offset="0.5" stop-color="${P.accent1}" stop-opacity="0.9"/>
       <stop offset="1" stop-color="${P.accent1}" stop-opacity="0"/>
     </linearGradient>
+    <linearGradient id="topfade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="${P.ink0}" stop-opacity="0.6"/>
+      <stop offset="0.4" stop-color="${P.ink0}" stop-opacity="0.44"/>
+      <stop offset="1" stop-color="${P.ink0}" stop-opacity="0.68"/>
+    </linearGradient>
     <radialGradient id="bloom" cx="0.5" cy="0.5" r="0.5">
       <stop offset="0" stop-color="${P.glow}" stop-opacity="0.2"/>
       <stop offset="1" stop-color="${P.glow}" stop-opacity="0"/>
@@ -83,9 +88,13 @@ export function render({ backdrop }) {
     <pattern id="grid" width="34" height="34" patternUnits="userSpaceOnUse">
       <path d="M34 0 H0 V34" fill="none" stroke="${P.line}" stroke-width="1" stroke-opacity="0.4"/>
     </pattern>
+    <filter id="soft" x="-10%" y="-25%" width="120%" height="150%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
     <clipPath id="frame">
       <rect x="12" y="12" width="${W - 24}" height="${H - 24}" rx="14"/>
     </clipPath>
+    ${watermarkDefs(P)}
     <style>
       .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, "Liberation Mono", monospace; }
     </style>
@@ -93,7 +102,9 @@ export function render({ backdrop }) {
 
   <rect x="12" y="12" width="${W - 24}" height="${H - 24}" rx="14" fill="url(#panel)"/>
   <g clip-path="url(#frame)">
-    ${backdrop ? `<image x="12" y="12" width="${W - 24}" height="${H - 24}" preserveAspectRatio="xMidYMid slice" opacity="0.18" xlink:href="${backdrop}"/>` : ''}
+    <g filter="url(#soft)">${canvas.slice}</g>
+    <rect x="12" y="12" width="${W - 24}" height="${H - 24}" fill="url(#topfade)"/>
+    ${watermarkRect({ x: 12, y: 12, width: W - 24, height: H - 24 })}
     <rect x="-34" y="-34" width="${W + 68}" height="${H + 68}" fill="url(#grid)" opacity="0.3">
       <animateTransform attributeName="transform" type="translate" values="0 0;34 34" dur="16s" repeatCount="indefinite"/>
     </rect>
@@ -107,8 +118,8 @@ export function render({ backdrop }) {
   </g>
 
   <g class="mono">
-    <text x="40" y="40" font-size="12" letter-spacing="2" fill="${P.muted}">ARSENAL · 技术栈</text>
-    <text x="${W - 40}" y="40" font-size="11" fill="${P.faint}" text-anchor="end">tools: ${STACK.length} · region: ${esc(IDENTITY.region)} · ${esc(IDENTITY.timezoneLabel)}</text>
+    <text x="40" y="40" font-size="12" letter-spacing="2" fill="${P.ice}">ARSENAL · 技术栈</text>
+    <text x="${W - 40}" y="40" font-size="11" fill="${P.ice}" fill-opacity="0.85" text-anchor="end">tools: ${STACK.length} · region: ${esc(IDENTITY.region)} · ${esc(IDENTITY.timezoneLabel)} · ${esc(renderedAt)}</text>
     ${pills()}
     ${tiles()}
     <path d="M40 256 H1160" stroke="${P.line}" stroke-width="1.2" stroke-linecap="round"/>

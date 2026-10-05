@@ -17,11 +17,19 @@ import { IDENTITY, PALETTE as P, STACK } from '../lib/config.mjs';
 import { esc, isoDate, monoWidth } from '../lib/svg.mjs';
 
 const W = 1200;
-const H = 820;
-const STRIP_Y = 506;
+const H = 1024;
+const STRIP_Y = 712;
 const BOTTOM = H - 12;
 
-const AVATAR = { cx: 112, cy: 664, r: 62 };
+/** Strip geometry, derived from one anchor so the three columns stay aligned. */
+const NAME_Y = STRIP_Y + 86;
+const HANDLE_Y = STRIP_Y + 114;
+const TAGLINE_Y = STRIP_Y + 142;
+const CHIP_Y = STRIP_Y + 166;
+const BADGE_Y = STRIP_Y + 206;
+const READOUT_Y = STRIP_Y + 40;
+
+const AVATAR = { cx: 112, cy: STRIP_Y + 150, r: 62 };
 
 /** Drifting motes: small squares falling with a lazy horizontal sway. */
 const MOTES = [
@@ -62,7 +70,7 @@ function rulers() {
     top.push(`<path d="M${x} 14 V${tall ? 24 : 19}"/>`);
   }
   const left = [];
-  for (let y = 40; y <= STRIP_Y - 20; y += 40) {
+  for (let y = 40; y <= STRIP_Y - 40; y += 40) {
     const tall = (y / 40) % 5 === 0;
     left.push(`<path d="M14 ${y} H${tall ? 24 : 19}"/>`);
   }
@@ -95,8 +103,8 @@ function statChips(account) {
     const text = `${label} ${value}`;
     const width = Math.round(monoWidth(text, 11, 1) + 22);
     const chip = `
-      <rect x="${x}" y="672" width="${width}" height="24" rx="12" fill="${P.ink0}" fill-opacity="0.42" stroke="${P.lineBright}" stroke-width="1"/>
-      <text x="${x + width / 2}" y="688" font-size="11" letter-spacing="1" fill="${P.ice}" text-anchor="middle">${esc(text)}</text>`;
+      <rect x="${x}" y="${CHIP_Y}" width="${width}" height="24" rx="12" fill="${P.ink0}" fill-opacity="0.42" stroke="${P.lineBright}" stroke-width="1"/>
+      <text x="${x + width / 2}" y="${CHIP_Y + 16}" font-size="11" letter-spacing="1" fill="${P.ice}" text-anchor="middle">${esc(text)}</text>`;
     x += width + 10;
     return chip;
   }).join('');
@@ -115,8 +123,8 @@ function badges() {
     const x = 214 + index * 44;
     return `
       <g>
-        <rect x="${x}" y="712" width="34" height="34" rx="9" fill="${P.ink0}" fill-opacity="0.42" stroke="${P.lineBright}" stroke-width="1"/>
-        <g transform="translate(${x},712)">${glyph}</g>
+        <rect x="${x}" y="${BADGE_Y}" width="34" height="34" rx="9" fill="${P.ink0}" fill-opacity="0.42" stroke="${P.lineBright}" stroke-width="1"/>
+        <g transform="translate(${x},${BADGE_Y})">${glyph}</g>
       </g>`;
   }).join('');
 }
@@ -133,7 +141,7 @@ function readout(renderedAt) {
   ];
 
   const body = rows.map(([label, value], index) => {
-    const y = 600 + index * 26;
+    const y = READOUT_Y + 54 + index * 26;
     return `
       <text x="792" y="${y}" font-size="11" fill="${P.muted}">${esc(label)}</text>
       <text x="1148" y="${y}" font-size="12" fill="${index === 3 ? P.accent2 : P.silver}" text-anchor="end">${esc(value)}</text>
@@ -141,11 +149,11 @@ function readout(renderedAt) {
   }).join('');
 
   return `
-    <rect x="774" y="546" width="392" height="${BOTTOM - 546 - 20}" rx="10" fill="${P.ink0}" fill-opacity="0.3" stroke="${P.lineBright}" stroke-width="1"/>
-    <rect x="774" y="546" width="392" height="2" rx="1" fill="${P.accent2}" opacity="0.85">
+    <rect x="774" y="${READOUT_Y}" width="392" height="${BOTTOM - READOUT_Y - 20}" rx="10" fill="${P.ink0}" fill-opacity="0.3" stroke="${P.lineBright}" stroke-width="1"/>
+    <rect x="774" y="${READOUT_Y}" width="392" height="2" rx="1" fill="${P.accent2}" opacity="0.85">
       <animate attributeName="opacity" values="0.85;0.3;0.85" dur="5s" repeatCount="indefinite"/>
     </rect>
-    <text x="792" y="572" font-size="10" letter-spacing="3" fill="${P.muted}">READOUT</text>
+    <text x="792" y="${READOUT_Y + 26}" font-size="10" letter-spacing="3" fill="${P.muted}">READOUT</text>
     ${body}`;
 }
 
@@ -255,7 +263,7 @@ export function render({ hero, account, avatar, renderedAt }) {
     <rect x="12" y="12" width="${W - 24}" height="${H - 24}" fill="url(#scan)"/>
     ${rulers()}
 
-    <g transform="translate(1002,196)" fill="none" stroke="${P.accent1}" stroke-opacity="0.62">
+    <g transform="translate(1002,300)" fill="none" stroke="${P.accent1}" stroke-opacity="0.62">
       <circle r="54" stroke-width="1"/>
       <circle r="34" stroke-width="0.8" stroke-dasharray="4 8">
         <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="24s" repeatCount="indefinite"/>
@@ -263,9 +271,9 @@ export function render({ hero, account, avatar, renderedAt }) {
       <path d="M-70 0 H-40 M40 0 H70 M0 -70 V-40 M0 40 V70" stroke-width="1"/>
       <circle r="2.4" fill="${P.accent2}" stroke="none"/>
     </g>
-    <rect x="896" y="272" width="212" height="52" rx="8" fill="${P.ink0}" fill-opacity="0.62" stroke="${P.lineBright}" stroke-width="1"/>
-    <text class="mono" x="1002" y="293" font-size="11" letter-spacing="3" fill="${P.accent1}" text-anchor="middle">MOONLIT CATHEDRAL</text>
-    <text class="mono" x="1002" y="312" font-size="10" letter-spacing="0.5" fill="${P.ice}" fill-opacity="0.9" text-anchor="middle">src 768 × 1365 · crop 1200 × 820</text>
+    <rect x="896" y="376" width="212" height="52" rx="8" fill="${P.ink0}" fill-opacity="0.62" stroke="${P.lineBright}" stroke-width="1"/>
+    <text class="mono" x="1002" y="397" font-size="11" letter-spacing="3" fill="${P.accent1}" text-anchor="middle">MOONLIT CATHEDRAL</text>
+    <text class="mono" x="1002" y="416" font-size="10" letter-spacing="0.5" fill="${P.ice}" fill-opacity="0.9" text-anchor="middle">src 768 × 1365 · crop 1200 × 1024</text>
     ${equaliser()}
 
     <path d="M12 ${STRIP_Y} H${W - 12}" stroke="${P.accent2}" stroke-opacity="0.4" stroke-width="1"/>
@@ -297,9 +305,9 @@ export function render({ hero, account, avatar, renderedAt }) {
   </g>
 
   <g class="mono" filter="url(#tsh)">
-    <text x="214" y="592" font-size="34" font-weight="700" letter-spacing="2" fill="url(#name)">${esc(IDENTITY.name)}</text>
-    <text x="216" y="620" font-size="12" fill="${P.muted}">${esc(IDENTITY.handle)} · ${esc(IDENTITY.region)} · ${esc(IDENTITY.timezone)} ${esc(IDENTITY.timezoneLabel.replace('SGT ', ''))}</text>
-    <text x="216" y="648" font-size="13" fill="${P.ice}">${esc(IDENTITY.tagline)}</text>
+    <text x="214" y="${NAME_Y}" font-size="34" font-weight="700" letter-spacing="2" fill="url(#name)">${esc(IDENTITY.name)}</text>
+    <text x="216" y="${HANDLE_Y}" font-size="12" fill="${P.ice}" fill-opacity="0.92">${esc(IDENTITY.handle)} · ${esc(IDENTITY.region)} · ${esc(IDENTITY.timezone)} ${esc(IDENTITY.timezoneLabel.replace('SGT ', ''))}</text>
+    <text x="216" y="${TAGLINE_Y}" font-size="13" fill="${P.ice}">${esc(IDENTITY.tagline)}</text>
     ${statChips(account)}
     ${badges()}
     <text x="62" y="${BOTTOM - 12}" font-size="11" letter-spacing="1" fill="${P.ice}" fill-opacity="0.9">© ${esc(IDENTITY.login)} · backdrop art ${esc(IDENTITY.heroCipher)} at rest · all rights reserved</text>

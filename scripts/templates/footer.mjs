@@ -1,7 +1,7 @@
-/** Footer: catalogue waves, the attribution line and the signing-off cursor. */
+/** Footer: the page canvas closes here, over catalogue waves and the sign-off. */
 
 import { IDENTITY, PALETTE as P } from '../lib/config.mjs';
-import { esc } from '../lib/svg.mjs';
+import { esc, watermarkDefs, watermarkRect } from '../lib/svg.mjs';
 
 const W = 1200;
 const H = 160;
@@ -21,7 +21,7 @@ function wave(yBase, amplitude, width, duration, opacity, strokeWidth) {
   return segments.join('');
 }
 
-export function render({ backdrop, renderedAt }) {
+export function render({ canvas, renderedAt }) {
   return `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="footer">
   <defs>
     <linearGradient id="panel" x1="0" y1="0" x2="0.4" y2="1">
@@ -53,6 +53,10 @@ export function render({ backdrop, renderedAt }) {
     <clipPath id="frame">
       <rect x="12" y="12" width="${W - 24}" height="${H - 24}" rx="14"/>
     </clipPath>
+    <filter id="soft" x="-10%" y="-40%" width="120%" height="180%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+    ${watermarkDefs(P)}
     <style>
       .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, "Liberation Mono", monospace; }
     </style>
@@ -60,7 +64,9 @@ export function render({ backdrop, renderedAt }) {
 
   <rect x="12" y="12" width="${W - 24}" height="${H - 24}" rx="14" fill="url(#panel)"/>
   <g clip-path="url(#frame)">
-    ${backdrop ? `<image x="12" y="12" width="${W - 24}" height="${H - 24}" preserveAspectRatio="xMidYMid slice" opacity="0.22" xlink:href="${backdrop}"/>` : ''}
+    <g filter="url(#soft)">${canvas.slice}</g>
+    <rect x="12" y="12" width="${W - 24}" height="${H - 24}" fill="${P.ink0}" fill-opacity="0.58"/>
+    ${watermarkRect({ x: 12, y: 12, width: W - 24, height: H - 24, opacity: 0.5 })}
     <rect x="-30" y="-30" width="${W + 60}" height="${H + 60}" fill="url(#grid)" opacity="0.26">
       <animateTransform attributeName="transform" type="translate" values="0 0;30 0" dur="12s" repeatCount="indefinite"/>
     </rect>
@@ -77,13 +83,13 @@ export function render({ backdrop, renderedAt }) {
 
   <g class="mono" text-anchor="middle">
     <text x="${W / 2}" y="58" font-size="18" font-weight="700" letter-spacing="2" fill="url(#title)">© ${esc(IDENTITY.year)} ${esc(IDENTITY.name)}</text>
-    <text x="${W / 2}" y="82" font-size="12" letter-spacing="1" fill="${P.muted}">${esc(IDENTITY.tagline)}</text>
-    <text x="${W / 2}" y="103" font-size="11" letter-spacing="3" fill="${P.accent2}" fill-opacity="0.85">${esc(IDENTITY.edition)} · ${esc(IDENTITY.year)}</text>
+    <text x="${W / 2}" y="82" font-size="12" letter-spacing="1" fill="${P.ice}">${esc(IDENTITY.tagline)}</text>
+    <text x="${W / 2}" y="103" font-size="11" letter-spacing="3" fill="${P.accent1}" fill-opacity="0.9">${esc(IDENTITY.edition)} · ${esc(IDENTITY.year)}</text>
   </g>
 
   <g class="mono" font-size="11">
-    <text x="88" y="38" fill="${P.faint}">// end of transmission</text>
-    <text x="${W - 142}" y="38" fill="${P.faint}">EOF · ${esc(renderedAt)}</text>
+    <text x="88" y="38" fill="${P.muted}">// end of transmission</text>
+    <text x="${W - 142}" y="38" fill="${P.muted}">EOF · ${esc(renderedAt)}</text>
     <rect x="${W - 106}" y="28" width="7" height="12" fill="${P.accent1}">
       <animate attributeName="opacity" values="1;0;1" dur="1.2s" repeatCount="indefinite"/>
     </rect>
