@@ -2,7 +2,7 @@
 /**
  * Encrypts a prepared artwork file into the repository.
  *
- *   ARTWORK_AES_KEY=<64 hex chars> node scripts/pack-artwork.mjs \
+ *   IMAGE_AES_DECRYPT=<64 hex chars> node scripts/pack-artwork.mjs \
  *     --id hero-night --in ~/renders/hero-night.jpg
  *
  * or, to avoid putting the key in the environment:
@@ -50,9 +50,9 @@ async function loadKey(keyFile) {
     const hex = (await readFile(resolve(keyFile), 'utf8')).trim();
     return parseKey(hex);
   }
-  const hex = process.env.ARTWORK_AES_KEY;
+  const hex = process.env.IMAGE_AES_DECRYPT;
   if (!hex) {
-    throw new Error('provide the key with --key-file or the ARTWORK_AES_KEY environment variable');
+    throw new Error('provide the key with --key-file or the IMAGE_AES_DECRYPT environment variable');
   }
   return parseKey(hex);
 }
@@ -119,3 +119,4 @@ main().then(
     process.exit(1);
   },
 );
+

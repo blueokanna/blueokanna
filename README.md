@@ -3,6 +3,11 @@
   templates, not the SVG. The artwork behind the banner and the card backdrops
   is stored encrypted under assets/artwork/ and is only decrypted inside the CI
   job; see scripts/README.md.
+
+  Statistics cards are pinned to an identical 495 × 195 box so the two panels
+  read as one column. The languages card paints 495 × 190 natively, so the
+  height attribute normalises it to the stats card — 2.6 % of vertical scale,
+  no visible distortion.
 -->
 
 <div align="center">
@@ -28,13 +33,14 @@
   <img src="assets/loading.svg?v=1" alt="rendering pipeline" width="100%" />
 </div>
 
+<br />
+
 <p align="center">
-  <img height="158" src="https://github-readme-stats.vercel.app/api?username=blueokanna&amp;show_icons=true&amp;hide_border=true&amp;bg_color=0a1524&amp;title_color=cfe4ff&amp;icon_color=66c0f4&amp;text_color=a9c8ee&amp;include_all_commits=true&amp;count_private=false" alt="stats" />
-  <img height="158" src="https://streak-stats.demolab.com?user=blueokanna&amp;hide_border=true&amp;background=0a1524&amp;ring=4d8fd6&amp;fire=66c0f4&amp;currStreakLabel=cfe4ff&amp;sideLabels=a9c8ee&amp;dates=7a93b4&amp;currStreakNum=e8f1ff&amp;sideNums=e8f1ff" alt="streak" />
+  <img width="495" height="195" src="https://github-readme-stats.vercel.app/api?username=blueokanna&amp;show_icons=true&amp;hide_border=true&amp;bg_color=0a1524&amp;title_color=cfe4ff&amp;icon_color=66c0f4&amp;text_color=a9c8ee&amp;include_all_commits=true&amp;count_private=false&amp;card_width=495" alt="github stats" />
 </p>
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=blueokanna&amp;layout=compact&amp;langs_count=8&amp;hide_border=true&amp;bg_color=0a1524&amp;title_color=cfe4ff&amp;text_color=a9c8ee" alt="top languages" height="158" />
+  <img width="495" height="195" src="https://github-readme-stats.vercel.app/api/top-langs/?username=blueokanna&amp;layout=compact&amp;langs_count=8&amp;hide_border=true&amp;bg_color=0a1524&amp;title_color=cfe4ff&amp;text_color=a9c8ee&amp;card_width=495" alt="most used languages" />
 </p>
 
 <img src="assets/divider.svg?v=1" width="100%" alt="" />
@@ -53,10 +59,6 @@
   <a href="https://www.buymeacoffee.com/blueokanna">
     <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="46" width="196" alt="Buy Me A Coffee" />
   </a>
-</p>
-
-<p align="center">
-  <img src="https://quotes-github-readme.vercel.app/api?type=horizontal&amp;theme=dark" alt="quote" />
 </p>
 
 <p align="center">

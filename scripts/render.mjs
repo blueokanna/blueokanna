@@ -2,14 +2,14 @@
 /**
  * Builds every generated asset in assets/.
  *
- *   ARTWORK_AES_KEY=<64 hex chars> [GITHUB_TOKEN=<token>] node scripts/render.mjs
+ *   IMAGE_AES_DECRYPT=<64 hex chars> [GITHUB_TOKEN=<token>] node scripts/render.mjs
  *
  * Behaviour that matters in CI:
  *
  *  - Artwork blobs are decrypted in memory and never written to disk; only the
  *    rendered SVG (which has to be public for the profile to display it) leaves
  *    this process.
- *  - A missing ARTWORK_AES_KEY skips the artwork-dependent assets and leaves the
+ *  - A missing IMAGE_AES_DECRYPT skips the artwork-dependent assets and leaves the
  *    last good files in place, so losing the secret degrades nothing.
  *  - A blob that fails authentication is a hard error: a tampered or mismatched
  *    container must never silently overwrite committed artwork.
@@ -60,12 +60,12 @@ async function writeAtomic(relativePath, contents) {
  * Authentication failures propagate: they mean tampering or a wrong key.
  */
 async function decryptArtwork() {
-  if (!process.env.ARTWORK_AES_KEY) {
-    console.warn('render: ARTWORK_AES_KEY is not set — artwork assets are left untouched');
+  if (!process.env.IMAGE_AES_DECRYPT) {
+    console.warn('render: IMAGE_AES_DECRYPT is not set — artwork assets are left untouched');
     return null;
   }
 
-  const key = parseKey(process.env.ARTWORK_AES_KEY);
+  const key = parseKey(process.env.IMAGE_AES_DECRYPT);
   const decoded = {};
   const summary = [];
 
@@ -96,7 +96,7 @@ function parseArgs(argv) {
 async function main() {
   const args = parseArgs(process.argv.slice(2));
   if (args.help) {
-    console.log('usage: ARTWORK_AES_KEY=<hex> [GITHUB_TOKEN=<token>] node scripts/render.mjs [--only banner,loading,...]');
+    console.log('usage: IMAGE_AES_DECRYPT=<hex> [GITHUB_TOKEN=<token>] node scripts/render.mjs [--only banner,loading,...]');
     return 0;
   }
 
@@ -187,3 +187,4 @@ main().then(
     process.exit(1);
   },
 );
+

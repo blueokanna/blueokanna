@@ -2,7 +2,7 @@
 #
 # There is exactly one credential, and it is not a GitHub token:
 #
-#   ARTWORK_AES_KEY   64 hex characters. The banner backdrop is stored as
+#   IMAGE_AES_DECRYPT   64 hex characters. The banner backdrop is stored as
 #                     AES-256-GCM ciphertext in assets/artwork/; the key lives
 #                     in repository secrets and is used only inside this job.
 #                     Only ciphertext is committed — the decrypted image never
@@ -40,7 +40,7 @@ jobs:
         id: render
         run: node scripts/render.mjs
         env:
-          ARTWORK_AES_KEY: ${{ secrets.ARTWORK_AES_KEY }}
+          IMAGE_AES_DECRYPT: ${{ secrets.IMAGE_AES_DECRYPT }}
           GITHUB_TOKEN: ${{ github.token }}
 
       - name: Explain a skipped artwork render
@@ -49,15 +49,15 @@ jobs:
         run: |
           set -uo pipefail
           {
-            echo "### artwork backdrop skipped — \`ARTWORK_AES_KEY\` is not set"
+            echo "### artwork backdrop skipped — \`IMAGE_AES_DECRYPT\` is not set"
             echo
             echo "The committed banner is kept unchanged."
-            echo "Add the 64 hex character key under **Settings → Secrets and variables → Actions → \`ARTWORK_AES_KEY\`** to refresh it."
-            echo "Locally: \`ARTWORK_AES_KEY=<hex> node scripts/pack-artwork.mjs --id hero-night --in hero.jpg\`."
+            echo "Add the 64 hex character key under **Settings → Secrets and variables → Actions → \`IMAGE_AES_DECRYPT\`** to refresh it."
+            echo "Locally: \`IMAGE_AES_DECRYPT=<hex> node scripts/pack-artwork.mjs --id hero-night --in hero.jpg\`."
             echo
             echo "A blob that fails authentication is *not* this path — that aborts the run."
           } >> "$GITHUB_STEP_SUMMARY"
-          echo "::warning title=artwork skipped::ARTWORK_AES_KEY is not set."
+          echo "::warning title=artwork skipped::IMAGE_AES_DECRYPT is not set."
 
       - name: Commit generated assets
         if: steps.render.outputs.generated != ''
@@ -136,3 +136,4 @@ jobs:
                 core.warning(`commit race detected (${error.message}); retrying on the latest head`);
               }
             }
+

@@ -20,7 +20,7 @@ No dependencies: Node 20+ and `node:crypto`, `node:fs`, `fetch` are enough.
 ## Regenerating locally
 
 ```bash
-ARTWORK_AES_KEY=<64 hex chars> GITHUB_TOKEN=<token> node scripts/render.mjs
+IMAGE_AES_DECRYPT=<64 hex chars> GITHUB_TOKEN=<token> node scripts/render.mjs
 node scripts/render.mjs --only loading,about,divider,footer   # skip the backdrop
 ```
 
@@ -33,8 +33,8 @@ a rename, so a crashed run cannot leave a half-written card in `assets/`.
 Both slots are stored as ciphertext:
 
 ```bash
-ARTWORK_AES_KEY=<hex> node scripts/pack-artwork.mjs --id hero-night    --in hero.jpg
-ARTWORK_AES_KEY=<hex> node scripts/pack-artwork.mjs --id backdrop-soft --in soft.jpg
+IMAGE_AES_DECRYPT=<hex> node scripts/pack-artwork.mjs --id hero-night    --in hero.jpg
+IMAGE_AES_DECRYPT=<hex> node scripts/pack-artwork.mjs --id backdrop-soft --in soft.jpg
 node scripts/pack-artwork.mjs --verify hero-night
 ```
 
@@ -70,7 +70,7 @@ it cannot reopen.
 
 ### Key handling
 
-* The key lives in the `ARTWORK_AES_KEY` repository secret — 64 hex characters.
+* The key lives in the `IMAGE_AES_DECRYPT` repository secret — 64 hex characters.
 * It is read from the environment or `--key-file`, never from a command line
   that ends up in a process list or a log.
 * Rotation: repack the slot with the new key, commit, then update the secret.
@@ -87,3 +87,4 @@ public — GitHub renders it as a plain image, so anyone with the profile open c
 extract the pixels it contains. The published copy is therefore a downscaled,
 watermarked derivative, and the full-resolution original is not stored in this
 repository at all.
+

@@ -16,7 +16,7 @@
  * to the slot it was written for: swapping two encrypted files, or renaming one,
  * makes authentication fail instead of silently decrypting the wrong artwork.
  *
- * The key lives only in the ARTWORK_AES_KEY secret; it is never written to the
+ * The key lives only in the IMAGE_AES_DECRYPT secret; it is never written to the
  * repository, to a log line, or to a file. Only ciphertext is committed.
  */
 
@@ -51,7 +51,7 @@ export function assertAssetId(assetId) {
 export function parseKey(raw) {
   const hex = String(raw ?? '').trim();
   if (hex.length !== KEY_BYTES * 2 || !/^[0-9a-f]+$/i.test(hex)) {
-    throw new Error(`ARTWORK_AES_KEY must be ${KEY_BYTES * 2} hex characters (${KEY_BYTES} bytes), got ${hex.length}`);
+    throw new Error(`IMAGE_AES_DECRYPT must be ${KEY_BYTES * 2} hex characters (${KEY_BYTES} bytes), got ${hex.length}`);
   }
   return Buffer.from(hex, 'hex');
 }
@@ -119,7 +119,7 @@ export function open(key, assetId, container) {
     return Buffer.concat([decipher.update(ciphertext), decipher.final()]);
   } catch {
     // The underlying error text can leak lengths; surface one stable message.
-    throw new Error(`authentication failed for ${assetId} — wrong ARTWORK_AES_KEY or tampered blob`);
+    throw new Error(`authentication failed for ${assetId} — wrong IMAGE_AES_DECRYPT or tampered blob`);
   }
 }
 
@@ -133,3 +133,4 @@ export function containerInfo(container) {
     ciphertextBytes: Math.max(0, container.length - MIN_CONTAINER_BYTES),
   };
 }
+

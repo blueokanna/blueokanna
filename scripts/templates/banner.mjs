@@ -95,7 +95,7 @@ function statChips(account) {
     const text = `${label} ${value}`;
     const width = Math.round(monoWidth(text, 11, 1) + 22);
     const chip = `
-      <rect x="${x}" y="672" width="${width}" height="24" rx="12" fill="${P.ink2}" stroke="${P.line}" stroke-width="1"/>
+      <rect x="${x}" y="672" width="${width}" height="24" rx="12" fill="${P.ink0}" fill-opacity="0.42" stroke="${P.lineBright}" stroke-width="1"/>
       <text x="${x + width / 2}" y="688" font-size="11" letter-spacing="1" fill="${P.ice}" text-anchor="middle">${esc(text)}</text>`;
     x += width + 10;
     return chip;
@@ -115,7 +115,7 @@ function badges() {
     const x = 214 + index * 44;
     return `
       <g>
-        <rect x="${x}" y="712" width="34" height="34" rx="9" fill="${P.ink2}" stroke="${P.line}" stroke-width="1"/>
+        <rect x="${x}" y="712" width="34" height="34" rx="9" fill="${P.ink0}" fill-opacity="0.42" stroke="${P.lineBright}" stroke-width="1"/>
         <g transform="translate(${x},712)">${glyph}</g>
       </g>`;
   }).join('');
@@ -137,11 +137,11 @@ function readout(renderedAt) {
     return `
       <text x="792" y="${y}" font-size="11" fill="${P.muted}">${esc(label)}</text>
       <text x="1148" y="${y}" font-size="12" fill="${index === 3 ? P.accent2 : P.silver}" text-anchor="end">${esc(value)}</text>
-      <path d="M792 ${y + 8} H1148" stroke="${P.line}" stroke-width="1" stroke-opacity="0.5"/>`;
+      <path d="M792 ${y + 8} H1148" stroke="${P.lineBright}" stroke-width="1" stroke-opacity="0.55"/>`;
   }).join('');
 
   return `
-    <rect x="774" y="546" width="392" height="${BOTTOM - 546 - 20}" rx="10" fill="${P.ink0}" fill-opacity="0.72" stroke="${P.line}" stroke-width="1"/>
+    <rect x="774" y="546" width="392" height="${BOTTOM - 546 - 20}" rx="10" fill="${P.ink0}" fill-opacity="0.3" stroke="${P.lineBright}" stroke-width="1"/>
     <rect x="774" y="546" width="392" height="2" rx="1" fill="${P.accent2}" opacity="0.85">
       <animate attributeName="opacity" values="0.85;0.3;0.85" dur="5s" repeatCount="indefinite"/>
     </rect>
@@ -173,9 +173,9 @@ export function render({ hero, account, avatar, renderedAt }) {
       <stop offset="1" stop-color="${P.ink0}" stop-opacity="0.6"/>
     </radialGradient>
     <linearGradient id="scrim" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="${P.ink1}" stop-opacity="0"/>
-      <stop offset="0.34" stop-color="${P.ink0}" stop-opacity="0.8"/>
-      <stop offset="1" stop-color="${P.ink0}" stop-opacity="0.98"/>
+      <stop offset="0" stop-color="${P.ink0}" stop-opacity="0"/>
+      <stop offset="0.22" stop-color="${P.ink0}" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="${P.ink0}" stop-opacity="0.32"/>
     </linearGradient>
     <linearGradient id="edge" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="${P.accent1}"/>
@@ -207,11 +207,14 @@ export function render({ hero, account, avatar, renderedAt }) {
     <filter id="glow" x="-40%" y="-60%" width="180%" height="220%">
       <feGaussianBlur stdDeviation="5"/>
     </filter>
+    <filter id="tsh" x="-20%" y="-60%" width="140%" height="260%">
+      <feDropShadow dx="0" dy="1.2" stdDeviation="2.2" flood-color="#02060c" flood-opacity="0.95"/>
+    </filter>
     <clipPath id="frame">
       <rect x="12" y="12" width="${W - 24}" height="${H - 24}" rx="16"/>
     </clipPath>
     <clipPath id="artClip">
-      <rect x="12" y="12" width="${W - 24}" height="${STRIP_Y + 40}"/>
+      <rect x="12" y="12" width="${W - 24}" height="${H - 24}"/>
     </clipPath>
     <clipPath id="avatarClip">
       <circle cx="${AVATAR.cx}" cy="${AVATAR.cy}" r="${AVATAR.r}"/>
@@ -252,7 +255,7 @@ export function render({ hero, account, avatar, renderedAt }) {
     <rect x="12" y="12" width="${W - 24}" height="${H - 24}" fill="url(#scan)"/>
     ${rulers()}
 
-    <g transform="translate(1002,196)" fill="none" stroke="${P.accent1}" stroke-opacity="0.5">
+    <g transform="translate(1002,196)" fill="none" stroke="${P.accent1}" stroke-opacity="0.62">
       <circle r="54" stroke-width="1"/>
       <circle r="34" stroke-width="0.8" stroke-dasharray="4 8">
         <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="24s" repeatCount="indefinite"/>
@@ -260,8 +263,9 @@ export function render({ hero, account, avatar, renderedAt }) {
       <path d="M-70 0 H-40 M40 0 H70 M0 -70 V-40 M0 40 V70" stroke-width="1"/>
       <circle r="2.4" fill="${P.accent2}" stroke="none"/>
     </g>
-    <text class="mono" x="1002" y="292" font-size="11" letter-spacing="3" fill="${P.accent1}" fill-opacity="0.75" text-anchor="middle">MOONLIT CATHEDRAL</text>
-    <text class="mono" x="1002" y="310" font-size="10" letter-spacing="1" fill="${P.faint}" text-anchor="middle">src 768 × 1365 · crop 1200 × 820</text>
+    <rect x="896" y="272" width="212" height="52" rx="8" fill="${P.ink0}" fill-opacity="0.62" stroke="${P.lineBright}" stroke-width="1"/>
+    <text class="mono" x="1002" y="293" font-size="11" letter-spacing="3" fill="${P.accent1}" text-anchor="middle">MOONLIT CATHEDRAL</text>
+    <text class="mono" x="1002" y="312" font-size="10" letter-spacing="0.5" fill="${P.ice}" fill-opacity="0.9" text-anchor="middle">src 768 × 1365 · crop 1200 × 820</text>
     ${equaliser()}
 
     <path d="M12 ${STRIP_Y} H${W - 12}" stroke="${P.accent2}" stroke-opacity="0.4" stroke-width="1"/>
@@ -272,15 +276,16 @@ export function render({ hero, account, avatar, renderedAt }) {
 
   <g clip-path="url(#frame)">
     <rect x="12" y="${STRIP_Y}" width="${W - 24}" height="${BOTTOM - STRIP_Y}" fill="url(#scrim)"/>
-    <rect x="12" y="${STRIP_Y}" width="${W - 24}" height="1" fill="${P.accent2}" opacity="0.35"/>
+    <rect x="12" y="${STRIP_Y}" width="${W - 24}" height="1" fill="${P.accent2}" opacity="0.3"/>
+    <rect x="12" y="${STRIP_Y}" width="${W - 24}" height="1" fill="${P.accent1}" opacity="0.18"/>
   </g>
 
   <circle cx="${AVATAR.cx}" cy="${AVATAR.cy}" r="${AVATAR.r + 26}" fill="url(#bloom)">
     <animate attributeName="opacity" values="0.7;1;0.7" dur="7s" repeatCount="indefinite"/>
   </circle>
-  <circle cx="${AVATAR.cx}" cy="${AVATAR.cy}" r="${AVATAR.r + 4}" fill="${P.ink0}"/>
+  <circle cx="${AVATAR.cx}" cy="${AVATAR.cy}" r="${AVATAR.r + 4}" fill="${P.ink0}" fill-opacity="0.85"/>
   ${portrait}
-  <circle cx="${AVATAR.cx}" cy="${AVATAR.cy}" r="${AVATAR.r}" fill="none" stroke="${P.ink0}" stroke-width="3"/>
+  <circle cx="${AVATAR.cx}" cy="${AVATAR.cy}" r="${AVATAR.r}" fill="none" stroke="${P.ink0}" stroke-width="3" stroke-opacity="0.9"/>
   <circle cx="${AVATAR.cx}" cy="${AVATAR.cy}" r="${AVATAR.r + 4}" fill="none" stroke="${P.line}" stroke-width="1.4"/>
   <g>
     <circle cx="${AVATAR.cx}" cy="${AVATAR.cy}" r="${AVATAR.r + 4}" fill="none" stroke="url(#ring)" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="120 340"/>
@@ -291,14 +296,14 @@ export function render({ hero, account, avatar, renderedAt }) {
     <animateTransform attributeName="transform" type="rotate" from="360 ${AVATAR.cx} ${AVATAR.cy}" to="0 ${AVATAR.cx} ${AVATAR.cy}" dur="26s" repeatCount="indefinite"/>
   </g>
 
-  <g class="mono">
+  <g class="mono" filter="url(#tsh)">
     <text x="214" y="592" font-size="34" font-weight="700" letter-spacing="2" fill="url(#name)">${esc(IDENTITY.name)}</text>
     <text x="216" y="620" font-size="12" fill="${P.muted}">${esc(IDENTITY.handle)} · ${esc(IDENTITY.region)} · ${esc(IDENTITY.timezone)} ${esc(IDENTITY.timezoneLabel.replace('SGT ', ''))}</text>
     <text x="216" y="648" font-size="13" fill="${P.ice}">${esc(IDENTITY.tagline)}</text>
     ${statChips(account)}
     ${badges()}
-    <text x="62" y="${BOTTOM - 12}" font-size="11" letter-spacing="1" fill="${P.faint}">© ${esc(IDENTITY.login)} · backdrop art ${esc(IDENTITY.heroCipher)} at rest · all rights reserved</text>
-    <text x="${W - 62}" y="${BOTTOM - 12}" font-size="11" letter-spacing="1" fill="${P.faint}" text-anchor="end">github.com/${esc(IDENTITY.login)}</text>
+    <text x="62" y="${BOTTOM - 12}" font-size="11" letter-spacing="1" fill="${P.ice}" fill-opacity="0.9">© ${esc(IDENTITY.login)} · backdrop art ${esc(IDENTITY.heroCipher)} at rest · all rights reserved</text>
+    <text x="${W - 62}" y="${BOTTOM - 12}" font-size="11" letter-spacing="1" fill="${P.ice}" fill-opacity="0.9" text-anchor="end">github.com/${esc(IDENTITY.login)}</text>
     ${readout(renderedAt)}
   </g>
 
