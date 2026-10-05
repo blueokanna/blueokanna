@@ -25,6 +25,13 @@ name: profile
 on:
   schedule:
     - cron: "0 0 * * *"
+  # Pipeline changes must not wait for the next schedule: when scripts/ or this
+  # file changes, rebuild immediately. The generated commit only touches
+  # assets/** and README.md, so it cannot re-trigger this workflow.
+  push:
+    paths:
+      - "scripts/**"
+      - ".github/workflows/profile.yml"
   workflow_dispatch:
 
 permissions:
@@ -36,6 +43,7 @@ concurrency:
 
 jobs:
   refresh:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
