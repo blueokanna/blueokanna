@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320" role="img" aria-label="boot sequence">
+  <defs>
+    <linearGradient id="lbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#04060c"/>
+      <stop offset="0.5" stop-color="#080f1c"/>
+      <stop offset="1" stop-color="#0c0918"/>
+    </linearGradient>
+    <linearGradient id="ledge" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="0.55" stop-color="#6366f1"/>
+      <stop offset="1" stop-color="#a855f7"/>
+    </linearGradient>
+    <linearGradient id="lbar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="0.5" stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#a855f7"/>
+    </linearGradient>
+    <linearGradient id="lshine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.75"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="lhalo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="lgrid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0 H0 V40" fill="none" stroke="#1c3a5e" stroke-width="1" stroke-opacity="0.5"/>
+    </pattern>
+    <clipPath id="lframe">
+      <rect x="12" y="12" width="1176" height="296" rx="18"/>
+    </clipPath>
+    <filter id="lglow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <style>
+      .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, "Liberation Mono", monospace; }
+    </style>
+  </defs>
+
+  <rect x="12" y="12" width="1176" height="296" rx="18" fill="url(#lbg)"/>
+  <g clip-path="url(#lframe)">
+    <rect x="-40" y="-40" width="1280" height="400" fill="url(#lgrid)" opacity="0.4">
+      <animateTransform attributeName="transform" type="translate" values="0 0;40 40" dur="9s" repeatCount="indefinite"/>
+    </rect>
+    <circle cx="1010" cy="60" r="230" fill="url(#lhalo)">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="7s" repeatCount="indefinite"/>
+    </circle>
+
+    <rect x="12" y="12" width="1176" height="34" fill="#060a14" fill-opacity="0.92"/>
+    <path d="M12 46 H1188" stroke="#16243c" stroke-width="1"/>
+    <circle cx="34" cy="29" r="4.6" fill="#ff5f57"/>
+    <circle cx="50" cy="29" r="4.6" fill="#ffbd2e"/>
+    <circle cx="66" cy="29" r="4.6" fill="#27c93f"/>
+    <text class="mono" x="88" y="34" fill="#7c8a9d" font-size="12">boot — /dev/github · initramfs · tty1</text>
+    <text class="mono" x="700" y="34" fill="#3f5876" font-size="12">unit: profile-readme.service</text>
+    <rect x="1112" y="27" width="8" height="8" fill="#27c93f">
+      <animate attributeName="opacity" values="1;0.15;1" dur="1.5s" repeatCount="indefinite"/>
+    </rect>
+    <text class="mono" x="1128" y="34" fill="#27c93f" font-size="12">LIVE</text>
+
+    <rect x="12" y="0" width="1176" height="2" fill="#22d3ee" opacity="0.35">
+      <animate attributeName="y" values="12;308;12" dur="9s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <g class="mono" font-size="14">
+    <g opacity="0">
+      <text x="40" y="84" fill="#9ca3af"><tspan fill="#27c93f">[  OK  ]</tspan> Reached target Basic System</text>
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.02;0.06;0.96;1" dur="11s" repeatCount="indefinite"/>
+    </g>
+    <g opacity="0">
+      <text x="40" y="106" fill="#9ca3af"><tspan fill="#27c93f">[  OK  ]</tspan> Started Rust toolchain (stable-x86_64)</text>
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.08;0.12;0.96;1" dur="11s" repeatCount="indefinite"/>
+    </g>
+    <g opacity="0">
+      <text x="40" y="128" fill="#9ca3af"><tspan fill="#27c93f">[  OK  ]</tspan> Mounted /home/blueokanna → ~/profile</text>
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.14;0.18;0.96;1" dur="11s" repeatCount="indefinite"/>
+    </g>
+    <g opacity="0">
+      <text x="40" y="150" fill="#9ca3af"><tspan fill="#27c93f">[  OK  ]</tspan> Loaded modules: java · flutter · sqlite · ipfs</text>
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.2;0.24;0.96;1" dur="11s" repeatCount="indefinite"/>
+    </g>
+    <g opacity="0">
+      <text x="40" y="172" fill="#9ca3af"><tspan fill="#27c93f">[  OK  ]</tspan> Rendered plugins: languages · isocalendar · repositories</text>
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.26;0.3;0.96;1" dur="11s" repeatCount="indefinite"/>
+    </g>
+    <g opacity="0">
+      <text x="40" y="194" fill="#9ca3af"><tspan fill="#22d3ee">[ INFO ]</tspan> Flushing camo cache → assets/metrics.svg</text>
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.32;0.36;0.96;1" dur="11s" repeatCount="indefinite"/>
+    </g>
+    <g opacity="0">
+      <text x="40" y="216" fill="#9ca3af"><tspan fill="#fbbf24">[ WARN ]</tspan> Token expiry watch enabled — rotate PAT before it dies</text>
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.38;0.42;0.96;1" dur="11s" repeatCount="indefinite"/>
+    </g>
+    <g opacity="0" filter="url(#lglow)">
+      <text x="40" y="240" fill="#22d3ee" font-weight="700"><tspan fill="#a855f7">[ DONE ]</tspan> SYSTEM READY — awaiting input</text>
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.46;0.5;0.96;1" dur="11s" repeatCount="indefinite"/>
+    </g>
+  </g>
+
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.5;0.54;0.96;1" dur="11s" repeatCount="indefinite"/>
+    <g class="mono" font-size="13">
+      <rect x="40" y="254" width="8" height="15" fill="#22d3ee">
+        <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+      </rect>
+      <text x="56" y="266" fill="#3f5876">$</text>
+      <text x="72" y="266" fill="#7c8a9d" opacity="0">
+        git clone --depth=1 git@github.com:blueokanna/profile.git
+        <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.5;0.55;0.72;1" dur="11s" repeatCount="indefinite"/>
+      </text>
+      <text x="72" y="266" fill="#7c8a9d" opacity="0">
+        cargo run --release --bin readme
+        <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.72;0.77;0.9;1" dur="11s" repeatCount="indefinite"/>
+      </text>
+      <text x="72" y="266" fill="#a78bfa" opacity="0">
+        ./boot --profile blueokanna --keep-alive
+        <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.9;0.94;0.99;1" dur="11s" repeatCount="indefinite"/>
+      </text>
+    </g>
+  </g>
+
+  <g>
+    <rect x="40" y="276" width="840" height="12" rx="6" fill="#0d1728" stroke="#16243c" stroke-width="1"/>
+    <rect x="40" y="276" width="0" height="12" rx="6" fill="url(#lbar)">
+      <animate attributeName="width" values="0;0;840;840;0" keyTimes="0;0.04;0.78;0.97;1" dur="11s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="40" y="276" width="120" height="12" rx="6" fill="url(#lshine)" opacity="0.5">
+      <animate attributeName="x" values="40;760;40" keyTimes="0;0.78;1" dur="11s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;0.5;0.1;0.5" keyTimes="0;0.78;0.9;1" dur="11s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <g class="mono" font-size="14" fill="#22d3ee">
+    <text x="900" y="287" opacity="0">
+      [  14% ]
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.05;0.1;0.27;0.3" dur="11s" repeatCount="indefinite"/>
+    </text>
+    <text x="900" y="287" opacity="0" fill="#38bdf8">
+      [  58% ]
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.3;0.35;0.53;0.56" dur="11s" repeatCount="indefinite"/>
+    </text>
+    <text x="900" y="287" opacity="0" fill="#818cf8">
+      [  86% ]
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.56;0.61;0.75;0.78" dur="11s" repeatCount="indefinite"/>
+    </text>
+    <text x="900" y="287" opacity="0" fill="#a855f7" font-weight="700">
+      [ 100% ]
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.78;0.83;0.97;1" dur="11s" repeatCount="indefinite"/>
+    </text>
+  </g>
+
+  <g>
+    <rect x="1032" y="276" width="8" height="8" fill="#164e63"><animate attributeName="fill" values="#164e63;#67e8f9;#164e63" keyTimes="0;0.5;1" dur="1.2s" begin="0s" repeatCount="indefinite"/></rect>
+    <rect x="1044" y="276" width="8" height="8" fill="#164e63"><animate attributeName="fill" values="#164e63;#67e8f9;#164e63" keyTimes="0;0.5;1" dur="1.2s" begin="0.1s" repeatCount="indefinite"/></rect>
+    <rect x="1056" y="276" width="8" height="8" fill="#164e63"><animate attributeName="fill" values="#164e63;#67e8f9;#164e63" keyTimes="0;0.5;1" dur="1.2s" begin="0.2s" repeatCount="indefinite"/></rect>
+    <rect x="1068" y="276" width="8" height="8" fill="#164e63"><animate attributeName="fill" values="#164e63;#67e8f9;#164e63" keyTimes="0;0.5;1" dur="1.2s" begin="0.3s" repeatCount="indefinite"/></rect>
+    <rect x="1080" y="276" width="8" height="8" fill="#164e63"><animate attributeName="fill" values="#164e63;#67e8f9;#164e63" keyTimes="0;0.5;1" dur="1.2s" begin="0.4s" repeatCount="indefinite"/></rect>
+    <rect x="1092" y="276" width="8" height="8" fill="#164e63"><animate attributeName="fill" values="#164e63;#67e8f9;#164e63" keyTimes="0;0.5;1" dur="1.2s" begin="0.5s" repeatCount="indefinite"/></rect>
+    <rect x="1104" y="276" width="8" height="8" fill="#164e63"><animate attributeName="fill" values="#164e63;#a78bfa;#164e63" keyTimes="0;0.5;1" dur="1.2s" begin="0.6s" repeatCount="indefinite"/></rect>
+    <rect x="1116" y="276" width="8" height="8" fill="#164e63"><animate attributeName="fill" values="#164e63;#a78bfa;#164e63" keyTimes="0;0.5;1" dur="1.2s" begin="0.7s" repeatCount="indefinite"/></rect>
+    <rect x="1128" y="276" width="8" height="8" fill="#164e63"><animate attributeName="fill" values="#164e63;#a78bfa;#164e63" keyTimes="0;0.5;1" dur="1.2s" begin="0.8s" repeatCount="indefinite"/></rect>
+    <rect x="1140" y="276" width="8" height="8" fill="#164e63"><animate attributeName="fill" values="#164e63;#a78bfa;#164e63" keyTimes="0;0.5;1" dur="1.2s" begin="0.9s" repeatCount="indefinite"/></rect>
+    <rect x="1152" y="276" width="8" height="8" fill="#164e63"><animate attributeName="fill" values="#164e63;#a78bfa;#164e63" keyTimes="0;0.5;1" dur="1.2s" begin="1s" repeatCount="indefinite"/></rect>
+  </g>
+
+  <rect x="12" y="12" width="1176" height="296" rx="18" fill="none" stroke="url(#ledge)" stroke-width="1.4" opacity="0.85"/>
+  <g stroke="url(#ledge)" stroke-width="2" fill="none">
+    <path d="M22 252 V292 Q22 296 26 296 H66"/>
+    <path d="M1178 292 Q1178 296 1174 296 H1134 V252"/>
+    <animate attributeName="opacity" values="0.9;0.3;0.9" dur="4.5s" repeatCount="indefinite"/>
+  </g>
+</svg>

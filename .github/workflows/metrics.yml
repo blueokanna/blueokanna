@@ -1,3 +1,20 @@
+# Profile metrics.
+#
+# lowlighter/metrics reads account-wide data (user, organisations, cross-repo
+# activity) that a repository-scoped GITHUB_TOKEN cannot reach, so it needs a
+# personal access token stored as the METRICS_TOKEN secret:
+#
+#   1. https://github.com/settings/tokens -> "Generate new token (classic)"
+#      scopes: public_repo, read:user
+#   2. Repository -> Settings -> Secrets and variables -> Actions ->
+#      "New repository secret" named METRICS_TOKEN
+#   3. Pick an expiry you will actually rotate. PATs expire silently and the
+#      render then dies with "Bad credentials" halfway through the run.
+#
+# Every run verifies the token before rendering: when it is missing or expired
+# the job stays green, keeps the last committed assets/metrics.svg and writes a
+# warning plus the exact fix into the run summary instead of failing mid-render.
+
 name: metrics
 
 on:
@@ -9,7 +26,6 @@ on:
       - master
     paths-ignore:
       - "assets/metrics.svg"
-      - "assets/highlights.svg"
   workflow_dispatch:
   repository_dispatch:
     types:
@@ -27,24 +43,72 @@ jobs:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
-      - name: Check METRICS_TOKEN
-        id: token
+      - name: Verify METRICS_TOKEN
+        id: auth
         shell: bash
+        env:
+          METRICS_TOKEN: ${{ secrets.METRICS_TOKEN }}
         run: |
-          if [[ -n "${{ secrets.METRICS_TOKEN }}" ]]; then
-            echo "has_token=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "has_token=false" >> "$GITHUB_OUTPUT"
+          set -uo pipefail
+
+          if [[ -z "${METRICS_TOKEN:-}" ]]; then
+            echo "state=missing" >> "$GITHUB_OUTPUT"
+            echo "::warning title=metrics skipped::METRICS_TOKEN is not set, see the run summary for the fix."
+            exit 0
           fi
 
+          tmp="$(mktemp -d)"
+          status="$(curl -sS --max-time 20 -o "$tmp/body" -D "$tmp/headers" -w '%{http_code}' \
+            -H "Authorization: token ${METRICS_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/user || echo 000)"
+
+          scopes="$(tr -d '\r' < "$tmp/headers" | awk -F': ' 'tolower($1)=="x-oauth-scopes"{print $2}')"
+
+          if [[ "$status" == "200" ]]; then
+            echo "state=valid" >> "$GITHUB_OUTPUT"
+            echo "scopes=${scopes:-none (fine-grained token)}" >> "$GITHUB_OUTPUT"
+          else
+            echo "state=invalid" >> "$GITHUB_OUTPUT"
+            echo "status=$status" >> "$GITHUB_OUTPUT"
+            echo "::warning title=metrics skipped::METRICS_TOKEN was rejected with HTTP $status, see the run summary for the fix."
+          fi
+
+      - name: Explain how to fix the token
+        if: steps.auth.outputs.state != 'valid'
+        shell: bash
+        env:
+          STATE: ${{ steps.auth.outputs.state }}
+          STATUS: ${{ steps.auth.outputs.status }}
+        run: |
+          set -uo pipefail
+          {
+            if [[ "$STATE" == "missing" ]]; then
+              echo "### metrics render skipped — \`METRICS_TOKEN\` is not set"
+              echo
+              echo "The last committed \`assets/metrics.svg\` is kept, so the profile still renders."
+            else
+              echo "### metrics render skipped — \`METRICS_TOKEN\` is no longer accepted"
+              echo
+              echo "The verify step answered \`HTTP ${STATUS:-unknown}\` (expected \`200\`). The token has expired, was revoked or was replaced — this is the \`Bad credentials\` failure."
+            fi
+            echo
+            echo "**Fix**"
+            echo
+            echo "1. Open https://github.com/settings/tokens and generate a new **classic** token."
+            echo "2. Grant the \`public_repo\` and \`read:user\` scopes."
+            echo "3. Update the secret: repository **Settings → Secrets and variables → Actions → \`METRICS_TOKEN\`**."
+            echo "4. Re-run this workflow: **Actions → metrics → Run workflow**."
+          } >> "$GITHUB_STEP_SUMMARY"
+
       - name: Checkout repository
-        if: steps.token.outputs.has_token == 'true'
+        if: steps.auth.outputs.state == 'valid'
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Generate metrics
-        if: steps.token.outputs.has_token == 'true'
+        if: steps.auth.outputs.state == 'valid'
         uses: lowlighter/metrics@latest
         with:
           filename: assets/metrics.svg
@@ -73,157 +137,8 @@ jobs:
           plugin_isocalendar: yes
           plugin_isocalendar_duration: half-year
 
-      - name: Generate highlights (recently updated, then stars)
-        if: steps.token.outputs.has_token == 'true'
-        uses: actions/github-script@v7
-        env:
-          METRICS_TOKEN: ${{ secrets.METRICS_TOKEN }}
-        with:
-          github-token: ${{ github.token }}
-          script: |
-            const fs = require('fs');
-            const path = require('path');
-
-            const [owner, repo] = process.env.GITHUB_REPOSITORY.split('/');
-            const login = 'blueokanna';
-            const perPage = 100;
-
-            if (!process.env.METRICS_TOKEN) {
-              throw new Error('METRICS_TOKEN missing in env');
-            }
-
-            async function requestGraphQL(query, variables) {
-              const res = await fetch('https://api.github.com/graphql', {
-                method: 'POST',
-                headers: {
-                  authorization: `bearer ${process.env.METRICS_TOKEN}`,
-                  'content-type': 'application/json',
-                  'user-agent': 'github-script',
-                },
-                body: JSON.stringify({ query, variables }),
-              });
-              const json = await res.json();
-              if (!res.ok || json.errors) {
-                throw new Error(`GraphQL error: ${res.status} ${res.statusText} ${JSON.stringify(json.errors)}`);
-              }
-              return json.data;
-            }
-
-            async function fetchAllRepos() {
-              let after = null;
-              const repos = [];
-              while (true) {
-                const query = `
-                  query($login: String!, $perPage: Int!, $after: String) {
-                    user(login: $login) {
-                      repositories(first: $perPage, after: $after, ownerAffiliations: OWNER, isFork: false, orderBy: {field: PUSHED_AT, direction: DESC}) {
-                        pageInfo { hasNextPage endCursor }
-                        nodes {
-                          name
-                          description
-                          url
-                          stargazerCount
-                          forkCount
-                          pushedAt
-                          isArchived
-                          isTemplate
-                        }
-                      }
-                    }
-                  }
-                `;
-                const data = await requestGraphQL(query, { login, perPage, after });
-                const page = data.user.repositories.nodes || [];
-                repos.push(...page);
-                const { hasNextPage, endCursor } = data.user.repositories.pageInfo;
-                if (!hasNextPage) break;
-                after = endCursor;
-              }
-              return repos;
-            }
-
-            function escapeXml(s) {
-              return String(s ?? '')
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;')
-                .replace(/'/g, '&apos;');
-            }
-
-            function fmtRepoLine(idx, r) {
-              const name = `${login}/${r.name}`;
-              const stars = r.stargazerCount ?? 0;
-              const forks = r.forkCount ?? 0;
-              const pushed = r.pushedAt ? new Date(r.pushedAt).toISOString().slice(0, 10) : 'n/a';
-              return `#${idx} ${name}  ★${stars}  ⑂${forks}  push:${pushed}`;
-            }
-
-            const repos = await fetchAllRepos();
-            const sorted = repos.sort((a, b) => {
-              const ta = a.pushedAt ? Date.parse(a.pushedAt) : 0;
-              const tb = b.pushedAt ? Date.parse(b.pushedAt) : 0;
-              if (tb !== ta) return tb - ta; // recent first
-              const sa = a.stargazerCount ?? 0;
-              const sb = b.stargazerCount ?? 0;
-              return sb - sa; // then stars
-            }).slice(0, 5);
-
-            const lines = [
-              'SYSTEM:: featured (recent → stars)',
-              ...sorted.map((r, i) => fmtRepoLine(i + 1, r)),
-            ];
-
-            const width = 960;
-            const padX = 28;
-            const startY = 54;
-            const lineH = 28;
-            const height = startY + lineH * lines.length + 28; // dynamic height so all lines show
-            const svg = `<?xml version="1.0" encoding="UTF-8"?>
-            <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
-              <defs>
-                <linearGradient id="g" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0" stop-color="#22d3ee" stop-opacity="0.9" />
-                  <stop offset="1" stop-color="#a78bfa" stop-opacity="0.9" />
-                </linearGradient>
-                <filter id="s" x="-20%" y="-20%" width="140%" height="140%">
-                  <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#000" flood-opacity="0.35" />
-                </filter>
-              </defs>
-              <rect x="14" y="14" width="${width - 28}" height="${height - 28}" rx="14" fill="#0d1117" stroke="url(#g)" stroke-width="1.6" filter="url(#s)" />
-              <text x="${padX}" y="38" fill="#22d3ee" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace" font-size="16" font-weight="700">$ cat highlights.txt</text>
-              ${lines.map((t, i) => {
-                const y = startY + i * lineH;
-                const color = i === 0 ? '#c9d1d9' : '#9ca3af';
-                return `<text x="${padX}" y="${y}" fill="${color}" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace" font-size="14">${escapeXml(t)}</text>`;
-              }).join('\n')}
-            </svg>`;
-
-            const outPath = path.join(process.env.GITHUB_WORKSPACE || '.', 'assets', 'highlights.svg');
-            fs.mkdirSync(path.dirname(outPath), { recursive: true });
-            fs.writeFileSync(outPath, svg, 'utf8');
-
-            // Commit via Contents API so it works without checkout
-            const contentB64 = Buffer.from(svg, 'utf8').toString('base64');
-            let sha;
-            try {
-              const existing = await github.rest.repos.getContent({ owner, repo, path: 'assets/highlights.svg' });
-              sha = existing.data.sha;
-            } catch (e) {
-              sha = undefined;
-            }
-
-            await github.rest.repos.createOrUpdateFileContents({
-              owner,
-              repo,
-              path: 'assets/highlights.svg',
-              message: 'chore: update highlights.svg',
-              content: contentB64,
-              sha,
-            });
-
-      - name: Bump README cache (images)
-        if: steps.token.outputs.has_token == 'true'
+      - name: Bump README cache (metrics)
+        if: steps.auth.outputs.state == 'valid'
         uses: actions/github-script@v7
         with:
           github-token: ${{ github.token }}
@@ -235,13 +150,10 @@ jobs:
             const current = await github.rest.repos.getContent({ owner, repo, path });
             const decoded = Buffer.from(current.data.content, 'base64').toString('utf8');
 
-            const bump = (content, name) => {
-              const re = new RegExp(`assets/${name}\\.svg(?:\\?v=\\d+)?`, 'g');
-              return content.replace(re, `assets/${name}.svg?v=${runId}`);
-            };
-
-            let updated = bump(decoded, 'highlights');
-            updated = bump(updated, 'metrics');
+            const updated = decoded.replace(
+              /assets\/metrics\.svg(?:\?v=\d+)?/g,
+              `assets/metrics.svg?v=${runId}`,
+            );
 
             if (updated === decoded) {
               core.info('README already up to date; skipping.');
@@ -255,48 +167,4 @@ jobs:
               message: `chore: refresh README cache (${runId})`,
               content: Buffer.from(updated, 'utf8').toString('base64'),
               sha: current.data.sha,
-            });
-
-      - name: Placeholder
-        if: steps.token.outputs.has_token != 'true'
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{ github.token }}
-          script: |
-            const fs = require('fs');
-            const path = require('path');
-            const [owner, repo] = process.env.GITHUB_REPOSITORY.split('/');
-
-            const width = 960;
-            const height = 190;
-            const svg = `<?xml version="1.0" encoding="UTF-8"?>
-            <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
-              <defs>
-                <linearGradient id="g" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0" stop-color="#22d3ee" stop-opacity="0.9" />
-                  <stop offset="1" stop-color="#a78bfa" stop-opacity="0.9" />
-                </linearGradient>
-              </defs>
-              <rect x="14" y="14" width="${width - 28}" height="${height - 28}" rx="14" fill="#0d1117" stroke="url(#g)" stroke-width="1.6" />
-              <text x="28" y="38" fill="#22d3ee" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace" font-size="16" font-weight="700">$ cat highlights.txt</text>
-              <text x="28" y="74" fill="#9ca3af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace" font-size="14">METRICS_TOKEN is not set.</text>
-              <text x="28" y="102" fill="#9ca3af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace" font-size="14">Add it in: Settings → Secrets and variables → Actions → New repository secret</text>
-              <text x="28" y="130" fill="#9ca3af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace" font-size="14">Then run Actions → metrics → Run workflow</text>
-            </svg>`;
-
-            const contentB64 = Buffer.from(svg, 'utf8').toString('base64');
-            let sha;
-            try {
-              const existing = await github.rest.repos.getContent({ owner, repo, path: 'assets/highlights.svg' });
-              sha = existing.data.sha;
-            } catch (e) {
-              sha = undefined;
-            }
-            await github.rest.repos.createOrUpdateFileContents({
-              owner,
-              repo,
-              path: 'assets/highlights.svg',
-              message: 'chore: placeholder highlights.svg (missing METRICS_TOKEN)',
-              content: contentB64,
-              sha,
             });
