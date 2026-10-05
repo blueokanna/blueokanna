@@ -12,20 +12,20 @@
   shelf live inside the cards, which is why there is no markdown between them.
 
   Statistics are collected from the GitHub API by the daily workflow and drawn
-  into assets/telemetry.svg.
+  into assets/telemetry.svg?v=37274375591.
 -->
 
 <div align="center">
 
 <a href="https://github.com/blueokanna">
-  <img src="assets/banner.svg?v=1" alt="blueokanna" width="100%" />
+  <img src="assets/banner.svg?v=37274375591" alt="blueokanna" width="100%" />
 </a>
 
-<img src="assets/telemetry.svg?v=1" alt="github statistics and most used languages" width="100%" />
+<img src="assets/telemetry.svg?v=37274375591" alt="github statistics and most used languages" width="100%" />
 
-<img src="assets/about.svg?v=1" alt="arsenal" width="100%" />
+<img src="assets/about.svg?v=37274375591" alt="arsenal" width="100%" />
 
-<img src="assets/footer.svg?v=1" alt="footer" width="100%" />
+<img src="assets/footer.svg?v=37274375591" alt="footer" width="100%" />
 
 <a href="https://www.buymeacoffee.com/blueokanna">
   <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="42" width="178" alt="Buy Me A Coffee" />
