@@ -1,110 +1,99 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="150" viewBox="0 0 1200 150" role="img" aria-label="profile loading">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="150" viewBox="0 0 1200 150" role="img" aria-label="syncing github metrics">
   <defs>
-    <linearGradient id="lbg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#05070f"/>
-      <stop offset="0.55" stop-color="#0a1120"/>
-      <stop offset="1" stop-color="#130a1c"/>
+    <linearGradient id="panel" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#1b2838"/>
+      <stop offset="1" stop-color="#131b26"/>
     </linearGradient>
-    <linearGradient id="ledge" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#22d3ee"/>
-      <stop offset="0.55" stop-color="#818cf8"/>
-      <stop offset="1" stop-color="#f472b6"/>
+    <linearGradient id="fill" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2a475e"/>
+      <stop offset="0.55" stop-color="#66c0f4"/>
+      <stop offset="1" stop-color="#9ad7ff"/>
     </linearGradient>
-    <linearGradient id="lfill" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#22d3ee"/>
-      <stop offset="0.6" stop-color="#818cf8"/>
-      <stop offset="1" stop-color="#f9a8d4"/>
-    </linearGradient>
-    <linearGradient id="lshine" x1="0" y1="0" x2="1" y2="0">
+    <linearGradient id="shine" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0" stop-color="#ffffff" stop-opacity="0"/>
-      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.6"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.55"/>
       <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
-    <radialGradient id="lhalo" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#f472b6" stop-opacity="0.22"/>
-      <stop offset="1" stop-color="#f472b6" stop-opacity="0"/>
+    <linearGradient id="edge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#66c0f4"/>
+      <stop offset="0.6" stop-color="#2a475e"/>
+      <stop offset="1" stop-color="#57cbde"/>
+    </linearGradient>
+    <radialGradient id="bloom" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#8fd4ff" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#8fd4ff" stop-opacity="0"/>
     </radialGradient>
-    <pattern id="lgrid" width="36" height="36" patternUnits="userSpaceOnUse">
-      <path d="M36 0 H0 V36" fill="none" stroke="#1b3a5e" stroke-width="1"/>
-    </pattern>
-    <clipPath id="lframe">
-      <rect x="12" y="12" width="1176" height="126" rx="16"/>
+    <clipPath id="frame">
+      <rect x="12" y="12" width="1176" height="126" rx="14"/>
     </clipPath>
     <style>
       .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, "Liberation Mono", monospace; }
     </style>
   </defs>
 
-  <rect x="12" y="12" width="1176" height="126" rx="16" fill="url(#lbg)"/>
-  <g clip-path="url(#lframe)">
-    <rect x="-36" y="-36" width="1260" height="220" fill="url(#lgrid)" opacity="0.28">
-      <animateTransform attributeName="transform" type="translate" values="0 0;36 36" dur="12s" repeatCount="indefinite"/>
-    </rect>
-    <circle cx="1140" cy="20" r="150" fill="url(#lhalo)">
-      <animate attributeName="opacity" values="0.7;1;0.7" dur="8s" repeatCount="indefinite"/>
+  <rect x="12" y="12" width="1176" height="126" rx="14" fill="url(#panel)"/>
+  <g clip-path="url(#frame)">
+    <circle cx="1120" cy="10" r="150" fill="url(#bloom)">
+      <animate attributeName="opacity" values="0.7;1;0.7" dur="7s" repeatCount="indefinite"/>
     </circle>
-    <rect x="12" y="0" width="1176" height="2" fill="#67e8f9" opacity="0.2">
-      <animate attributeName="y" values="12;138;12" dur="12s" repeatCount="indefinite"/>
+    <rect x="12" y="0" width="1176" height="2" fill="#66c0f4" opacity="0.22">
+      <animate attributeName="y" values="12;138;12" dur="13s" repeatCount="indefinite"/>
     </rect>
   </g>
 
   <g class="mono">
-    <text x="40" y="50" font-size="12" letter-spacing="2" fill="#7c8a9d">// booting profile.service</text>
-    <circle cx="228" cy="46" r="3.2" fill="#22d3ee">
-      <animate attributeName="opacity" values="1;0.15;1" dur="1.6s" repeatCount="indefinite"/>
+    <text x="40" y="46" font-size="12" fill="#9fb8cc">// synchronising metrics · 数据同步中</text>
+    <circle cx="267" cy="42" r="3.4" fill="#66c0f4">
+      <animate attributeName="opacity" values="1;0.15;1" dur="1.5s" repeatCount="indefinite"/>
     </circle>
-
-    <g font-size="12">
-      <rect x="872" y="32" width="54" height="26" rx="8" fill="#0b1526" stroke="#22d3ee" stroke-width="1" stroke-opacity="0.25">
-        <animate attributeName="stroke-opacity" values="0.25;0.95;0.6" keyTimes="0;0.18;1" dur="12s" repeatCount="indefinite"/>
+    
+      <rect x="812" y="30" width="104" height="24" rx="12" fill="#0e1622" stroke="#2a475e" stroke-width="1"/>
+      <rect x="812" y="30" width="104" height="24" rx="12" fill="none" stroke="#66c0f4" stroke-width="1.2" opacity="0.15">
+        <animate attributeName="opacity" values="0.15;0.9;0.35" keyTimes="0;0.4;1" dur="4.8s" begin="0.0s" repeatCount="indefinite"/>
       </rect>
-      <text x="899" y="49" fill="#c9d1d9" text-anchor="middle">rust</text>
-
-      <rect x="936" y="32" width="54" height="26" rx="8" fill="#0b1526" stroke="#22d3ee" stroke-width="1" stroke-opacity="0.25">
-        <animate attributeName="stroke-opacity" values="0.25;0.25;0.95;0.6" keyTimes="0;0.2;0.36;1" dur="12s" repeatCount="indefinite"/>
+      <text x="864" y="46" font-size="11" fill="#9fb8cc" text-anchor="middle">languages</text>
+      <rect x="930" y="30" width="104" height="24" rx="12" fill="#0e1622" stroke="#2a475e" stroke-width="1"/>
+      <rect x="930" y="30" width="104" height="24" rx="12" fill="none" stroke="#66c0f4" stroke-width="1.2" opacity="0.15">
+        <animate attributeName="opacity" values="0.15;0.9;0.35" keyTimes="0;0.4;1" dur="4.8s" begin="1.6s" repeatCount="indefinite"/>
       </rect>
-      <text x="963" y="49" fill="#c9d1d9" text-anchor="middle">java</text>
-
-      <rect x="1000" y="32" width="70" height="26" rx="8" fill="#0b1526" stroke="#818cf8" stroke-width="1" stroke-opacity="0.25">
-        <animate attributeName="stroke-opacity" values="0.25;0.25;0.95;0.6" keyTimes="0;0.38;0.54;1" dur="12s" repeatCount="indefinite"/>
+      <text x="982" y="46" font-size="11" fill="#9fb8cc" text-anchor="middle">isocalendar</text>
+      <rect x="1048" y="30" width="104" height="24" rx="12" fill="#0e1622" stroke="#2a475e" stroke-width="1"/>
+      <rect x="1048" y="30" width="104" height="24" rx="12" fill="none" stroke="#66c0f4" stroke-width="1.2" opacity="0.15">
+        <animate attributeName="opacity" values="0.15;0.9;0.35" keyTimes="0;0.4;1" dur="4.8s" begin="3.2s" repeatCount="indefinite"/>
       </rect>
-      <text x="1035" y="49" fill="#c9d1d9" text-anchor="middle">flutter</text>
+      <text x="1100" y="46" font-size="11" fill="#9fb8cc" text-anchor="middle">repositories</text>
 
-      <rect x="1080" y="32" width="76" height="26" rx="8" fill="#0b1526" stroke="#f472b6" stroke-width="1" stroke-opacity="0.25">
-        <animate attributeName="stroke-opacity" values="0.25;0.25;0.95;0.6" keyTimes="0;0.56;0.72;1" dur="12s" repeatCount="indefinite"/>
-      </rect>
-      <text x="1118" y="49" fill="#c9d1d9" text-anchor="middle">sqlite</text>
+    <rect x="40" y="88" width="880" height="10" rx="5" fill="#0e1622" stroke="#2a475e" stroke-width="1"/>
+    <g stroke="#2a475e" stroke-width="1" opacity="0.55">
+      <path d="M128 90 V96"/><path d="M216 90 V96"/><path d="M304 90 V96"/><path d="M392 90 V96"/>
+      <path d="M480 90 V96"/><path d="M568 90 V96"/><path d="M656 90 V96"/><path d="M744 90 V96"/><path d="M832 90 V96"/>
     </g>
-
-    <rect x="40" y="92" width="960" height="14" rx="7" fill="#0c1526" stroke="#1b3a5e" stroke-width="1"/>
-    <rect x="40" y="92" width="0" height="14" rx="7" fill="url(#lfill)">
-      <animate attributeName="width" values="0;0;960;960;0" keyTimes="0;0.06;0.82;0.98;1" dur="12s" repeatCount="indefinite"/>
+    <rect x="41" y="89" width="6" height="8" rx="4" fill="url(#fill)">
+      <animate attributeName="width" values="6;878;6" dur="9s" repeatCount="indefinite"/>
     </rect>
-    <rect x="40" y="92" width="140" height="14" rx="7" fill="url(#lshine)" opacity="0.4">
-      <animate attributeName="x" values="40;860;40" keyTimes="0;0.82;1" dur="12s" repeatCount="indefinite"/>
-      <animate attributeName="opacity" values="0.4;0.4;0.08;0.4" keyTimes="0;0.82;0.94;1" dur="12s" repeatCount="indefinite"/>
+    <rect x="41" y="89" width="120" height="8" rx="4" fill="url(#shine)" opacity="0.35">
+      <animate attributeName="x" values="41;800;41" dur="9s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.35;0.35;0.1;0.35" keyTimes="0;0.85;0.95;1" dur="9s" repeatCount="indefinite"/>
     </rect>
 
-    <g font-size="14">
-      <text x="1030" y="104" fill="#22d3ee" opacity="0">
+    <g font-size="15">
+      <text x="1140" y="99" fill="#66c0f4" text-anchor="end" opacity="0">
         [ 21% ]
-        <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.08;0.12;0.32;0.34" dur="12s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.06;0.1;0.3;0.33" dur="9s" repeatCount="indefinite"/>
       </text>
-      <text x="1030" y="104" fill="#818cf8" opacity="0">
+      <text x="1140" y="99" fill="#9ad7ff" text-anchor="end" opacity="0">
         [ 64% ]
-        <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.34;0.38;0.58;0.6" dur="12s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.36;0.4;0.62;0.65" dur="9s" repeatCount="indefinite"/>
       </text>
-      <text x="1030" y="104" fill="#f9a8d4" font-weight="700" opacity="0">
+      <text x="1140" y="99" fill="#c7d5e0" text-anchor="end" font-weight="700" opacity="0">
         [ 100% ]
-        <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.6;0.64;0.98;1" dur="12s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.68;0.72;0.97;1" dur="9s" repeatCount="indefinite"/>
       </text>
     </g>
 
-    <text x="40" y="130" font-size="11" fill="#3f5876">sources: github api · plugins: languages, isocalendar · refresh: daily</text>
-    <rect x="430" y="121" width="7" height="11" fill="#22d3ee">
-      <animate attributeName="opacity" values="1;0;1" dur="1.2s" repeatCount="indefinite"/>
-    </rect>
+    <text x="40" y="128" font-size="11" fill="#4d6a85">sources: github api · refresh: daily 00:00 UTC</text>
+    <text x="1140" y="128" font-size="11" fill="#3c5468" text-anchor="end">smil · 60fps · 0 js</text>
   </g>
 
-  <rect x="12" y="12" width="1176" height="126" rx="16" fill="none" stroke="url(#ledge)" stroke-width="1.3" opacity="0.8"/>
+  <rect x="12" y="12" width="1176" height="126" rx="14" fill="none" stroke="url(#edge)" stroke-width="1.2" opacity="0.7"/>
 </svg>
