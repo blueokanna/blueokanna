@@ -45,12 +45,9 @@ export function render({ backdrop, renderedAt }) {
       <stop offset="1" stop-color="${P.accent2}"/>
     </linearGradient>
     <linearGradient id="shade" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="${P.ink0}" stop-opacity="0.5"/>
-      <stop offset="1" stop-color="${P.ink0}" stop-opacity="0.66"/>
+      <stop offset="0" stop-color="${P.ink0}" stop-opacity="0.52"/>
+      <stop offset="1" stop-color="${P.ink0}" stop-opacity="0.68"/>
     </linearGradient>
-    <filter id="soft5" x="-6%" y="-40%" width="112%" height="180%">
-      <feGaussianBlur stdDeviation="2.5"/>
-    </filter>
     <clipPath id="frame">
       <rect x="12" y="12" width="${W - 24}" height="${H - 24}" rx="14"/>
     </clipPath>
@@ -62,7 +59,7 @@ export function render({ backdrop, renderedAt }) {
 
   <rect x="12" y="12" width="${W - 24}" height="${H - 24}" rx="14" fill="url(#panel)"/>
   <g clip-path="url(#frame)">
-    <g filter="url(#soft5)">${backdropSlice(backdrop)}</g>
+    ${backdropSlice(backdrop)}
     <rect x="12" y="12" width="${W - 24}" height="${H - 24}" fill="url(#shade)"/>
     ${watermarkRect({ x: 12, y: 12, width: W - 24, height: H - 24, opacity: 0.5 })}
     ${wave(112, 12, 600, 17, 0.45, 1.2)}
@@ -75,7 +72,6 @@ export function render({ backdrop, renderedAt }) {
 
   <g class="mono">
     <text x="40" y="37" font-size="11" letter-spacing="3" fill="${P.ice}">⟨ 03 ⟩ SUPPORT · 支持</text>
-    <text x="88" y="37" font-size="11" fill="${P.muted}">// end of transmission</text>
     <text x="${W - 40}" y="37" font-size="11" fill="${P.ice}" text-anchor="end">EOF · ${esc(renderedAt)}</text>
     <rect x="${W - 30}" y="27" width="7" height="12" fill="${P.accent1}">
       <animate attributeName="opacity" values="1;0;1" dur="1.2s" repeatCount="indefinite"/>

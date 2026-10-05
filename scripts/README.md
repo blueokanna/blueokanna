@@ -41,19 +41,21 @@ IMAGE_AES_DECRYPT=<hex> node scripts/pack-artwork.mjs --id backdrop-tail --in ta
 node scripts/pack-artwork.mjs --verify backdrop-tail
 ```
 
-| slot            | pixels    | used by                                       |
-| --------------- | --------- | --------------------------------------------- |
-| `hero-night`    | 1200×1025 | `assets/banner.svg` — source rows 164…820      |
-| `backdrop-tail` | 1176×835  | window in `telemetry/about/footer` — rows 820…1365 |
+| slot            | pixels    | used by                                        |
+| --------------- | --------- | ---------------------------------------------- |
+| `hero-night`    | 1176×1005 | `assets/banner.svg` — source rows 164…820       |
+| `backdrop-tail` | 1176×835  | window in `telemetry/about/footer` — 820…1365   |
 
 ### How the page backdrop stays continuous
 
-Source rows 164…1365 are rendered once at a single magnification (×1.5625) and
-split across the four cards, so scrolling the profile walks down one image:
+Source columns 0…768 always map onto the 1176 px content box (card width minus
+the 12 px inset), so every card shows the artwork at exactly ×1.53125. Source
+rows 164…1365 are then split across the four cards and the page walks down one
+image as it scrolls:
 
 | card        | rows shown | card height | tail offset |
 | ----------- | ---------- | ----------- | ----------- |
-| `banner`    | 164…820    | 1025        | —           |
+| `banner`    | 164…820    | 1029        | —           |
 | `telemetry` | 820…1122   | 470         | 0           |
 | `about`     | 1122…1279  | 220         | 470         |
 | `footer`    | 1279…1365  | 145         | 690         |
@@ -65,11 +67,10 @@ updating the offsets below it — they are intended to be read together.
 
 ### Softening policy
 
-* `hero-night` is sampled at 97 % (a 3 % softening) so the banner stays crisp.
-* `backdrop-tail` is sampled at 95 % (a 5 % softening).
-* `about` and `footer` add `feGaussianBlur stdDeviation="2.5"` over their
-  window — a 5 % blur at card scale. The telemetry card draws the backdrop
-  sharp, because it carries the densest text.
+One factor, applied once, to every derivative: 95 % sampling, a 5 % softening.
+No card adds a blur filter of its own, so sharpness is identical across the
+whole page and the artwork stays legible. Legibility on top of it comes from
+the per-card shade gradient and the panel fills, not from blurring the image.
 
 Container layout (`assets/artwork/<id>.jpg.enc`):
 

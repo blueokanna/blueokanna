@@ -77,12 +77,9 @@ export function render({ backdrop, renderedAt }) {
       <stop offset="1" stop-color="${P.accent1}" stop-opacity="0"/>
     </linearGradient>
     <linearGradient id="shade" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="${P.ink0}" stop-opacity="0.52"/>
-      <stop offset="1" stop-color="${P.ink0}" stop-opacity="0.62"/>
+      <stop offset="0" stop-color="${P.ink0}" stop-opacity="0.56"/>
+      <stop offset="1" stop-color="${P.ink0}" stop-opacity="0.66"/>
     </linearGradient>
-    <filter id="soft5" x="-6%" y="-30%" width="112%" height="160%">
-      <feGaussianBlur stdDeviation="2.5"/>
-    </filter>
     <clipPath id="frame">
       <rect x="12" y="12" width="${W - 24}" height="${H - 24}" rx="14"/>
     </clipPath>
@@ -94,7 +91,7 @@ export function render({ backdrop, renderedAt }) {
 
   <rect x="12" y="12" width="${W - 24}" height="${H - 24}" rx="14" fill="url(#panel)"/>
   <g clip-path="url(#frame)">
-    <g filter="url(#soft5)">${backdropSlice(backdrop)}</g>
+    ${backdropSlice(backdrop)}
     <rect x="12" y="12" width="${W - 24}" height="${H - 24}" fill="url(#shade)"/>
     ${watermarkRect({ x: 12, y: 12, width: W - 24, height: H - 24 })}
     <path d="M12 ${HEADER_Y} H${W - 12}" stroke="${P.lineBright}" stroke-width="1"/>

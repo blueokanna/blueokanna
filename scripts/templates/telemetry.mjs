@@ -158,8 +158,8 @@ export function render({ backdrop, metrics, renderedAt }) {
   </g>
 
   <g class="mono">
-    <text x="40" y="${H - 26}" font-size="10" fill="${P.muted}">data: github api · no values are cached or estimated</text>
-    <text x="${W - 40}" y="${H - 26}" font-size="10" fill="${P.muted}" text-anchor="end">backdrop · aes-256-gcm at rest</text>
+    <text x="40" y="${H - 26}" font-size="10" fill="${P.ice}" fill-opacity="0.85">data: github api · no values are cached or estimated</text>
+    <text x="${W - 40}" y="${H - 26}" font-size="10" fill="${P.ice}" fill-opacity="0.85" text-anchor="end">backdrop · aes-256-gcm at rest</text>
   </g>
 
   <rect x="12" y="12" width="${W - 24}" height="${H - 24}" rx="14" fill="none" stroke="url(#edge)" stroke-width="1.2" opacity="0.72"/>

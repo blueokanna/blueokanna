@@ -17,7 +17,9 @@ import { IDENTITY, PALETTE as P, STACK } from '../lib/config.mjs';
 import { esc, isoDate, monoWidth } from '../lib/svg.mjs';
 
 const W = 1200;
-const H = 1025;
+const H = 1029;
+const INSET = 12;
+const ART_H = 1005;
 const STRIP_Y = 713;
 const BOTTOM = H - 12;
 
@@ -236,10 +238,10 @@ export function render({ hero, account, avatar, renderedAt }) {
   <rect x="12" y="12" width="${W - 24}" height="${H - 24}" rx="16" fill="${P.ink1}"/>
 
   <g clip-path="url(#artClip)">
-    <g transform="translate(${W / 2},${H / 2})">
+    <g transform="translate(${W / 2},${INSET + ART_H / 2})">
       <g>
         <animateTransform attributeName="transform" type="scale" values="1;1.045;1" dur="30s" repeatCount="indefinite"/>
-        <image x="${-W / 2}" y="${-H / 2}" width="${W}" height="${H}" preserveAspectRatio="xMidYMid slice" xlink:href="${hero}"/>
+        <image x="${-((W - 2 * INSET) / 2)}" y="${-ART_H / 2}" width="${W - 2 * INSET}" height="${ART_H}" preserveAspectRatio="none" xlink:href="${hero}"/>
       </g>
     </g>
     <rect x="12" y="12" width="${W - 24}" height="${H - 24}" fill="url(#grade)"/>
@@ -273,7 +275,7 @@ export function render({ hero, account, avatar, renderedAt }) {
     </g>
     <rect x="896" y="366" width="212" height="52" rx="8" fill="${P.ink0}" fill-opacity="0.62" stroke="${P.lineBright}" stroke-width="1"/>
     <text class="mono" x="1002" y="387" font-size="11" letter-spacing="3" fill="${P.accent1}" text-anchor="middle">MOONLIT CATHEDRAL</text>
-    <text class="mono" x="1002" y="406" font-size="10" letter-spacing="0.5" fill="${P.ice}" fill-opacity="0.9" text-anchor="middle">src 768 × 1365 · crop 1200 × 1025</text>
+    <text class="mono" x="1002" y="406" font-size="10" letter-spacing="0.5" fill="${P.ice}" fill-opacity="0.9" text-anchor="middle">src 768 × 1365 · frame 1176 × 1005</text>
     ${equaliser()}
 
     <path d="M12 ${STRIP_Y} H${W - 12}" stroke="${P.accent2}" stroke-opacity="0.4" stroke-width="1"/>

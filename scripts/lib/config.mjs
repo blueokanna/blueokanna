@@ -59,13 +59,15 @@ export const ARTWORK = {
  * Page backdrop geometry.
  *
  * The whole page is one image at one magnification. Source rows 164..1365 are
- * shown across four cards: the banner takes 1200x1025, then telemetry, about
- * and footer take 470 + 220 + 145 = 835 px of the tail derivative, which is
- * itself 1176x835. Card heights below must match the templates.
+ * shown across four cards inside the same 1176 px content box: the banner takes
+ * the hero crop (rows 164..820), then telemetry, about and footer slide 470 +
+ * 220 + 145 = 835 px of the tail derivative over rows 820..1365.
+ *
+ * Card heights below must match the templates.
  */
 export const CANVAS = {
-  heroWidth: 1200,
-  heroHeight: 1025,
+  heroWidth: 1176,
+  heroHeight: 1005,
   tailWidth: 1176,
   tailHeight: 835,
 };

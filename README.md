@@ -5,32 +5,27 @@
   templates, never the SVG. The artwork is stored as AES-256-GCM ciphertext in
   assets/artwork/ and is only decrypted inside the CI job; see scripts/README.md.
 
-  The four cards are stacked with nothing between them. That is deliberate: the
-  banner shows source rows 164..820 of the artwork and the cards below continue
-  at the same magnification, so the page reads as one image scrolling past
-  rather than four panels. Section labels live inside each card, which is why
-  there are no markdown headings here.
+  The four cards are stacked with nothing between them, and each one draws the
+  same image at the same magnification inside the same 1176 px content box: the
+  banner shows source rows 164..820 and the cards below continue at offsets
+  0 / 470 / 690 over rows 820..1365. Section labels and the collapsed badge
+  shelf live inside the cards, which is why there is no markdown between them.
 
   Statistics are collected from the GitHub API by the daily workflow and drawn
-  into assets/telemetry.svg?v=37273718788.
+  into assets/telemetry.svg.
 -->
 
 <div align="center">
 
 <a href="https://github.com/blueokanna">
-  <img src="assets/banner.svg?v=37273718788" alt="blueokanna" width="100%" />
+  <img src="assets/banner.svg?v=1" alt="blueokanna" width="100%" />
 </a>
 
-<a href="https://github.com/blueokanna"><img src="https://img.shields.io/github/followers/blueokanna?style=flat-square&amp;color=66c0f4&amp;labelColor=0a1524&amp;label=FOLLOWERS" alt="followers" /></a>
-<img src="https://img.shields.io/github/stars/blueokanna?style=flat-square&amp;color=4d8fd6&amp;labelColor=0a1524&amp;label=STARS" alt="stars" />
-<img src="https://img.shields.io/github/last-commit/blueokanna/blueokanna?style=flat-square&amp;color=cfe4ff&amp;labelColor=0a1524&amp;label=LAST-COMMIT" alt="last commit" />
-<img src="https://komarev.com/ghpvc/?username=blueokanna&amp;label=VIEWS&amp;color=66c0f4&amp;style=flat-square" alt="views" />
+<img src="assets/telemetry.svg?v=1" alt="github statistics and most used languages" width="100%" />
 
-<img src="assets/telemetry.svg?v=37273718788" alt="github statistics and most used languages" width="100%" />
+<img src="assets/about.svg?v=1" alt="arsenal" width="100%" />
 
-<img src="assets/about.svg?v=37273718788" alt="arsenal" width="100%" />
-
-<img src="assets/footer.svg?v=37273718788" alt="footer" width="100%" />
+<img src="assets/footer.svg?v=1" alt="footer" width="100%" />
 
 <a href="https://www.buymeacoffee.com/blueokanna">
   <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="42" width="178" alt="Buy Me A Coffee" />
