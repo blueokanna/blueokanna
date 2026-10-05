@@ -54,14 +54,13 @@ export function formatBytes(bytes) {
 /**
  * Places the page backdrop inside a card.
  *
- * The tail derivative is already rendered at card scale, so this only slides
- * the window: `offset` is how many pixels of the image have scrolled past the
- * card's top edge. Cards that follow each other use offsets that continue
- * exactly where the previous card stopped, which is what makes the artwork
- * read as one sheet down the page rather than a repeating texture.
+ * The image bleeds to the card's top and bottom edges so consecutive cards meet
+ * on a single hairline: only `offset` changes between them, and each offset
+ * continues exactly where the previous card stopped. That is what makes the
+ * artwork read as one sheet down the page instead of a repeating texture.
  */
-export function backdropSlice({ uri, offset, x = 12, y = 12 }) {
-  return `<image x="${x}" y="${(y - offset).toFixed(1)}" width="${CANVAS.tailWidth}" height="${CANVAS.tailHeight}" preserveAspectRatio="none" xlink:href="${uri}"/>`;
+export function backdropSlice({ uri, offset, x = 12 }) {
+  return `<image x="${x}" y="${(-offset).toFixed(1)}" width="${CANVAS.tailWidth}" height="${CANVAS.tailHeight}" preserveAspectRatio="none" xlink:href="${uri}"/>`;
 }
 
 /**

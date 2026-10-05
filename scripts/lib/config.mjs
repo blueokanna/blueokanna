@@ -60,8 +60,10 @@ export const ARTWORK = {
  *
  * The whole page is one image at one magnification. Source rows 164..1365 are
  * shown across four cards inside the same 1176 px content box: the banner takes
- * the hero crop (rows 164..820), then telemetry, about and footer slide 470 +
- * 220 + 145 = 835 px of the tail derivative over rows 820..1365.
+ * the hero crop (rows 164..820) at 1005 px tall, then telemetry, about and
+ * footer slide 470 + 220 + 145 = 835 px of the tail derivative over rows
+ * 820..1365. Cards bleed to their own top and bottom edges, so stacked images
+ * meet on a hairline instead of 24 px of padding.
  *
  * Card heights below must match the templates.
  */
@@ -78,6 +80,17 @@ export const TAIL_OFFSETS = {
   about: 470,
   footer: 690,
 };
+
+/**
+ * Gap between two stacked cards, in README pixels.
+ *
+ * GitHub renders each image inside a line box, so a seam is never zero: it is
+ * the line-box leading plus the two 1 px card borders. The cards themselves now
+ * bleed to their own top and bottom edges, which removed the 24 px of card
+ * padding that used to sit in between. Keep this number in sync with the README
+ * markup — the images must stay adjacent, with no blank line between them.
+ */
+export const CARD_SEAM_PX = 6;
 
 export const PATHS = {
   assets: 'assets',

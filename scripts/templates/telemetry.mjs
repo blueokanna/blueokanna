@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Telemetry card: GitHub statistics and most-used languages, side by side in
  * one full-width card, so the two panels are identical in height by
  * construction and the page backdrop runs behind both.
@@ -118,7 +118,7 @@ export function render({ backdrop, metrics, renderedAt }) {
       <stop offset="1" stop-color="${P.ink0}" stop-opacity="0.72"/>
     </linearGradient>
     <clipPath id="frame">
-      <rect x="12" y="12" width="${W - 24}" height="${H - 24}" rx="14"/>
+      <rect x="12" y="0" width="${W - 24}" height="${H}" rx="14"/>
     </clipPath>
     <clipPath id="barClip">
       <rect x="${RIGHT.x + 18}" y="${RIGHT.y + 54}" width="${RIGHT.w - 36}" height="12" rx="6"/>
@@ -129,11 +129,11 @@ export function render({ backdrop, metrics, renderedAt }) {
     </style>
   </defs>
 
-  <rect x="12" y="12" width="${W - 24}" height="${H - 24}" rx="14" fill="url(#panel)"/>
+  <rect x="12" y="0" width="${W - 24}" height="${H}" rx="14" fill="url(#panel)"/>
   <g clip-path="url(#frame)">
     ${backdropSlice(backdrop)}
-    <rect x="12" y="12" width="${W - 24}" height="${H - 24}" fill="url(#topfade)"/>
-    ${watermarkRect({ x: 12, y: 12, width: W - 24, height: H - 24 })}
+    <rect x="12" y="0" width="${W - 24}" height="${H}" fill="url(#topfade)"/>
+    ${watermarkRect({ x: 12, y: 0, width: W - 24, height: H })}
     <path d="M12 ${HEADER_Y} H${W - 12}" stroke="${P.lineBright}" stroke-width="1"/>
     <rect x="12" y="0" width="${W - 24}" height="2" fill="${P.accent2}" opacity="0.22">
       <animate attributeName="y" values="12;${H - 14};12" dur="14s" repeatCount="indefinite"/>
@@ -162,7 +162,8 @@ export function render({ backdrop, metrics, renderedAt }) {
     <text x="${W - 40}" y="${H - 26}" font-size="10" fill="${P.ice}" fill-opacity="0.85" text-anchor="end">backdrop · aes-256-gcm at rest</text>
   </g>
 
-  <rect x="12" y="12" width="${W - 24}" height="${H - 24}" rx="14" fill="none" stroke="url(#edge)" stroke-width="1.2" opacity="0.72"/>
+  <rect x="12" y="0" width="${W - 24}" height="${H}" rx="14" fill="none" stroke="url(#edge)" stroke-width="1.2" opacity="0.72"/>
 </svg>
 `;
 }
+

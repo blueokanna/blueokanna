@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Hero banner.
  *
  * Two regions, one card:
@@ -13,15 +13,15 @@
  *           returned is omitted rather than printed as zero.
  */
 
-import { IDENTITY, PALETTE as P, STACK } from '../lib/config.mjs';
+import { CANVAS, IDENTITY, PALETTE as P, STACK } from '../lib/config.mjs';
 import { esc, isoDate, monoWidth } from '../lib/svg.mjs';
 
 const W = 1200;
-const H = 1029;
+const H = 1005;
 const INSET = 12;
 const ART_H = 1005;
 const STRIP_Y = 713;
-const BOTTOM = H - 12;
+const BOTTOM = H - 10;
 
 /** Strip geometry, derived from one anchor so the three columns stay aligned. */
 const NAME_Y = STRIP_Y + 86;
@@ -221,10 +221,10 @@ export function render({ hero, account, avatar, renderedAt }) {
       <feDropShadow dx="0" dy="1.2" stdDeviation="2.2" flood-color="#02060c" flood-opacity="0.95"/>
     </filter>
     <clipPath id="frame">
-      <rect x="12" y="12" width="${W - 24}" height="${H - 24}" rx="16"/>
+      <rect x="12" y="0" width="${W - 24}" height="${H}" rx="16"/>
     </clipPath>
     <clipPath id="artClip">
-      <rect x="12" y="12" width="${W - 24}" height="${H - 24}"/>
+      <rect x="12" y="0" width="${W - 24}" height="${H}"/>
     </clipPath>
     <clipPath id="avatarClip">
       <circle cx="${AVATAR.cx}" cy="${AVATAR.cy}" r="${AVATAR.r}"/>
@@ -235,17 +235,17 @@ export function render({ hero, account, avatar, renderedAt }) {
     </style>
   </defs>
 
-  <rect x="12" y="12" width="${W - 24}" height="${H - 24}" rx="16" fill="${P.ink1}"/>
+  <rect x="12" y="0" width="${W - 24}" height="${H}" rx="16" fill="${P.ink1}"/>
 
   <g clip-path="url(#artClip)">
-    <g transform="translate(${W / 2},${INSET + ART_H / 2})">
+    <g transform="translate(${W / 2},${ART_H / 2})">
       <g>
         <animateTransform attributeName="transform" type="scale" values="1;1.045;1" dur="30s" repeatCount="indefinite"/>
-        <image x="${-((W - 2 * INSET) / 2)}" y="${-ART_H / 2}" width="${W - 2 * INSET}" height="${ART_H}" preserveAspectRatio="none" xlink:href="${hero}"/>
+        <image x="${-(CANVAS.heroWidth / 2)}" y="${-ART_H / 2}" width="${CANVAS.heroWidth}" height="${ART_H}" preserveAspectRatio="none" xlink:href="${hero}"/>
       </g>
     </g>
-    <rect x="12" y="12" width="${W - 24}" height="${H - 24}" fill="url(#grade)"/>
-    <rect x="12" y="12" width="${W - 24}" height="${H - 24}" fill="url(#vignette)"/>
+    <rect x="12" y="0" width="${W - 24}" height="${H}" fill="url(#grade)"/>
+    <rect x="12" y="0" width="${W - 24}" height="${H}" fill="url(#vignette)"/>
 
     <ellipse cx="290" cy="120" rx="300" ry="190" fill="url(#bloom)">
       <animate attributeName="opacity" values="0.5;0.9;0.5" dur="11s" repeatCount="indefinite"/>
@@ -262,7 +262,7 @@ export function render({ hero, account, avatar, renderedAt }) {
 
     ${motes()}
     ${streaks()}
-    <rect x="12" y="12" width="${W - 24}" height="${H - 24}" fill="url(#scan)"/>
+    <rect x="12" y="0" width="${W - 24}" height="${H}" fill="url(#scan)"/>
     ${rulers()}
 
     <g transform="translate(1002,300)" fill="none" stroke="${P.accent1}" stroke-opacity="0.62">
@@ -317,7 +317,7 @@ export function render({ hero, account, avatar, renderedAt }) {
     ${readout(renderedAt)}
   </g>
 
-  <rect x="12" y="12" width="${W - 24}" height="${H - 24}" rx="16" fill="none" stroke="url(#edge)" stroke-width="1.4" opacity="0.85"/>
+  <rect x="12" y="0" width="${W - 24}" height="${H}" rx="16" fill="none" stroke="url(#edge)" stroke-width="1.4" opacity="0.85"/>
   <g class="mono">
     <rect x="34" y="34" width="${editionBox}" height="24" rx="6" fill="${P.ink0}" fill-opacity="0.76" stroke="${P.accent2}" stroke-opacity="0.4" stroke-width="1"/>
     <text x="${34 + editionBox / 2}" y="50" font-size="11" letter-spacing="2" fill="${P.accent1}" text-anchor="middle">${esc(IDENTITY.edition)}</text>
@@ -331,3 +331,4 @@ export function render({ hero, account, avatar, renderedAt }) {
 </svg>
 `;
 }
+

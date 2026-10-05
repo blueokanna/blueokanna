@@ -5,30 +5,22 @@
   templates, never the SVG. The artwork is stored as AES-256-GCM ciphertext in
   assets/artwork/ and is only decrypted inside the CI job; see scripts/README.md.
 
-  The four cards are stacked with nothing between them, and each one draws the
-  same image at the same magnification inside the same 1176 px content box: the
-  banner shows source rows 164..820 and the cards below continue at offsets
-  0 / 470 / 690 over rows 820..1365. Section labels and the collapsed badge
-  shelf live inside the cards, which is why there is no markdown between them.
+  The four cards are one continuous image. Each draws it inside the same 1176 px
+  content box and bleeds to its own top and bottom edges: the banner shows the
+  artwork's rows 164..820 and the cards below slide offsets 0 / 470 / 690 over
+  rows 820..1365. The markup below keeps them in a single HTML block — no blank
+  line, no heading, no badge row — so the only seam between cards is the line
+  box GitHub wraps each image in. Section labels live inside the cards.
 
   Statistics are collected from the GitHub API by the daily workflow and drawn
-  into assets/telemetry.svg?v=37274375591.
+  into assets/telemetry.svg.
 -->
 
 <div align="center">
-
-<a href="https://github.com/blueokanna">
-  <img src="assets/banner.svg?v=37274375591" alt="blueokanna" width="100%" />
-</a>
-
-<img src="assets/telemetry.svg?v=37274375591" alt="github statistics and most used languages" width="100%" />
-
-<img src="assets/about.svg?v=37274375591" alt="arsenal" width="100%" />
-
-<img src="assets/footer.svg?v=37274375591" alt="footer" width="100%" />
-
-<a href="https://www.buymeacoffee.com/blueokanna">
-  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="42" width="178" alt="Buy Me A Coffee" />
-</a>
-
+<a href="https://github.com/blueokanna"><img src="assets/banner.svg?v=1" alt="blueokanna" width="100%" /></a>
+<img src="assets/telemetry.svg?v=1" alt="github statistics and most used languages" width="100%" />
+<img src="assets/about.svg?v=1" alt="arsenal" width="100%" />
+<img src="assets/footer.svg?v=1" alt="footer" width="100%" />
+<br />
+<a href="https://www.buymeacoffee.com/blueokanna"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="42" width="178" alt="Buy Me A Coffee" /></a>
 </div>

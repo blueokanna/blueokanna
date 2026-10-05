@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Arsenal: the stack as measured-width pills plus region and timezone tiles.
  * Carries its own section label so the page needs no markdown heading between
  * cards — that is what keeps the backdrop unbroken.
@@ -81,7 +81,7 @@ export function render({ backdrop, renderedAt }) {
       <stop offset="1" stop-color="${P.ink0}" stop-opacity="0.66"/>
     </linearGradient>
     <clipPath id="frame">
-      <rect x="12" y="12" width="${W - 24}" height="${H - 24}" rx="14"/>
+      <rect x="12" y="0" width="${W - 24}" height="${H}" rx="14"/>
     </clipPath>
     ${watermarkDefs(P)}
     <style>
@@ -89,11 +89,11 @@ export function render({ backdrop, renderedAt }) {
     </style>
   </defs>
 
-  <rect x="12" y="12" width="${W - 24}" height="${H - 24}" rx="14" fill="url(#panel)"/>
+  <rect x="12" y="0" width="${W - 24}" height="${H}" rx="14" fill="url(#panel)"/>
   <g clip-path="url(#frame)">
     ${backdropSlice(backdrop)}
-    <rect x="12" y="12" width="${W - 24}" height="${H - 24}" fill="url(#shade)"/>
-    ${watermarkRect({ x: 12, y: 12, width: W - 24, height: H - 24 })}
+    <rect x="12" y="0" width="${W - 24}" height="${H}" fill="url(#shade)"/>
+    ${watermarkRect({ x: 12, y: 0, width: W - 24, height: H })}
     <path d="M12 ${HEADER_Y} H${W - 12}" stroke="${P.lineBright}" stroke-width="1"/>
     <rect x="12" y="0" width="${W - 24}" height="2" fill="${P.accent2}" opacity="0.22">
       <animate attributeName="y" values="12;${H - 14};12" dur="13s" repeatCount="indefinite"/>
@@ -111,7 +111,8 @@ export function render({ backdrop, renderedAt }) {
     </path>
   </g>
 
-  <rect x="12" y="12" width="${W - 24}" height="${H - 24}" rx="14" fill="none" stroke="url(#edge)" stroke-width="1.2" opacity="0.72"/>
+  <rect x="12" y="0" width="${W - 24}" height="${H}" rx="14" fill="none" stroke="url(#edge)" stroke-width="1.2" opacity="0.72"/>
 </svg>
 `;
 }
+

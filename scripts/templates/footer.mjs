@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Footer: the last slice of the page backdrop, closing over catalogue waves and
  * the sign-off line.
  */
@@ -49,7 +49,7 @@ export function render({ backdrop, renderedAt }) {
       <stop offset="1" stop-color="${P.ink0}" stop-opacity="0.68"/>
     </linearGradient>
     <clipPath id="frame">
-      <rect x="12" y="12" width="${W - 24}" height="${H - 24}" rx="14"/>
+      <rect x="12" y="0" width="${W - 24}" height="${H}" rx="14"/>
     </clipPath>
     ${watermarkDefs(P)}
     <style>
@@ -57,11 +57,11 @@ export function render({ backdrop, renderedAt }) {
     </style>
   </defs>
 
-  <rect x="12" y="12" width="${W - 24}" height="${H - 24}" rx="14" fill="url(#panel)"/>
+  <rect x="12" y="0" width="${W - 24}" height="${H}" rx="14" fill="url(#panel)"/>
   <g clip-path="url(#frame)">
     ${backdropSlice(backdrop)}
-    <rect x="12" y="12" width="${W - 24}" height="${H - 24}" fill="url(#shade)"/>
-    ${watermarkRect({ x: 12, y: 12, width: W - 24, height: H - 24, opacity: 0.5 })}
+    <rect x="12" y="0" width="${W - 24}" height="${H}" fill="url(#shade)"/>
+    ${watermarkRect({ x: 12, y: 0, width: W - 24, height: H, opacity: 0.5 })}
     ${wave(112, 12, 600, 17, 0.45, 1.2)}
     ${wave(126, 12, 600, 12, 0.7, 1.6)}
     ${wave(138, 10, 600, 9, 0.85, 2)}
@@ -84,7 +84,8 @@ export function render({ backdrop, renderedAt }) {
     <text x="${W / 2}" y="108" font-size="11" letter-spacing="3" fill="${P.accent1}" fill-opacity="0.9">${esc(IDENTITY.edition)} · ${esc(IDENTITY.year)}</text>
   </g>
 
-  <rect x="12" y="12" width="${W - 24}" height="${H - 24}" rx="14" fill="none" stroke="url(#edge)" stroke-width="1.2" opacity="0.72"/>
+  <rect x="12" y="0" width="${W - 24}" height="${H}" rx="14" fill="none" stroke="url(#edge)" stroke-width="1.2" opacity="0.72"/>
 </svg>
 `;
 }
+
