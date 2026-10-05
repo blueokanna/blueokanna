@@ -21,8 +21,8 @@ function wave(yBase, amplitude, width, duration, opacity, strokeWidth) {
   return segments.join('');
 }
 
-export function render({ renderedAt }) {
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="footer">
+export function render({ backdrop, renderedAt }) {
+  return `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="footer">
   <defs>
     <linearGradient id="panel" x1="0" y1="0" x2="0.4" y2="1">
       <stop offset="0" stop-color="${P.ink1}"/>
@@ -60,6 +60,7 @@ export function render({ renderedAt }) {
 
   <rect x="12" y="12" width="${W - 24}" height="${H - 24}" rx="14" fill="url(#panel)"/>
   <g clip-path="url(#frame)">
+    ${backdrop ? `<image x="12" y="12" width="${W - 24}" height="${H - 24}" preserveAspectRatio="xMidYMid slice" opacity="0.22" xlink:href="${backdrop}"/>` : ''}
     <rect x="-30" y="-30" width="${W + 60}" height="${H + 60}" fill="url(#grid)" opacity="0.26">
       <animateTransform attributeName="transform" type="translate" values="0 0;30 0" dur="12s" repeatCount="indefinite"/>
     </rect>

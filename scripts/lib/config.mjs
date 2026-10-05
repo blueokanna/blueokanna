@@ -43,9 +43,10 @@ export const STACK = [
   'Kali', 'IPFS', 'Arduino', 'Postman', 'Actions', 'Windows', 'Android',
 ];
 
-/** Encrypted artwork slots. Only the hero exists: it is the banner backdrop. */
+/** Encrypted artwork slots: the banner backdrop and the soft card backdrop. */
 export const ARTWORK = {
   hero: 'hero-night',
+  backdrop: 'backdrop-soft',
 };
 
 export const PATHS = {
@@ -57,7 +58,6 @@ export const PATHS = {
 /** Assets regenerated on every run; the commit step diffs exactly these. */
 export const GENERATED = [
   'assets/banner.svg',
-  'assets/profile.svg',
   'assets/loading.svg',
   'assets/about.svg',
   'assets/divider.svg',

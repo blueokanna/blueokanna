@@ -30,17 +30,24 @@ a rename, so a crashed run cannot leave a half-written card in `assets/`.
 
 ## The backdrop
 
-One slot exists. The banner is the only asset that carries artwork, and it is
-stored as ciphertext:
+Both slots are stored as ciphertext:
 
 ```bash
-ARTWORK_AES_KEY=<hex> node scripts/pack-artwork.mjs --id hero-night --in hero.jpg
+ARTWORK_AES_KEY=<hex> node scripts/pack-artwork.mjs --id hero-night    --in hero.jpg
+ARTWORK_AES_KEY=<hex> node scripts/pack-artwork.mjs --id backdrop-soft --in soft.jpg
 node scripts/pack-artwork.mjs --verify hero-night
 ```
 
-| slot          | pixels   | used by             |
-| ------------- | -------- | ------------------- |
-| `hero-night`  | 1200×640 | `assets/banner.svg` |
+| slot            | pixels   | used by                                        |
+| --------------- | -------- | ---------------------------------------------- |
+| `hero-night`    | 1200×820 | `assets/banner.svg`                            |
+| `backdrop-soft` | 512×512  | banner + `loading/about/footer` backdrop layer |
+
+`hero-night` is the banner: full-bleed artwork cropped from source y 0–525 so
+the moon, the spires and both figures stay in frame. `backdrop-soft` is a
+downscaled, re-upscaled square crop (a cheap blur) that each wide card lays
+under its own gradient at 18–22 % opacity, so the artwork runs behind the whole
+page without hurting contrast.
 
 Container layout (`assets/artwork/<id>.jpg.enc`):
 

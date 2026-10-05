@@ -1,4 +1,4 @@
-/** Slim sync strip used above the metrics graph. */
+/** Slim status strip that heads the telemetry section. */
 
 import { IDENTITY, PALETTE as P } from '../lib/config.mjs';
 import { esc, monoWidth } from '../lib/svg.mjs';
@@ -26,10 +26,9 @@ function chips() {
   }).join('');
 }
 
-export function render({ renderedAt }) {
+export function render({ backdrop, renderedAt }) {
   const dotX = Math.round(40 + monoWidth(TITLE, 12) + 16);
-
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="syncing github metrics">
+  return `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="rendering profile assets">
   <defs>
     <linearGradient id="panel" x1="0" y1="0" x2="0.4" y2="1">
       <stop offset="0" stop-color="${P.ink1}"/>
@@ -64,6 +63,7 @@ export function render({ renderedAt }) {
 
   <rect x="12" y="12" width="${W - 24}" height="${H - 24}" rx="14" fill="url(#panel)"/>
   <g clip-path="url(#frame)">
+    ${backdrop ? `<image x="12" y="12" width="${W - 24}" height="${H - 24}" preserveAspectRatio="xMidYMid slice" opacity="0.2" xlink:href="${backdrop}"/>` : ''}
     <circle cx="1120" cy="10" r="150" fill="url(#bloom)">
       <animate attributeName="opacity" values="0.7;1;0.7" dur="7s" repeatCount="indefinite"/>
     </circle>

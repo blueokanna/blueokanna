@@ -3,11 +3,11 @@
  * Encrypts a prepared artwork file into the repository.
  *
  *   ARTWORK_AES_KEY=<64 hex chars> node scripts/pack-artwork.mjs \
- *     --id hanayome-hero --in ~/renders/hanayome-hero.jpg
+ *     --id hero-night --in ~/renders/hero-night.jpg
  *
  * or, to avoid putting the key in the environment:
  *
- *   node scripts/pack-artwork.mjs --id hanayome-hero --in hero.jpg --key-file ~/.keys/artwork.key
+ *   node scripts/pack-artwork.mjs --id hero-night --in hero.jpg --key-file ~/.keys/artwork.key
  *
  * The plaintext file is read, sealed and written to assets/artwork/<id>.jpg.enc.
  * Plaintext is never copied into the repository and never printed.
