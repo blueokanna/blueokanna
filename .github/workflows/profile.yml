@@ -93,6 +93,8 @@ jobs:
 
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Generate metrics
         if: steps.auth.outputs.state == 'valid'
@@ -159,11 +161,14 @@ jobs:
             const runId = process.env.GITHUB_RUN_ID;
             const generated = process.env.GENERATED.split('\n').map((line) => line.trim()).filter(Boolean);
 
-            // Bump the cache-buster on every generated SVG referenced by the README.
+            // Bump the cache-buster on every SVG referenced by the README. The
+            // metrics graph is rendered by its own action, so it is versioned
+            // here but never committed by this step.
+            const versioned = [...generated, 'assets/metrics.svg'];
             const readme = await github.rest.repos.getContent({ owner, repo, path: 'README.md' });
             const current = Buffer.from(readme.data.content, 'base64').toString('utf8');
             let bumped = current;
-            for (const path of generated) {
+            for (const path of versioned) {
               const name = path.replace(/^assets\//, '').replace(/\.svg$/, '');
               bumped = bumped.replace(new RegExp(`assets/${name}\\.svg(?:\\?v=\\d+)?`, 'g'), `assets/${name}.svg?v=${runId}`);
             }
