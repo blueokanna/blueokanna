@@ -5,8 +5,9 @@
   assets/profile.svg  steam-style profile card — avatar inlined from assets/hanayome-avatar.jpg
 
   The two SVGs inline their JPEGs as base64 on purpose: GitHub serves repo SVGs
-  through the camo proxy, where relative <image href> lookups do not resolve.
-  Regenerate a copy by cropping the JPEG and re-running the generator script.
+  through the raw path (and camo), where relative <image href> lookups do not
+  resolve. To change the art, re-crop assets/hanayome.jpg and re-inline the
+  result into the <image> element of banner.svg / profile.svg.
 -->
 
 <div align="center">
