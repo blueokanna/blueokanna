@@ -1,0 +1,11 @@
+# plaintext artwork staging — never commit decrypted images
+/artwork-plain/
+*.jpg.tmp
+
+# render scratch files (writeAtomic)
+assets/*.svg.tmp-*
+
+# secrets must never be stored in the tree
+*.key
+.env
+.env.*

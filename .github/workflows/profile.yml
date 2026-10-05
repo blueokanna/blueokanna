@@ -1,0 +1,223 @@
+# Regenerates every asset under assets/ and commits what actually changed.
+#
+# Two credentials are involved and they are deliberately different:
+#
+#   METRICS_TOKEN     classic PAT (public_repo, read:user) used by lowlighter
+#                     metrics. It reads account-wide data that a repo scoped
+#                     token cannot reach. When it is missing or expired the
+#                     render is skipped, the previous metrics.svg is kept and
+#                     the run summary explains how to fix it.
+#
+#   ARTWORK_AES_KEY   64 hex characters, the AES-256-GCM key for the encrypted
+#                     artwork in assets/artwork/. Only ciphertext is committed;
+#                     the key never leaves repository secrets.
+#
+# The job runs once a day plus manual dispatches. Generated files are committed
+# only when their bytes differ, in a single atomic commit.
+
+name: profile
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify METRICS_TOKEN
+        id: auth
+        shell: bash
+        env:
+          METRICS_TOKEN: ${{ secrets.METRICS_TOKEN }}
+        run: |
+          set -uo pipefail
+
+          if [[ -z "${METRICS_TOKEN:-}" ]]; then
+            echo "state=missing" >> "$GITHUB_OUTPUT"
+            echo "::warning title=metrics skipped::METRICS_TOKEN is not set, see the run summary for the fix."
+            exit 0
+          fi
+
+          tmp="$(mktemp -d)"
+          status="$(curl -sS --max-time 20 -o "$tmp/body" -D "$tmp/headers" -w '%{http_code}' \
+            -H "Authorization: token ${METRICS_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/user || echo 000)"
+
+          scopes="$(tr -d '\r' < "$tmp/headers" | awk -F': ' 'tolower($1)=="x-oauth-scopes"{print $2}')"
+
+          if [[ "$status" == "200" ]]; then
+            echo "state=valid" >> "$GITHUB_OUTPUT"
+            echo "scopes=${scopes:-none (fine-grained token)}" >> "$GITHUB_OUTPUT"
+          else
+            echo "state=invalid" >> "$GITHUB_OUTPUT"
+            echo "status=$status" >> "$GITHUB_OUTPUT"
+            echo "::warning title=metrics skipped::METRICS_TOKEN was rejected with HTTP $status, see the run summary for the fix."
+          fi
+
+      - name: Explain how to fix the token
+        if: steps.auth.outputs.state != 'valid'
+        shell: bash
+        env:
+          STATE: ${{ steps.auth.outputs.state }}
+          STATUS: ${{ steps.auth.outputs.status }}
+        run: |
+          set -uo pipefail
+          {
+            if [[ "$STATE" == "missing" ]]; then
+              echo "### metrics render skipped — \`METRICS_TOKEN\` is not set"
+              echo
+              echo "The last committed \`assets/metrics.svg\` is kept, so the profile still renders."
+            else
+              echo "### metrics render skipped — \`METRICS_TOKEN\` is no longer accepted"
+              echo
+              echo "The verify step answered \`HTTP ${STATUS:-unknown}\` (expected \`200\`). The token has expired, was revoked or was replaced — this is the \`Bad credentials\` failure."
+            fi
+            echo
+            echo "**Fix**"
+            echo
+            echo "1. Open https://github.com/settings/tokens and generate a new **classic** token."
+            echo "2. Grant the \`public_repo\` and \`read:user\` scopes."
+            echo "3. Update the secret: repository **Settings → Secrets and variables → Actions → \`METRICS_TOKEN\`**."
+            echo "4. Re-run this workflow: **Actions → profile → Run workflow**."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate metrics
+        if: steps.auth.outputs.state == 'valid'
+        uses: lowlighter/metrics@latest
+        with:
+          filename: assets/metrics.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          committer_token: ${{ github.token }}
+          output_action: commit
+
+          user: blueokanna
+          template: classic
+          base: header, community, repositories
+          base_indepth: yes
+
+          repositories_affiliations: owner
+          repositories_forks: no
+          repositories: 200
+          repositories_batch: 50
+
+          config_timezone: Asia/Singapore
+          config_display: large
+
+          plugin_languages: yes
+          plugin_languages_details: bytes-size, percentage
+          plugin_languages_limit: 5
+          plugin_languages_other: yes
+
+          plugin_isocalendar: yes
+          plugin_isocalendar_duration: half-year
+
+      - name: Render assets
+        id: render
+        run: node scripts/render.mjs
+        env:
+          ARTWORK_AES_KEY: ${{ secrets.ARTWORK_AES_KEY }}
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Verify artwork key
+        if: steps.render.outputs.artwork == 'skipped'
+        shell: bash
+        run: |
+          set -uo pipefail
+          {
+            echo "### artwork render skipped — \`ARTWORK_AES_KEY\` is not set"
+            echo
+            echo "The committed banners are kept unchanged."
+            echo "Add the 64 hex character key under **Settings → Secrets and variables → Actions → \`ARTWORK_AES_KEY\`** to refresh the artwork."
+          } >> "$GITHUB_STEP_SUMMARY"
+          echo "::warning title=artwork skipped::ARTWORK_AES_KEY is not set."
+
+      - name: Commit generated assets
+        if: steps.render.outputs.generated != ''
+        uses: actions/github-script@v7
+        env:
+          GENERATED: ${{ steps.render.outputs.generated }}
+        with:
+          github-token: ${{ github.token }}
+          script: |
+            const fs = require('fs');
+
+            const { owner, repo } = context.repo;
+            const branch = process.env.GITHUB_REF_NAME || 'main';
+            const runId = process.env.GITHUB_RUN_ID;
+            const generated = process.env.GENERATED.split('\n').map((line) => line.trim()).filter(Boolean);
+
+            // Bump the cache-buster on every generated SVG referenced by the README.
+            const readme = await github.rest.repos.getContent({ owner, repo, path: 'README.md' });
+            const current = Buffer.from(readme.data.content, 'base64').toString('utf8');
+            let bumped = current;
+            for (const path of generated) {
+              const name = path.replace(/^assets\//, '').replace(/\.svg$/, '');
+              bumped = bumped.replace(new RegExp(`assets/${name}\\.svg(?:\\?v=\\d+)?`, 'g'), `assets/${name}.svg?v=${runId}`);
+            }
+
+            const wanted = new Map(generated.map((path) => [path, fs.readFileSync(path, 'utf8')]));
+            if (bumped !== current) wanted.set('README.md', bumped);
+
+            // Read the current blobs so identical files are not re-committed.
+            const head = await github.rest.git.getRef({ owner, repo, ref: `heads/${branch}` });
+            const baseSha = head.data.object.sha;
+            const baseCommit = await github.rest.git.getCommit({ owner, repo, commit_sha: baseSha });
+            const baseTree = await github.rest.git.getTree({ owner, repo, tree_sha: baseCommit.data.tree.sha, recursive: true });
+            const known = new Map(baseTree.data.tree.filter((e) => e.type === 'blob').map((e) => [e.path, e.sha]));
+
+            const changed = [];
+            for (const [path, content] of wanted) {
+              const blob = await github.rest.git.createBlob({ owner, repo, content, encoding: 'utf8' });
+              if (known.get(path) !== blob.data.sha) changed.push({ path, sha: blob.data.sha });
+            }
+
+            if (changed.length === 0) {
+              core.info('generated assets already up to date');
+              return;
+            }
+
+            // One retry covers the only realistic race: a human push landing
+            // while this job runs. The second attempt rebuilds on the new head.
+            for (let attempt = 0; attempt < 2; attempt += 1) {
+              const parent = attempt === 0 ? baseSha : (await github.rest.git.getRef({ owner, repo, ref: `heads/${branch}` })).data.object.sha;
+              const parentCommit = attempt === 0
+                ? baseCommit
+                : await github.rest.git.getCommit({ owner, repo, commit_sha: parent });
+
+              const tree = await github.rest.git.createTree({
+                owner,
+                repo,
+                base_tree: parentCommit.data.tree.sha,
+                tree: changed.map(({ path, sha }) => ({ path, mode: '100644', type: 'blob', sha })),
+              });
+
+              const commit = await github.rest.git.createCommit({
+                owner,
+                repo,
+                message: `chore(profile): refresh generated assets (${runId})`,
+                tree: tree.data.sha,
+                parents: [parent],
+              });
+
+              try {
+                await github.rest.git.updateRef({ owner, repo, ref: `heads/${branch}`, sha: commit.data.sha });
+                core.info(`committed ${changed.length} file(s) as ${commit.data.sha.slice(0, 7)}`);
+                return;
+              } catch (error) {
+                if (attempt === 1) throw error;
+                core.warning(`commit race detected (${error.message}); retrying on the latest head`);
+              }
+            }

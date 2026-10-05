@@ -1,27 +1,27 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="150" viewBox="0 0 1200 150" role="img" aria-label="syncing github metrics">
   <defs>
     <linearGradient id="panel" x1="0" y1="0" x2="0.4" y2="1">
-      <stop offset="0" stop-color="#1b2838"/>
-      <stop offset="1" stop-color="#131b26"/>
+      <stop offset="0" stop-color="#0b1727"/>
+      <stop offset="1" stop-color="#0a1424"/>
     </linearGradient>
     <linearGradient id="fill" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#2a475e"/>
-      <stop offset="0.55" stop-color="#66c0f4"/>
-      <stop offset="1" stop-color="#9ad7ff"/>
+      <stop offset="0" stop-color="#7ea6e0"/>
+      <stop offset="0.55" stop-color="#a9c8f2"/>
+      <stop offset="1" stop-color="#dbe9ff"/>
     </linearGradient>
     <linearGradient id="shine" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="0"/>
-      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.55"/>
-      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="0" stop-color="#eef4ff" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#eef4ff" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#eef4ff" stop-opacity="0"/>
     </linearGradient>
     <linearGradient id="edge" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#66c0f4"/>
-      <stop offset="0.6" stop-color="#2a475e"/>
-      <stop offset="1" stop-color="#57cbde"/>
+      <stop offset="0" stop-color="#dbe9ff"/>
+      <stop offset="0.6" stop-color="#7ea6e0"/>
+      <stop offset="1" stop-color="#a9c8f2"/>
     </linearGradient>
     <radialGradient id="bloom" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#8fd4ff" stop-opacity="0.22"/>
-      <stop offset="1" stop-color="#8fd4ff" stop-opacity="0"/>
+      <stop offset="0" stop-color="#9cc0f0" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#9cc0f0" stop-opacity="0"/>
     </radialGradient>
     <clipPath id="frame">
       <rect x="12" y="12" width="1176" height="126" rx="14"/>
@@ -36,37 +36,36 @@
     <circle cx="1120" cy="10" r="150" fill="url(#bloom)">
       <animate attributeName="opacity" values="0.7;1;0.7" dur="7s" repeatCount="indefinite"/>
     </circle>
-    <rect x="12" y="0" width="1176" height="2" fill="#66c0f4" opacity="0.22">
-      <animate attributeName="y" values="12;138;12" dur="13s" repeatCount="indefinite"/>
+    <rect x="12" y="0" width="1176" height="2" fill="#a9c8f2" opacity="0.22">
+      <animate attributeName="y" values="12;136;12" dur="13s" repeatCount="indefinite"/>
     </rect>
   </g>
 
   <g class="mono">
-    <text x="40" y="46" font-size="12" fill="#9fb8cc">// synchronising metrics · 数据同步中</text>
-    <circle cx="267" cy="42" r="3.4" fill="#66c0f4">
+    <text x="40" y="48" font-size="12" fill="#b6d2f5">// synchronising metrics · 数据同步中</text>
+    <circle cx="286" cy="44" r="3.4" fill="#dbe9ff">
       <animate attributeName="opacity" values="1;0.15;1" dur="1.5s" repeatCount="indefinite"/>
     </circle>
     
-      <rect x="812" y="30" width="104" height="24" rx="12" fill="#0e1622" stroke="#2a475e" stroke-width="1"/>
-      <rect x="812" y="30" width="104" height="24" rx="12" fill="none" stroke="#66c0f4" stroke-width="1.2" opacity="0.15">
-        <animate attributeName="opacity" values="0.15;0.9;0.35" keyTimes="0;0.4;1" dur="4.8s" begin="0.0s" repeatCount="indefinite"/>
+      <rect x="820" y="32" width="104" height="24" rx="12" fill="#101f33" stroke="#1e3555" stroke-width="1"/>
+      <rect x="820" y="32" width="104" height="24" rx="12" fill="none" stroke="#a9c8f2" stroke-width="1.2" opacity="0.16">
+        <animate attributeName="opacity" values="0.16;0.9;0.36" keyTimes="0;0.4;1" dur="5s" begin="0.0s" repeatCount="indefinite"/>
       </rect>
-      <text x="864" y="46" font-size="11" fill="#9fb8cc" text-anchor="middle">languages</text>
-      <rect x="930" y="30" width="104" height="24" rx="12" fill="#0e1622" stroke="#2a475e" stroke-width="1"/>
-      <rect x="930" y="30" width="104" height="24" rx="12" fill="none" stroke="#66c0f4" stroke-width="1.2" opacity="0.15">
-        <animate attributeName="opacity" values="0.15;0.9;0.35" keyTimes="0;0.4;1" dur="4.8s" begin="1.6s" repeatCount="indefinite"/>
+      <text x="872" y="48" font-size="11" fill="#b6d2f5" text-anchor="middle">languages</text>
+      <rect x="938" y="32" width="104" height="24" rx="12" fill="#101f33" stroke="#1e3555" stroke-width="1"/>
+      <rect x="938" y="32" width="104" height="24" rx="12" fill="none" stroke="#a9c8f2" stroke-width="1.2" opacity="0.16">
+        <animate attributeName="opacity" values="0.16;0.9;0.36" keyTimes="0;0.4;1" dur="5s" begin="1.6s" repeatCount="indefinite"/>
       </rect>
-      <text x="982" y="46" font-size="11" fill="#9fb8cc" text-anchor="middle">isocalendar</text>
-      <rect x="1048" y="30" width="104" height="24" rx="12" fill="#0e1622" stroke="#2a475e" stroke-width="1"/>
-      <rect x="1048" y="30" width="104" height="24" rx="12" fill="none" stroke="#66c0f4" stroke-width="1.2" opacity="0.15">
-        <animate attributeName="opacity" values="0.15;0.9;0.35" keyTimes="0;0.4;1" dur="4.8s" begin="3.2s" repeatCount="indefinite"/>
+      <text x="990" y="48" font-size="11" fill="#b6d2f5" text-anchor="middle">isocalendar</text>
+      <rect x="1056" y="32" width="104" height="24" rx="12" fill="#101f33" stroke="#1e3555" stroke-width="1"/>
+      <rect x="1056" y="32" width="104" height="24" rx="12" fill="none" stroke="#a9c8f2" stroke-width="1.2" opacity="0.16">
+        <animate attributeName="opacity" values="0.16;0.9;0.36" keyTimes="0;0.4;1" dur="5s" begin="3.2s" repeatCount="indefinite"/>
       </rect>
-      <text x="1100" y="46" font-size="11" fill="#9fb8cc" text-anchor="middle">repositories</text>
+      <text x="1108" y="48" font-size="11" fill="#b6d2f5" text-anchor="middle">repositories</text>
 
-    <rect x="40" y="88" width="880" height="10" rx="5" fill="#0e1622" stroke="#2a475e" stroke-width="1"/>
-    <g stroke="#2a475e" stroke-width="1" opacity="0.55">
-      <path d="M128 90 V96"/><path d="M216 90 V96"/><path d="M304 90 V96"/><path d="M392 90 V96"/>
-      <path d="M480 90 V96"/><path d="M568 90 V96"/><path d="M656 90 V96"/><path d="M744 90 V96"/><path d="M832 90 V96"/>
+    <rect x="40" y="88" width="880" height="10" rx="5" fill="#060d18" stroke="#1e3555" stroke-width="1"/>
+    <g stroke="#1e3555" stroke-width="1" opacity="0.6">
+      <path d="M128 90 V96"/><path d="M216 90 V96"/><path d="M304 90 V96"/><path d="M392 90 V96"/><path d="M480 90 V96"/><path d="M568 90 V96"/><path d="M656 90 V96"/><path d="M744 90 V96"/><path d="M832 90 V96"/>
     </g>
     <rect x="41" y="89" width="6" height="8" rx="4" fill="url(#fill)">
       <animate attributeName="width" values="6;878;6" dur="9s" repeatCount="indefinite"/>
@@ -77,22 +76,22 @@
     </rect>
 
     <g font-size="15">
-      <text x="1140" y="99" fill="#66c0f4" text-anchor="end" opacity="0">
+      <text x="1140" y="99" fill="#7ea6e0" text-anchor="end" opacity="0">
         [ 21% ]
         <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.06;0.1;0.3;0.33" dur="9s" repeatCount="indefinite"/>
       </text>
-      <text x="1140" y="99" fill="#9ad7ff" text-anchor="end" opacity="0">
+      <text x="1140" y="99" fill="#dbe9ff" text-anchor="end" opacity="0">
         [ 64% ]
         <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.36;0.4;0.62;0.65" dur="9s" repeatCount="indefinite"/>
       </text>
-      <text x="1140" y="99" fill="#c7d5e0" text-anchor="end" font-weight="700" opacity="0">
+      <text x="1140" y="99" fill="#eef4ff" text-anchor="end" font-weight="700" opacity="0">
         [ 100% ]
         <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.68;0.72;0.97;1" dur="9s" repeatCount="indefinite"/>
       </text>
     </g>
 
-    <text x="40" y="128" font-size="11" fill="#4d6a85">sources: github api · refresh: daily 00:00 UTC</text>
-    <text x="1140" y="128" font-size="11" fill="#3c5468" text-anchor="end">smil · 60fps · 0 js</text>
+    <text x="40" y="128" font-size="11" fill="#4a6285">sources: github api · refresh daily 00:00 UTC / 08:00 SGT · rendered Mon Oct 05 2026 13:46:30 GMT+0800 (中国标准时间)</text>
+    <text x="1160" y="128" font-size="11" fill="#4a6285" text-anchor="end">smil · 60fps · 0 js</text>
   </g>
 
   <rect x="12" y="12" width="1176" height="126" rx="14" fill="none" stroke="url(#edge)" stroke-width="1.2" opacity="0.7"/>

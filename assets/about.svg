@@ -1,25 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="290" viewBox="0 0 1200 290" role="img" aria-label="arsenal">
   <defs>
     <linearGradient id="panel" x1="0" y1="0" x2="0.4" y2="1">
-      <stop offset="0" stop-color="#1b2838"/>
-      <stop offset="1" stop-color="#131b26"/>
+      <stop offset="0" stop-color="#0b1727"/>
+      <stop offset="1" stop-color="#0a1424"/>
     </linearGradient>
     <linearGradient id="edge" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#66c0f4"/>
-      <stop offset="0.6" stop-color="#2a475e"/>
-      <stop offset="1" stop-color="#57cbde"/>
+      <stop offset="0" stop-color="#dbe9ff"/>
+      <stop offset="0.6" stop-color="#7ea6e0"/>
+      <stop offset="1" stop-color="#a9c8f2"/>
     </linearGradient>
     <linearGradient id="flow" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#9ad7ff" stop-opacity="0"/>
-      <stop offset="0.5" stop-color="#9ad7ff" stop-opacity="0.9"/>
-      <stop offset="1" stop-color="#9ad7ff" stop-opacity="0"/>
+      <stop offset="0" stop-color="#dbe9ff" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#dbe9ff" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#dbe9ff" stop-opacity="0"/>
     </linearGradient>
     <radialGradient id="bloom" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#8fd4ff" stop-opacity="0.2"/>
-      <stop offset="1" stop-color="#8fd4ff" stop-opacity="0"/>
+      <stop offset="0" stop-color="#9cc0f0" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#9cc0f0" stop-opacity="0"/>
     </radialGradient>
     <pattern id="grid" width="34" height="34" patternUnits="userSpaceOnUse">
-      <path d="M34 0 H0 V34" fill="none" stroke="#22384d" stroke-width="1" stroke-opacity="0.45"/>
+      <path d="M34 0 H0 V34" fill="none" stroke="#1e3555" stroke-width="1" stroke-opacity="0.4"/>
     </pattern>
     <clipPath id="frame">
       <rect x="12" y="12" width="1176" height="266" rx="14"/>
@@ -31,105 +31,104 @@
 
   <rect x="12" y="12" width="1176" height="266" rx="14" fill="url(#panel)"/>
   <g clip-path="url(#frame)">
-    <rect x="-34" y="-34" width="1244" height="336" fill="url(#grid)" opacity="0.3">
+    <rect x="-34" y="-34" width="1268" height="358" fill="url(#grid)" opacity="0.3">
       <animateTransform attributeName="transform" type="translate" values="0 0;34 34" dur="16s" repeatCount="indefinite"/>
     </rect>
     <circle cx="1080" cy="30" r="170" fill="url(#bloom)">
       <animate attributeName="opacity" values="0.7;1;0.7" dur="9s" repeatCount="indefinite"/>
     </circle>
-    <path d="M12 56 H1188" stroke="#2a475e" stroke-width="1"/>
-    <rect x="12" y="0" width="1176" height="2" fill="#66c0f4" opacity="0.22">
-      <animate attributeName="y" values="12;278;12" dur="15s" repeatCount="indefinite"/>
+    <path d="M12 56 H1188" stroke="#1e3555" stroke-width="1"/>
+    <rect x="12" y="0" width="1176" height="2" fill="#a9c8f2" opacity="0.22">
+      <animate attributeName="y" values="12;276;12" dur="15s" repeatCount="indefinite"/>
     </rect>
   </g>
 
   <g class="mono">
-    <text x="40" y="40" font-size="12" letter-spacing="2" fill="#7f9bb3">ARSENAL · 技术栈</text>
-    <text x="1148" y="40" font-size="11" fill="#4d6a85" text-anchor="end">loaded from skillicons · public data</text>
-    <g font-size="13">
-      <rect x="330" y="78" width="59" height="30" rx="15" fill="#0e1622" stroke="#2a475e" stroke-width="1"/>
-      <rect x="330" y="78" width="59" height="30" rx="15" fill="none" stroke="#66c0f4" stroke-width="1.2" opacity="0.2">
-        <animate attributeName="opacity" values="0.2;0.85;0.35" keyTimes="0;0.35;1" dur="5.2s" begin="0.00s" repeatCount="indefinite"/>
-      </rect>
-      <text x="359" y="98" font-size="13" fill="#c7d5e0" text-anchor="middle">Rust</text>
-      <rect x="401" y="78" width="59" height="30" rx="15" fill="#0e1622" stroke="#2a475e" stroke-width="1"/>
-      <rect x="401" y="78" width="59" height="30" rx="15" fill="none" stroke="#66c0f4" stroke-width="1.2" opacity="0.2">
+    <text x="40" y="40" font-size="12" letter-spacing="2" fill="#7e97b8">ARSENAL · 技术栈</text>
+    <text x="1160" y="40" font-size="11" fill="#4a6285" text-anchor="end">tools: 14 · region: South Africa · SGT UTC+8</text>
+    
+      <rect x="319" y="78" width="61" height="30" rx="15" fill="#101f33" stroke="#1e3555" stroke-width="1"/>
+      <rect x="319" y="78" width="61" height="30" rx="15" fill="none" stroke="#a9c8f2" stroke-width="1.2" opacity="0.2">
         <animate attributeName="opacity" values="0.2;0.85;0.35" keyTimes="0;0.35;1" dur="5.2s" begin="0.35s" repeatCount="indefinite"/>
       </rect>
-      <text x="430" y="98" font-size="13" fill="#c7d5e0" text-anchor="middle">Java</text>
-      <rect x="472" y="78" width="80" height="30" rx="15" fill="#0e1622" stroke="#2a475e" stroke-width="1"/>
-      <rect x="472" y="78" width="80" height="30" rx="15" fill="none" stroke="#66c0f4" stroke-width="1.2" opacity="0.2">
+      <text x="349.5" y="98" font-size="13" fill="#eef4ff" text-anchor="middle">Rust</text>
+      <rect x="392" y="78" width="61" height="30" rx="15" fill="#101f33" stroke="#1e3555" stroke-width="1"/>
+      <rect x="392" y="78" width="61" height="30" rx="15" fill="none" stroke="#a9c8f2" stroke-width="1.2" opacity="0.2">
         <animate attributeName="opacity" values="0.2;0.85;0.35" keyTimes="0;0.35;1" dur="5.2s" begin="0.70s" repeatCount="indefinite"/>
       </rect>
-      <text x="512" y="98" font-size="13" fill="#c7d5e0" text-anchor="middle">C / C++</text>
-      <rect x="564" y="78" width="80" height="30" rx="15" fill="#0e1622" stroke="#2a475e" stroke-width="1"/>
-      <rect x="564" y="78" width="80" height="30" rx="15" fill="none" stroke="#66c0f4" stroke-width="1.2" opacity="0.2">
+      <text x="422.5" y="98" font-size="13" fill="#eef4ff" text-anchor="middle">Java</text>
+      <rect x="465" y="78" width="85" height="30" rx="15" fill="#101f33" stroke="#1e3555" stroke-width="1"/>
+      <rect x="465" y="78" width="85" height="30" rx="15" fill="none" stroke="#a9c8f2" stroke-width="1.2" opacity="0.2">
         <animate attributeName="opacity" values="0.2;0.85;0.35" keyTimes="0;0.35;1" dur="5.2s" begin="1.05s" repeatCount="indefinite"/>
       </rect>
-      <text x="604" y="98" font-size="13" fill="#c7d5e0" text-anchor="middle">Flutter</text>
-      <rect x="656" y="78" width="73" height="30" rx="15" fill="#0e1622" stroke="#2a475e" stroke-width="1"/>
-      <rect x="656" y="78" width="73" height="30" rx="15" fill="none" stroke="#66c0f4" stroke-width="1.2" opacity="0.2">
+      <text x="507.5" y="98" font-size="13" fill="#eef4ff" text-anchor="middle">C / C++</text>
+      <rect x="562" y="78" width="85" height="30" rx="15" fill="#101f33" stroke="#1e3555" stroke-width="1"/>
+      <rect x="562" y="78" width="85" height="30" rx="15" fill="none" stroke="#a9c8f2" stroke-width="1.2" opacity="0.2">
         <animate attributeName="opacity" values="0.2;0.85;0.35" keyTimes="0;0.35;1" dur="5.2s" begin="1.40s" repeatCount="indefinite"/>
       </rect>
-      <text x="692" y="98" font-size="13" fill="#c7d5e0" text-anchor="middle">SQLite</text>
-      <rect x="741" y="78" width="66" height="30" rx="15" fill="#0e1622" stroke="#2a475e" stroke-width="1"/>
-      <rect x="741" y="78" width="66" height="30" rx="15" fill="none" stroke="#66c0f4" stroke-width="1.2" opacity="0.2">
+      <text x="604.5" y="98" font-size="13" fill="#eef4ff" text-anchor="middle">Flutter</text>
+      <rect x="659" y="78" width="77" height="30" rx="15" fill="#101f33" stroke="#1e3555" stroke-width="1"/>
+      <rect x="659" y="78" width="77" height="30" rx="15" fill="none" stroke="#a9c8f2" stroke-width="1.2" opacity="0.2">
         <animate attributeName="opacity" values="0.2;0.85;0.35" keyTimes="0;0.35;1" dur="5.2s" begin="1.75s" repeatCount="indefinite"/>
       </rect>
-      <text x="774" y="98" font-size="13" fill="#c7d5e0" text-anchor="middle">Linux</text>
-      <rect x="819" y="78" width="51" height="30" rx="15" fill="#0e1622" stroke="#2a475e" stroke-width="1"/>
-      <rect x="819" y="78" width="51" height="30" rx="15" fill="none" stroke="#66c0f4" stroke-width="1.2" opacity="0.2">
+      <text x="697.5" y="98" font-size="13" fill="#eef4ff" text-anchor="middle">SQLite</text>
+      <rect x="748" y="78" width="69" height="30" rx="15" fill="#101f33" stroke="#1e3555" stroke-width="1"/>
+      <rect x="748" y="78" width="69" height="30" rx="15" fill="none" stroke="#a9c8f2" stroke-width="1.2" opacity="0.2">
         <animate attributeName="opacity" values="0.2;0.85;0.35" keyTimes="0;0.35;1" dur="5.2s" begin="2.10s" repeatCount="indefinite"/>
       </rect>
-      <text x="844" y="98" font-size="13" fill="#c7d5e0" text-anchor="middle">Git</text></g>
-    <g font-size="13">
-      <rect x="305" y="122" width="59" height="30" rx="15" fill="#0e1622" stroke="#2a475e" stroke-width="1"/>
-      <rect x="305" y="122" width="59" height="30" rx="15" fill="none" stroke="#66c0f4" stroke-width="1.2" opacity="0.2">
+      <text x="782.5" y="98" font-size="13" fill="#eef4ff" text-anchor="middle">Linux</text>
+      <rect x="829" y="78" width="53" height="30" rx="15" fill="#101f33" stroke="#1e3555" stroke-width="1"/>
+      <rect x="829" y="78" width="53" height="30" rx="15" fill="none" stroke="#a9c8f2" stroke-width="1.2" opacity="0.2">
         <animate attributeName="opacity" values="0.2;0.85;0.35" keyTimes="0;0.35;1" dur="5.2s" begin="2.45s" repeatCount="indefinite"/>
       </rect>
-      <text x="334" y="142" font-size="13" fill="#c7d5e0" text-anchor="middle">Kali</text>
-      <rect x="376" y="122" width="59" height="30" rx="15" fill="#0e1622" stroke="#2a475e" stroke-width="1"/>
-      <rect x="376" y="122" width="59" height="30" rx="15" fill="none" stroke="#66c0f4" stroke-width="1.2" opacity="0.2">
+      <text x="855.5" y="98" font-size="13" fill="#eef4ff" text-anchor="middle">Git</text>
+      <rect x="291" y="122" width="61" height="30" rx="15" fill="#101f33" stroke="#1e3555" stroke-width="1"/>
+      <rect x="291" y="122" width="61" height="30" rx="15" fill="none" stroke="#a9c8f2" stroke-width="1.2" opacity="0.2">
         <animate attributeName="opacity" values="0.2;0.85;0.35" keyTimes="0;0.35;1" dur="5.2s" begin="2.80s" repeatCount="indefinite"/>
       </rect>
-      <text x="405" y="142" font-size="13" fill="#c7d5e0" text-anchor="middle">IPFS</text>
-      <rect x="447" y="122" width="80" height="30" rx="15" fill="#0e1622" stroke="#2a475e" stroke-width="1"/>
-      <rect x="447" y="122" width="80" height="30" rx="15" fill="none" stroke="#66c0f4" stroke-width="1.2" opacity="0.2">
+      <text x="321.5" y="142" font-size="13" fill="#eef4ff" text-anchor="middle">Kali</text>
+      <rect x="364" y="122" width="61" height="30" rx="15" fill="#101f33" stroke="#1e3555" stroke-width="1"/>
+      <rect x="364" y="122" width="61" height="30" rx="15" fill="none" stroke="#a9c8f2" stroke-width="1.2" opacity="0.2">
         <animate attributeName="opacity" values="0.2;0.85;0.35" keyTimes="0;0.35;1" dur="5.2s" begin="3.15s" repeatCount="indefinite"/>
       </rect>
-      <text x="487" y="142" font-size="13" fill="#c7d5e0" text-anchor="middle">Arduino</text>
-      <rect x="539" y="122" width="80" height="30" rx="15" fill="#0e1622" stroke="#2a475e" stroke-width="1"/>
-      <rect x="539" y="122" width="80" height="30" rx="15" fill="none" stroke="#66c0f4" stroke-width="1.2" opacity="0.2">
+      <text x="394.5" y="142" font-size="13" fill="#eef4ff" text-anchor="middle">IPFS</text>
+      <rect x="437" y="122" width="85" height="30" rx="15" fill="#101f33" stroke="#1e3555" stroke-width="1"/>
+      <rect x="437" y="122" width="85" height="30" rx="15" fill="none" stroke="#a9c8f2" stroke-width="1.2" opacity="0.2">
         <animate attributeName="opacity" values="0.2;0.85;0.35" keyTimes="0;0.35;1" dur="5.2s" begin="3.50s" repeatCount="indefinite"/>
       </rect>
-      <text x="579" y="142" font-size="13" fill="#c7d5e0" text-anchor="middle">Postman</text>
-      <rect x="631" y="122" width="80" height="30" rx="15" fill="#0e1622" stroke="#2a475e" stroke-width="1"/>
-      <rect x="631" y="122" width="80" height="30" rx="15" fill="none" stroke="#66c0f4" stroke-width="1.2" opacity="0.2">
+      <text x="479.5" y="142" font-size="13" fill="#eef4ff" text-anchor="middle">Arduino</text>
+      <rect x="534" y="122" width="85" height="30" rx="15" fill="#101f33" stroke="#1e3555" stroke-width="1"/>
+      <rect x="534" y="122" width="85" height="30" rx="15" fill="none" stroke="#a9c8f2" stroke-width="1.2" opacity="0.2">
         <animate attributeName="opacity" values="0.2;0.85;0.35" keyTimes="0;0.35;1" dur="5.2s" begin="3.85s" repeatCount="indefinite"/>
       </rect>
-      <text x="671" y="142" font-size="13" fill="#c7d5e0" text-anchor="middle">Actions</text>
-      <rect x="723" y="122" width="80" height="30" rx="15" fill="#0e1622" stroke="#2a475e" stroke-width="1"/>
-      <rect x="723" y="122" width="80" height="30" rx="15" fill="none" stroke="#66c0f4" stroke-width="1.2" opacity="0.2">
+      <text x="576.5" y="142" font-size="13" fill="#eef4ff" text-anchor="middle">Postman</text>
+      <rect x="631" y="122" width="85" height="30" rx="15" fill="#101f33" stroke="#1e3555" stroke-width="1"/>
+      <rect x="631" y="122" width="85" height="30" rx="15" fill="none" stroke="#a9c8f2" stroke-width="1.2" opacity="0.2">
         <animate attributeName="opacity" values="0.2;0.85;0.35" keyTimes="0;0.35;1" dur="5.2s" begin="4.20s" repeatCount="indefinite"/>
       </rect>
-      <text x="763" y="142" font-size="13" fill="#c7d5e0" text-anchor="middle">Windows</text>
-      <rect x="815" y="122" width="80" height="30" rx="15" fill="#0e1622" stroke="#2a475e" stroke-width="1"/>
-      <rect x="815" y="122" width="80" height="30" rx="15" fill="none" stroke="#66c0f4" stroke-width="1.2" opacity="0.2">
+      <text x="673.5" y="142" font-size="13" fill="#eef4ff" text-anchor="middle">Actions</text>
+      <rect x="728" y="122" width="85" height="30" rx="15" fill="#101f33" stroke="#1e3555" stroke-width="1"/>
+      <rect x="728" y="122" width="85" height="30" rx="15" fill="none" stroke="#a9c8f2" stroke-width="1.2" opacity="0.2">
         <animate attributeName="opacity" values="0.2;0.85;0.35" keyTimes="0;0.35;1" dur="5.2s" begin="4.55s" repeatCount="indefinite"/>
       </rect>
-      <text x="855" y="142" font-size="13" fill="#c7d5e0" text-anchor="middle">Android</text></g>
+      <text x="770.5" y="142" font-size="13" fill="#eef4ff" text-anchor="middle">Windows</text>
+      <rect x="825" y="122" width="85" height="30" rx="15" fill="#101f33" stroke="#1e3555" stroke-width="1"/>
+      <rect x="825" y="122" width="85" height="30" rx="15" fill="none" stroke="#a9c8f2" stroke-width="1.2" opacity="0.2">
+        <animate attributeName="opacity" values="0.2;0.85;0.35" keyTimes="0;0.35;1" dur="5.2s" begin="4.90s" repeatCount="indefinite"/>
+      </rect>
+      <text x="867.5" y="142" font-size="13" fill="#eef4ff" text-anchor="middle">Android</text>
     
-      <rect x="203" y="192" width="250" height="56" rx="10" fill="#121a25" stroke="#2a475e" stroke-width="1"/>
-      <text x="328" y="218" font-size="17" fill="#66c0f4" text-anchor="middle" letter-spacing="1">14 tools</text>
-      <text x="328" y="236" font-size="10" fill="#5c6b7a" text-anchor="middle" letter-spacing="2">STACK</text>
-      <rect x="475" y="192" width="250" height="56" rx="10" fill="#121a25" stroke="#2a475e" stroke-width="1"/>
-      <text x="600" y="218" font-size="17" fill="#57cbde" text-anchor="middle" letter-spacing="1">99.9%</text>
-      <text x="600" y="236" font-size="10" fill="#5c6b7a" text-anchor="middle" letter-spacing="2">UPTIME</text>
-      <rect x="747" y="192" width="250" height="56" rx="10" fill="#121a25" stroke="#2a475e" stroke-width="1"/>
-      <text x="872" y="218" font-size="17" fill="#9ad7ff" text-anchor="middle" letter-spacing="1">hanayome 花嫁</text>
-      <text x="872" y="236" font-size="10" fill="#5c6b7a" text-anchor="middle" letter-spacing="2">MODE</text>
-    <path d="M40 268 H1160" stroke="#2a475e" stroke-width="1.2" stroke-linecap="round"/>
-    <path d="M40 268 H1160" stroke="url(#flow)" stroke-width="2" stroke-linecap="round" stroke-dasharray="160 1400">
+      <rect x="203" y="176" width="250" height="56" rx="10" fill="#101f33" stroke="#1e3555" stroke-width="1"/>
+      <text x="328" y="202" font-size="17" letter-spacing="1" fill="#dbe9ff" text-anchor="middle">14 tools</text>
+      <text x="328" y="220" font-size="10" letter-spacing="2" fill="#4a6285" text-anchor="middle">STACK</text>
+      <rect x="475" y="176" width="250" height="56" rx="10" fill="#101f33" stroke="#1e3555" stroke-width="1"/>
+      <text x="600" y="202" font-size="17" letter-spacing="1" fill="#a9c8f2" text-anchor="middle">South Africa</text>
+      <text x="600" y="220" font-size="10" letter-spacing="2" fill="#4a6285" text-anchor="middle">REGION</text>
+      <rect x="747" y="176" width="250" height="56" rx="10" fill="#101f33" stroke="#1e3555" stroke-width="1"/>
+      <text x="872" y="202" font-size="17" letter-spacing="1" fill="#7ea6e0" text-anchor="middle">SGT UTC+8</text>
+      <text x="872" y="220" font-size="10" letter-spacing="2" fill="#4a6285" text-anchor="middle">TIMEZONE</text>
+    <path d="M40 256 H1160" stroke="#1e3555" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M40 256 H1160" stroke="url(#flow)" stroke-width="2" stroke-linecap="round" stroke-dasharray="160 1400">
       <animate attributeName="stroke-dashoffset" values="0;-1600" dur="6s" repeatCount="indefinite"/>
     </path>
   </g>
