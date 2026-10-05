@@ -1,46 +1,46 @@
-/** Arsenal: the stack as measured-width pills plus region and timezone tiles. */
+/**
+ * Arsenal: the stack as measured-width pills plus region and timezone tiles.
+ * Carries its own section label so the page needs no markdown heading between
+ * cards — that is what keeps the backdrop unbroken.
+ */
 
 import { IDENTITY, PALETTE as P, STACK } from '../lib/config.mjs';
-import { esc, monoWidth, watermarkDefs, watermarkRect } from '../lib/svg.mjs';
+import { esc, monoWidth, backdropSlice, watermarkDefs, watermarkRect } from '../lib/svg.mjs';
 
 const W = 1200;
-const H = 290;
-const HEADER_Y = 56;
+const H = 220;
+const HEADER_Y = 52;
 
-const PILL = { height: 30, pad: 15, gap: 12, rows: [78, 122] };
-const TILE = { width: 250, height: 56, gap: 22, y: 176 };
+const PILL = { height: 28, pad: 14, gap: 12, rows: [70, 110] };
+const TILE = { width: 250, height: 46, gap: 22, y: 152 };
 
 const TILES = [
-  ['STACK', `${STACK.length} tools`, P.accent1],
-  ['REGION', IDENTITY.region, P.accent2],
-  ['TIMEZONE', IDENTITY.timezoneLabel, P.accent3],
+  ['STACK', `${STACK.length} tools`],
+  ['REGION', IDENTITY.region],
+  ['TIMEZONE', IDENTITY.timezoneLabel],
 ];
 
-function splitRows(items) {
-  const half = Math.ceil(items.length / 2);
-  return [items.slice(0, half), items.slice(half)];
-}
-
 function pills() {
-  const rowSource = splitRows(STACK);
+  const half = Math.ceil(STACK.length / 2);
+  const rows = [STACK.slice(0, half), STACK.slice(half)];
   let index = 0;
 
-  return rowSource.map((row, rowIndex) => {
-    const widths = row.map((label) => Math.round(monoWidth(label, 13) + PILL.pad * 2));
-    const total = widths.reduce((sum, w) => sum + w, 0) + PILL.gap * (row.length - 1);
+  return rows.map((row, rowIndex) => {
+    const widths = row.map((label) => Math.round(monoWidth(label, 12) + PILL.pad * 2));
+    const total = widths.reduce((sum, width) => sum + width, 0) + PILL.gap * (row.length - 1);
     let x = Math.round((W - total) / 2);
     const y = PILL.rows[rowIndex];
 
     return row.map((label, i) => {
-      const w = widths[i];
-      const delay = (index += 1) * 0.35;
+      const width = widths[i];
+      const delay = (index += 1) * 0.32;
       const pill = `
-      <rect x="${x}" y="${y}" width="${w}" height="${PILL.height}" rx="15" fill="${P.ink2}" stroke="${P.line}" stroke-width="1"/>
-      <rect x="${x}" y="${y}" width="${w}" height="${PILL.height}" rx="15" fill="none" stroke="${P.accent2}" stroke-width="1.2" opacity="0.2">
-        <animate attributeName="opacity" values="0.2;0.85;0.35" keyTimes="0;0.35;1" dur="5.2s" begin="${delay.toFixed(2)}s" repeatCount="indefinite"/>
+      <rect x="${x}" y="${y}" width="${width}" height="${PILL.height}" rx="14" fill="${P.ink0}" fill-opacity="0.4" stroke="${P.lineBright}" stroke-width="1"/>
+      <rect x="${x}" y="${y}" width="${width}" height="${PILL.height}" rx="14" fill="none" stroke="${P.accent2}" stroke-width="1.2" opacity="0.2">
+        <animate attributeName="opacity" values="0.2;0.8;0.3" keyTimes="0;0.35;1" dur="5s" begin="${delay.toFixed(2)}s" repeatCount="indefinite"/>
       </rect>
-      <text x="${x + w / 2}" y="${y + 20}" font-size="13" fill="${P.silver}" text-anchor="middle">${esc(label)}</text>`;
-      x += w + PILL.gap;
+      <text x="${x + width / 2}" y="${y + 19}" font-size="12" fill="${P.silver}" text-anchor="middle">${esc(label)}</text>`;
+      x += width + PILL.gap;
       return pill;
     }).join('');
   }).join('');
@@ -49,17 +49,17 @@ function pills() {
 function tiles() {
   const total = TILES.length * TILE.width + (TILES.length - 1) * TILE.gap;
   let x = Math.round((W - total) / 2);
-  return TILES.map(([label, value, color]) => {
+  return TILES.map(([label, value]) => {
     const tile = `
-      <rect x="${x}" y="${TILE.y}" width="${TILE.width}" height="${TILE.height}" rx="10" fill="${P.ink2}" stroke="${P.line}" stroke-width="1"/>
-      <text x="${x + TILE.width / 2}" y="${TILE.y + 26}" font-size="17" letter-spacing="1" fill="${color}" text-anchor="middle">${esc(value)}</text>
-      <text x="${x + TILE.width / 2}" y="${TILE.y + 44}" font-size="10" letter-spacing="2" fill="${P.faint}" text-anchor="middle">${esc(label)}</text>`;
+      <rect x="${x}" y="${TILE.y}" width="${TILE.width}" height="${TILE.height}" rx="9" fill="${P.ink0}" fill-opacity="0.4" stroke="${P.lineBright}" stroke-width="1"/>
+      <text x="${x + 14}" y="${TILE.y + 21}" font-size="14" letter-spacing="0.5" fill="${P.silver}">${esc(value)}</text>
+      <text x="${x + TILE.width - 14}" y="${TILE.y + 21}" font-size="10" letter-spacing="2" fill="${P.ice}" text-anchor="end">${esc(label)}</text>`;
     x += TILE.width + TILE.gap;
     return tile;
   }).join('');
 }
 
-export function render({ canvas, renderedAt }) {
+export function render({ backdrop, renderedAt }) {
   return `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="arsenal">
   <defs>
     <linearGradient id="panel" x1="0" y1="0" x2="0.4" y2="1">
@@ -76,20 +76,12 @@ export function render({ canvas, renderedAt }) {
       <stop offset="0.5" stop-color="${P.accent1}" stop-opacity="0.9"/>
       <stop offset="1" stop-color="${P.accent1}" stop-opacity="0"/>
     </linearGradient>
-    <linearGradient id="topfade" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="${P.ink0}" stop-opacity="0.6"/>
-      <stop offset="0.4" stop-color="${P.ink0}" stop-opacity="0.44"/>
-      <stop offset="1" stop-color="${P.ink0}" stop-opacity="0.68"/>
+    <linearGradient id="shade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="${P.ink0}" stop-opacity="0.52"/>
+      <stop offset="1" stop-color="${P.ink0}" stop-opacity="0.62"/>
     </linearGradient>
-    <radialGradient id="bloom" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="${P.glow}" stop-opacity="0.2"/>
-      <stop offset="1" stop-color="${P.glow}" stop-opacity="0"/>
-    </radialGradient>
-    <pattern id="grid" width="34" height="34" patternUnits="userSpaceOnUse">
-      <path d="M34 0 H0 V34" fill="none" stroke="${P.line}" stroke-width="1" stroke-opacity="0.4"/>
-    </pattern>
-    <filter id="soft" x="-10%" y="-25%" width="120%" height="150%">
-      <feGaussianBlur stdDeviation="5"/>
+    <filter id="soft5" x="-6%" y="-30%" width="112%" height="160%">
+      <feGaussianBlur stdDeviation="2.5"/>
     </filter>
     <clipPath id="frame">
       <rect x="12" y="12" width="${W - 24}" height="${H - 24}" rx="14"/>
@@ -102,33 +94,27 @@ export function render({ canvas, renderedAt }) {
 
   <rect x="12" y="12" width="${W - 24}" height="${H - 24}" rx="14" fill="url(#panel)"/>
   <g clip-path="url(#frame)">
-    <g filter="url(#soft)">${canvas.slice}</g>
-    <rect x="12" y="12" width="${W - 24}" height="${H - 24}" fill="url(#topfade)"/>
+    <g filter="url(#soft5)">${backdropSlice(backdrop)}</g>
+    <rect x="12" y="12" width="${W - 24}" height="${H - 24}" fill="url(#shade)"/>
     ${watermarkRect({ x: 12, y: 12, width: W - 24, height: H - 24 })}
-    <rect x="-34" y="-34" width="${W + 68}" height="${H + 68}" fill="url(#grid)" opacity="0.3">
-      <animateTransform attributeName="transform" type="translate" values="0 0;34 34" dur="16s" repeatCount="indefinite"/>
-    </rect>
-    <circle cx="1080" cy="30" r="170" fill="url(#bloom)">
-      <animate attributeName="opacity" values="0.7;1;0.7" dur="9s" repeatCount="indefinite"/>
-    </circle>
-    <path d="M12 ${HEADER_Y} H${W - 12}" stroke="${P.line}" stroke-width="1"/>
+    <path d="M12 ${HEADER_Y} H${W - 12}" stroke="${P.lineBright}" stroke-width="1"/>
     <rect x="12" y="0" width="${W - 24}" height="2" fill="${P.accent2}" opacity="0.22">
-      <animate attributeName="y" values="12;${H - 14};12" dur="15s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="12;${H - 14};12" dur="13s" repeatCount="indefinite"/>
     </rect>
   </g>
 
   <g class="mono">
-    <text x="40" y="40" font-size="12" letter-spacing="2" fill="${P.ice}">ARSENAL · 技术栈</text>
-    <text x="${W - 40}" y="40" font-size="11" fill="${P.ice}" fill-opacity="0.85" text-anchor="end">tools: ${STACK.length} · region: ${esc(IDENTITY.region)} · ${esc(IDENTITY.timezoneLabel)} · ${esc(renderedAt)}</text>
+    <text x="40" y="37" font-size="12" letter-spacing="2" fill="${P.ice}">⟨ 02 ⟩ ARSENAL · 技术栈</text>
+    <text x="${W - 40}" y="37" font-size="11" fill="${P.ice}" fill-opacity="0.85" text-anchor="end">tools: ${STACK.length} · region: ${esc(IDENTITY.region)} · ${esc(IDENTITY.timezoneLabel)} · ${esc(renderedAt)}</text>
     ${pills()}
     ${tiles()}
-    <path d="M40 256 H1160" stroke="${P.line}" stroke-width="1.2" stroke-linecap="round"/>
-    <path d="M40 256 H1160" stroke="url(#flow)" stroke-width="2" stroke-linecap="round" stroke-dasharray="160 1400">
+    <path d="M40 ${H - 20} H${W - 40}" stroke="${P.lineBright}" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M40 ${H - 20} H${W - 40}" stroke="url(#flow)" stroke-width="2" stroke-linecap="round" stroke-dasharray="160 1400">
       <animate attributeName="stroke-dashoffset" values="0;-1600" dur="6s" repeatCount="indefinite"/>
     </path>
   </g>
 
-  <rect x="12" y="12" width="${W - 24}" height="${H - 24}" rx="14" fill="none" stroke="url(#edge)" stroke-width="1.2" opacity="0.7"/>
+  <rect x="12" y="12" width="${W - 24}" height="${H - 24}" rx="14" fill="none" stroke="url(#edge)" stroke-width="1.2" opacity="0.72"/>
 </svg>
 `;
 }

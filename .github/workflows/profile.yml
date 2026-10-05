@@ -6,7 +6,12 @@
 #                     AES-256-GCM ciphertext in assets/artwork/; the key lives
 #                     in repository secrets and is used only inside this job.
 #                     Only ciphertext is committed — the decrypted images never
-#                     touch the working tree.
+#                     touch the working tree, and a guard step enforces it.
+#
+# The rendered cards themselves cannot be encrypted: GitHub hands them to the
+# browser as ordinary images, so their pixels are public by construction. What
+# the key protects is the source artwork — the published derivatives are
+# watermarked and the originals are not in the repository at all.
 #
 # No personal access token is involved, so the previous "Bad credentials"
 # failure mode is gone: the only network call is the public GitHub API for the
@@ -36,6 +41,20 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # The repository must never contain plaintext artwork. Only the encrypted
+      # containers under assets/artwork/ are allowed to be binary.
+      - name: Guard against plaintext artwork
+        shell: bash
+        run: |
+          set -uo pipefail
+          found="$(git ls-files | grep -Ei '\.(jpe?g|png|webp|gif|bmp|tiff?)$' || true)"
+          if [[ -n "$found" ]]; then
+            echo "tracked plaintext images are not allowed:" >&2
+            echo "$found" >&2
+            exit 1
+          fi
+          echo "ok: no tracked image files outside assets/artwork/*.enc"
+
       - name: Render assets
         id: render
         run: node scripts/render.mjs
@@ -53,7 +72,7 @@ jobs:
             echo
             echo "The committed cards are kept unchanged."
             echo "Add the 64 hex character key under **Settings → Secrets and variables → Actions → \`IMAGE_AES_DECRYPT\`** to refresh them."
-            echo "Locally: \`IMAGE_AES_DECRYPT=<hex> node scripts/pack-artwork.mjs --id hero-night --in hero.jpg\`."
+            echo "Locally: \`IMAGE_AES_DECRYPT=<hex> node scripts/pack-artwork.mjs --id backdrop-tail --in tail.jpg\`."
             echo
             echo "A blob that fails authentication is *not* this path — that aborts the run."
           } >> "$GITHUB_STEP_SUMMARY"

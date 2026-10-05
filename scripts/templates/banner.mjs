@@ -17,8 +17,8 @@ import { IDENTITY, PALETTE as P, STACK } from '../lib/config.mjs';
 import { esc, isoDate, monoWidth } from '../lib/svg.mjs';
 
 const W = 1200;
-const H = 1024;
-const STRIP_Y = 712;
+const H = 1025;
+const STRIP_Y = 713;
 const BOTTOM = H - 12;
 
 /** Strip geometry, derived from one anchor so the three columns stay aligned. */
@@ -271,9 +271,9 @@ export function render({ hero, account, avatar, renderedAt }) {
       <path d="M-70 0 H-40 M40 0 H70 M0 -70 V-40 M0 40 V70" stroke-width="1"/>
       <circle r="2.4" fill="${P.accent2}" stroke="none"/>
     </g>
-    <rect x="896" y="376" width="212" height="52" rx="8" fill="${P.ink0}" fill-opacity="0.62" stroke="${P.lineBright}" stroke-width="1"/>
-    <text class="mono" x="1002" y="397" font-size="11" letter-spacing="3" fill="${P.accent1}" text-anchor="middle">MOONLIT CATHEDRAL</text>
-    <text class="mono" x="1002" y="416" font-size="10" letter-spacing="0.5" fill="${P.ice}" fill-opacity="0.9" text-anchor="middle">src 768 × 1365 · crop 1200 × 1024</text>
+    <rect x="896" y="366" width="212" height="52" rx="8" fill="${P.ink0}" fill-opacity="0.62" stroke="${P.lineBright}" stroke-width="1"/>
+    <text class="mono" x="1002" y="387" font-size="11" letter-spacing="3" fill="${P.accent1}" text-anchor="middle">MOONLIT CATHEDRAL</text>
+    <text class="mono" x="1002" y="406" font-size="10" letter-spacing="0.5" fill="${P.ice}" fill-opacity="0.9" text-anchor="middle">src 768 × 1365 · crop 1200 × 1025</text>
     ${equaliser()}
 
     <path d="M12 ${STRIP_Y} H${W - 12}" stroke="${P.accent2}" stroke-opacity="0.4" stroke-width="1"/>

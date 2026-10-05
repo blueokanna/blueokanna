@@ -24,37 +24,23 @@ import { createHash } from 'node:crypto';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { ARTWORK, IDENTITY, PATHS } from './lib/config.mjs';
-import { canvasSlice, dataUri, isoDate } from './lib/svg.mjs';
+import { ARTWORK, IDENTITY, PATHS, TAIL_OFFSETS } from './lib/config.mjs';
+import { backdropSlice, dataUri, isoDate } from './lib/svg.mjs';
 import { open as openContainer, parseKey } from './artwork-crypto.mjs';
 import { collectMetrics, fetchAccount, fetchAvatar } from './lib/github.mjs';
 
 import * as banner from './templates/banner.mjs';
 import * as telemetry from './templates/telemetry.mjs';
 import * as about from './templates/about.mjs';
-import * as divider from './templates/divider.mjs';
 import * as footer from './templates/footer.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const CARD_WIDTH = 1200 - 24;
 
 /** Asset id -> template slot. Adding artwork is a one line change here. */
 const ARTWORK_SLOTS = [
   { file: ARTWORK.hero, slot: 'hero' },
-  { file: ARTWORK.page, slot: 'page' },
+  { file: ARTWORK.tail, slot: 'tail' },
 ];
-
-/**
- * Vertical window of the page canvas used by each card, in source pixels.
- *
- * The banner shows the top of the artwork; these offsets continue below it, so
- * scrolling the profile walks down one continuous backdrop.
- */
-const CANVAS_OFFSETS = {
-  telemetry: 300,
-  about: 599,
-  footer: 754,
-};
 
 async function writeAtomic(relativePath, contents) {
   const target = join(ROOT, relativePath);
@@ -106,7 +92,7 @@ function parseArgs(argv) {
 async function main() {
   const args = parseArgs(process.argv.slice(2));
   if (args.help) {
-    console.log('usage: IMAGE_AES_DECRYPT=<hex> [GITHUB_TOKEN=<token>] node scripts/render.mjs [--only banner,telemetry,about,divider,footer]');
+    console.log('usage: IMAGE_AES_DECRYPT=<hex> [GITHUB_TOKEN=<token>] node scripts/render.mjs [--only banner,telemetry,about,footer]');
     return 0;
   }
 
@@ -118,16 +104,11 @@ async function main() {
   const skipped = [];
 
   const artworkData = await decryptArtwork();
-  const canvasUri = artworkData?.decoded.page ?? null;
-
-  const sliceFor = (key) => canvasSlice({
-    uri: canvasUri,
-    cardWidth: CARD_WIDTH,
-    offset: CANVAS_OFFSETS[key],
-  });
+  const tailUri = artworkData?.decoded.tail ?? null;
+  const backdropFor = (key) => (tailUri ? { uri: tailUri, offset: TAIL_OFFSETS[key] } : null);
 
   if (wanted('banner')) {
-    if (!canvasUri) {
+    if (!tailUri) {
       skipped.push('assets/banner.svg');
     } else {
       const account = await fetchAccount(IDENTITY.login, token);
@@ -146,22 +127,21 @@ async function main() {
 
   // Telemetry numbers come from the live API. A lookup that fails only drops
   // rows; the card still renders with whatever was collected.
-  const metrics = wanted('telemetry') && canvasUri ? await collectMetrics(IDENTITY.login, token) : null;
+  const metrics = wanted('telemetry') && tailUri ? await collectMetrics(IDENTITY.login, token) : null;
 
   const statics = [
     ['assets/telemetry.svg', 'telemetry', () => telemetry.render({
-      canvas: { slice: sliceFor('telemetry') },
+      backdrop: backdropFor('telemetry'),
       metrics,
       renderedAt,
     })],
-    ['assets/about.svg', 'about', () => about.render({ canvas: { slice: sliceFor('about') }, renderedAt: stamp })],
-    ['assets/divider.svg', 'divider', () => divider.render()],
-    ['assets/footer.svg', 'footer', () => footer.render({ canvas: { slice: sliceFor('footer') }, renderedAt: stamp })],
+    ['assets/about.svg', 'about', () => about.render({ backdrop: backdropFor('about'), renderedAt: stamp })],
+    ['assets/footer.svg', 'footer', () => footer.render({ backdrop: backdropFor('footer'), renderedAt: stamp })],
   ];
 
   for (const [path, name, build] of statics) {
     if (!wanted(name)) continue;
-    if (name !== 'divider' && !canvasUri) {
+    if (!tailUri) {
       skipped.push(path);
       continue;
     }

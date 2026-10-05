@@ -21,7 +21,7 @@ No dependencies: Node 20+ and `node:crypto`, `node:fs`, `fetch` are enough.
 
 ```bash
 IMAGE_AES_DECRYPT=<64 hex chars> GITHUB_TOKEN=<token> node scripts/render.mjs
-node scripts/render.mjs --only divider,about         # skip artwork-dependent cards
+node scripts/render.mjs --only about,footer              # skip artwork-dependent cards
 ```
 
 Without `GITHUB_TOKEN` the telemetry card still renders, but the contribution
@@ -32,31 +32,44 @@ rename, so a crashed run cannot leave a half-written card in `assets/`.
 ## The artwork
 
 Two encrypted slots. Both are decrypted in memory only — no plaintext image is
-ever written into the working tree.
+ever written into the working tree, and the workflow's guard step fails the run
+if any image file ever becomes tracked.
 
 ```bash
-IMAGE_AES_DECRYPT=<hex> node scripts/pack-artwork.mjs --id hero-night  --in hero.jpg
-IMAGE_AES_DECRYPT=<hex> node scripts/pack-artwork.mjs --id canvas-page --in canvas.jpg
-node scripts/pack-artwork.mjs --verify canvas-page
+IMAGE_AES_DECRYPT=<hex> node scripts/pack-artwork.mjs --id hero-night    --in hero.jpg
+IMAGE_AES_DECRYPT=<hex> node scripts/pack-artwork.mjs --id backdrop-tail --in tail.jpg
+node scripts/pack-artwork.mjs --verify backdrop-tail
 ```
 
-| slot          | pixels    | used by                                                        |
-| ------------- | --------- | -------------------------------------------------------------- |
-| `hero-night`  | 1200×1024 | `assets/banner.svg` — the banner crop, sharp, watermarked       |
-| `canvas-page` | 640×1138  | vertical window in `telemetry/about/footer` — the page backdrop |
+| slot            | pixels    | used by                                       |
+| --------------- | --------- | --------------------------------------------- |
+| `hero-night`    | 1200×1025 | `assets/banner.svg` — source rows 164…820      |
+| `backdrop-tail` | 1176×835  | window in `telemetry/about/footer` — rows 820…1365 |
 
-`canvas-page` is the whole artwork. Every wide card draws the same image at the
-same scale and only shifts its window, so the sections together read as a single
-sheet running down the page:
+### How the page backdrop stays continuous
 
-| card        | canvas offset | card height |
-| ----------- | ------------- | ----------- |
-| `telemetry` | 300           | 560         |
-| `about`     | 599           | 290         |
-| `footer`    | 754           | 160         |
+Source rows 164…1365 are rendered once at a single magnification (×1.5625) and
+split across the four cards, so scrolling the profile walks down one image:
 
-Offsets live in `CANVAS_OFFSETS` in `render.mjs`; add a card by giving it the
-offset that continues the previous one.
+| card        | rows shown | card height | tail offset |
+| ----------- | ---------- | ----------- | ----------- |
+| `banner`    | 164…820    | 1025        | —           |
+| `telemetry` | 820…1122   | 470         | 0           |
+| `about`     | 1122…1279  | 220         | 470         |
+| `footer`    | 1279…1365  | 145         | 690         |
+
+The tail derivative is already at card scale, so a card only slides its window;
+`TAIL_OFFSETS` in `lib/config.mjs` is the whole relay and each offset is the
+previous offset plus the previous card's height. Changing a card height means
+updating the offsets below it — they are intended to be read together.
+
+### Softening policy
+
+* `hero-night` is sampled at 97 % (a 3 % softening) so the banner stays crisp.
+* `backdrop-tail` is sampled at 95 % (a 5 % softening).
+* `about` and `footer` add `feGaussianBlur stdDeviation="2.5"` over their
+  window — a 5 % blur at card scale. The telemetry card draws the backdrop
+  sharp, because it carries the densest text.
 
 Container layout (`assets/artwork/<id>.jpg.enc`):
 
@@ -90,15 +103,19 @@ it cannot reopen.
 
 ## What is and is not public
 
-Ciphertext is committed; decrypted artwork is not. The rendered cards have to be
-public — GitHub displays them as plain images — so the pixels inside them can
-always be extracted by anyone who opens the profile. Two measures apply:
+Ciphertext is committed; decrypted artwork is not. The rendered cards, however,
+cannot be encrypted — GitHub hands them to the browser as ordinary images, so
+anyone who opens the profile can save the pixels they contain. That is a
+property of the platform, not of this pipeline. Three measures apply instead:
 
-* the published derivatives are downscaled and watermarked, and the
-  full-resolution original is not stored in this repository;
+* the full-resolution original is not in this repository at all;
+* the published derivatives are downscaled and carry a baked-in credit plate;
 * every card additionally paints a diagonal `blueokanna` mark
   (`watermarkDefs` / `watermarkRect` in `lib/svg.mjs`) over the artwork, so a
   cropped or re-hosted copy still carries the attribution.
+
+The `Guard against plaintext artwork` step in the workflow keeps the first
+promise honest: if an image file ever becomes tracked, the run fails.
 
 ## Telemetry data
 

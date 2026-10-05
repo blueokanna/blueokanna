@@ -1,7 +1,6 @@
 /** Small SVG helpers shared by every template. */
 
 import { CANVAS } from './config.mjs';
-
 const ESCAPES = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;' };
 
 /** Escapes text for use in SVG character data and attribute values. */
@@ -53,16 +52,16 @@ export function formatBytes(bytes) {
 }
 
 /**
- * Places the page canvas inside a card.
+ * Places the page backdrop inside a card.
  *
- * Every card draws the same image at the same scale and only shifts the window,
- * so consecutive sections read as one continuous backdrop: `offset` is the
- * canvas row, in source pixels, that lands on the card's first row.
+ * The tail derivative is already rendered at card scale, so this only slides
+ * the window: `offset` is how many pixels of the image have scrolled past the
+ * card's top edge. Cards that follow each other use offsets that continue
+ * exactly where the previous card stopped, which is what makes the artwork
+ * read as one sheet down the page rather than a repeating texture.
  */
-export function canvasSlice({ uri, cardWidth, cardHeight, offset, x = 12, y = 12 }) {
-  const scale = cardWidth / CANVAS.width;
-  const height = (CANVAS.height * scale).toFixed(1);
-  return `<image x="${x}" y="${(y - offset * scale).toFixed(1)}" width="${cardWidth}" height="${height}" preserveAspectRatio="none" xlink:href="${uri}"/>`;
+export function backdropSlice({ uri, offset, x = 12, y = 12 }) {
+  return `<image x="${x}" y="${(y - offset).toFixed(1)}" width="${CANVAS.tailWidth}" height="${CANVAS.tailHeight}" preserveAspectRatio="none" xlink:href="${uri}"/>`;
 }
 
 /**

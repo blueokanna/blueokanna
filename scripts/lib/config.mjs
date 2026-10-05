@@ -46,19 +46,35 @@ export const STACK = [
 /**
  * Encrypted artwork slots.
  *
- *  hero     the banner crop, sharp, watermarked
- *  page     the whole vertical artwork; every wide card draws a slice of this
- *           one image so the backdrop reads as a single sheet behind the page
+ *  hero   the banner crop, sharp, watermarked (source rows 164..820)
+ *  tail   the continuation below the banner (rows 820..1365), already rendered
+ *         at card scale so every card can slide its window over it
  */
 export const ARTWORK = {
   hero: 'hero-night',
-  page: 'canvas-page',
+  tail: 'backdrop-tail',
 };
 
-/** Page-canvas geometry: source width, and the slice offset per card. */
+/**
+ * Page backdrop geometry.
+ *
+ * The whole page is one image at one magnification. Source rows 164..1365 are
+ * shown across four cards: the banner takes 1200x1025, then telemetry, about
+ * and footer take 470 + 220 + 145 = 835 px of the tail derivative, which is
+ * itself 1176x835. Card heights below must match the templates.
+ */
 export const CANVAS = {
-  width: 640,
-  height: 1138,
+  heroWidth: 1200,
+  heroHeight: 1025,
+  tailWidth: 1176,
+  tailHeight: 835,
+};
+
+/** Offsets into the tail derivative, in card pixels. */
+export const TAIL_OFFSETS = {
+  telemetry: 0,
+  about: 470,
+  footer: 690,
 };
 
 export const PATHS = {
@@ -72,6 +88,5 @@ export const GENERATED = [
   'assets/banner.svg',
   'assets/telemetry.svg',
   'assets/about.svg',
-  'assets/divider.svg',
   'assets/footer.svg',
 ];
