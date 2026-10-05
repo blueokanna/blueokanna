@@ -2,11 +2,11 @@
 #
 # There is exactly one credential, and it is not a GitHub token:
 #
-#   IMAGE_AES_DECRYPT   64 hex characters. The banner backdrop is stored as
+#   IMAGE_AES_DECRYPT   64 hex characters. The artwork slots are stored as
 #                     AES-256-GCM ciphertext in assets/artwork/; the key lives
 #                     in repository secrets and is used only inside this job.
-#                     Only ciphertext is committed — the decrypted image never
-#                     touches the working tree.
+#                     Only ciphertext is committed — the decrypted images never
+#                     touch the working tree.
 #
 # No personal access token is involved, so the previous "Bad credentials"
 # failure mode is gone: the only network call is the public GitHub API for the
@@ -49,10 +49,10 @@ jobs:
         run: |
           set -uo pipefail
           {
-            echo "### artwork backdrop skipped — \`IMAGE_AES_DECRYPT\` is not set"
+            echo "### artwork render skipped — \`IMAGE_AES_DECRYPT\` is not set"
             echo
-            echo "The committed banner is kept unchanged."
-            echo "Add the 64 hex character key under **Settings → Secrets and variables → Actions → \`IMAGE_AES_DECRYPT\`** to refresh it."
+            echo "The committed cards are kept unchanged."
+            echo "Add the 64 hex character key under **Settings → Secrets and variables → Actions → \`IMAGE_AES_DECRYPT\`** to refresh them."
             echo "Locally: \`IMAGE_AES_DECRYPT=<hex> node scripts/pack-artwork.mjs --id hero-night --in hero.jpg\`."
             echo
             echo "A blob that fails authentication is *not* this path — that aborts the run."
