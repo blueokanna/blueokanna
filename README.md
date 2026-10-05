@@ -18,7 +18,7 @@
 <div align="center">
 
 <a href="https://github.com/blueokanna">
-  <img src="assets/banner.svg?v=1" alt="blueokanna" width="100%" />
+  <img src="assets/banner.svg?v=37272773841" alt="blueokanna" width="100%" />
 </a>
 
 <a href="https://github.com/blueokanna"><img src="https://img.shields.io/github/followers/blueokanna?style=flat-square&amp;color=66c0f4&amp;labelColor=0a1524&amp;label=FOLLOWERS" alt="followers" /></a>
