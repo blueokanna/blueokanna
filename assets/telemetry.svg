@@ -41,7 +41,7 @@
 
   <g class="mono">
     <text x="40" y="37" font-size="12" letter-spacing="2" fill="#a9c8ee">⟨ 01 ⟩ TELEMETRY · GITHUB API</text>
-    <text x="1160" y="37" font-size="11" fill="#a9c8ee" fill-opacity="0.85" text-anchor="end">rendered 2026-10-05 · rest search index</text>
+    <text x="1160" y="37" font-size="11" fill="#a9c8ee" fill-opacity="0.85" text-anchor="end">rendered 2026-10-05 · graphql contributions · languages from 33 repos</text>
   </g>
 
   <rect x="40" y="78" width="560" height="348" rx="12" fill="#050c16" fill-opacity="0.34" stroke="#2b4a72" stroke-width="1"/>
@@ -49,22 +49,46 @@
     <text x="58" y="108" font-size="11" letter-spacing="3" fill="#66c0f4">GITHUB STATS</text>
     
       <g>
-        <path d="M49 130 h5 M62 130 h5" stroke="#66c0f4" stroke-width="1.6" stroke-linecap="round"/><circle cx="58" cy="130" r="4" fill="none" stroke="#66c0f4" stroke-width="1.6"/>
-        <text x="84" y="134" font-size="12.5" fill="#a9c8ee">Total commits</text>
-        <text x="582" y="134" font-size="14.5" font-weight="700" fill="#e8f1ff" text-anchor="end">1.4k</text>
+        <path d="M58 123 l3.2 6.6 7.2 1 -5.2 5.1 1.3 7.2 -6.5 -3.4 -6.5 3.4 1.3 -7.2 -5.2 -5.1 7.2 -1 z" fill="#66c0f4"/>
+        <text x="84" y="134" font-size="12.5" fill="#a9c8ee">Total stars earned</text>
+        <text x="582" y="134" font-size="14.5" font-weight="700" fill="#e8f1ff" text-anchor="end">142</text>
         <path d="M54 147 H586" stroke="#1c3350" stroke-width="1" stroke-opacity="0.45"/>
       </g>
       <g>
-        <circle cx="52" cy="163" r="3" fill="none" stroke="#66c0f4" stroke-width="1.5"/><path d="M52 166 v9" stroke="#66c0f4" stroke-width="1.5" stroke-linecap="round"/><circle cx="64" cy="173" r="3" fill="none" stroke="#66c0f4" stroke-width="1.5"/><path d="M64 159 v10" stroke="#66c0f4" stroke-width="1.5" stroke-linecap="round"/>
-        <text x="84" y="172" font-size="12.5" fill="#a9c8ee">Total pull requests</text>
-        <text x="582" y="172" font-size="14.5" font-weight="700" fill="#e8f1ff" text-anchor="end">22</text>
+        <path d="M49 168 h5 M62 168 h5" stroke="#66c0f4" stroke-width="1.6" stroke-linecap="round"/><circle cx="58" cy="168" r="4" fill="none" stroke="#66c0f4" stroke-width="1.6"/>
+        <text x="84" y="172" font-size="12.5" fill="#a9c8ee">Total commits</text>
+        <text x="582" y="172" font-size="14.5" font-weight="700" fill="#e8f1ff" text-anchor="end">1k</text>
         <path d="M54 185 H586" stroke="#1c3350" stroke-width="1" stroke-opacity="0.45"/>
       </g>
       <g>
-        <circle cx="58" cy="206" r="7" fill="none" stroke="#66c0f4" stroke-width="1.6"/><path d="M58 202.6 v4 M58 209 v0.4" stroke="#66c0f4" stroke-width="1.7" stroke-linecap="round"/>
-        <text x="84" y="210" font-size="12.5" fill="#a9c8ee">Total issues</text>
-        <text x="582" y="210" font-size="14.5" font-weight="700" fill="#e8f1ff" text-anchor="end">9</text>
+        <circle cx="52" cy="201" r="3" fill="none" stroke="#66c0f4" stroke-width="1.5"/><path d="M52 204 v9" stroke="#66c0f4" stroke-width="1.5" stroke-linecap="round"/><circle cx="64" cy="211" r="3" fill="none" stroke="#66c0f4" stroke-width="1.5"/><path d="M64 197 v10" stroke="#66c0f4" stroke-width="1.5" stroke-linecap="round"/>
+        <text x="84" y="210" font-size="12.5" fill="#a9c8ee">Total pull requests</text>
+        <text x="582" y="210" font-size="14.5" font-weight="700" fill="#e8f1ff" text-anchor="end">15</text>
         <path d="M54 223 H586" stroke="#1c3350" stroke-width="1" stroke-opacity="0.45"/>
+      </g>
+      <g>
+        <circle cx="58" cy="244" r="7" fill="none" stroke="#66c0f4" stroke-width="1.6"/><path d="M58 240.6 v4 M58 247 v0.4" stroke="#66c0f4" stroke-width="1.7" stroke-linecap="round"/>
+        <text x="84" y="248" font-size="12.5" fill="#a9c8ee">Total issues</text>
+        <text x="582" y="248" font-size="14.5" font-weight="700" fill="#e8f1ff" text-anchor="end">1</text>
+        <path d="M54 261 H586" stroke="#1c3350" stroke-width="1" stroke-opacity="0.45"/>
+      </g>
+      <g>
+        <path d="M51 275 h11 a3 3 0 0 1 3 3 v11 a3 3 0 0 1 -3 3 h-11 z" fill="none" stroke="#66c0f4" stroke-width="1.5"/><path d="M54 275 v17" stroke="#66c0f4" stroke-width="1.5"/>
+        <text x="84" y="286" font-size="12.5" fill="#a9c8ee">Public repositories</text>
+        <text x="582" y="286" font-size="14.5" font-weight="700" fill="#e8f1ff" text-anchor="end">40</text>
+        <path d="M54 299 H586" stroke="#1c3350" stroke-width="1" stroke-opacity="0.45"/>
+      </g>
+      <g>
+        <circle cx="55" cy="316" r="3.6" fill="none" stroke="#66c0f4" stroke-width="1.5"/><path d="M49 326 c0 -4 2.6 -6 6 -6 s6 2 6 6" fill="none" stroke="#66c0f4" stroke-width="1.5" stroke-linecap="round"/><path d="M63 314 a3.4 3.4 0 0 1 0 7 M64 321 c3 0 5 2 5 5" fill="none" stroke="#66c0f4" stroke-width="1.4" stroke-linecap="round"/>
+        <text x="84" y="324" font-size="12.5" fill="#a9c8ee">Followers</text>
+        <text x="582" y="324" font-size="14.5" font-weight="700" fill="#e8f1ff" text-anchor="end">21</text>
+        <path d="M54 337 H586" stroke="#1c3350" stroke-width="1" stroke-opacity="0.45"/>
+      </g>
+      <g>
+        <rect x="50" y="351" width="16" height="15" rx="2" fill="none" stroke="#66c0f4" stroke-width="1.5"/><path d="M50 356 h16 M54 348 v4 M62 348 v4" stroke="#66c0f4" stroke-width="1.5" stroke-linecap="round"/>
+        <text x="84" y="362" font-size="12.5" fill="#a9c8ee">On GitHub since</text>
+        <text x="582" y="362" font-size="14.5" font-weight="700" fill="#e8f1ff" text-anchor="end">2019</text>
+        <path d="M54 375 H586" stroke="#1c3350" stroke-width="1" stroke-opacity="0.45"/>
       </g>
   </g>
 
@@ -72,7 +96,59 @@
   <g class="mono">
     <text x="658" y="108" font-size="11" letter-spacing="3" fill="#66c0f4">MOST USED LANGUAGES</text>
     
-      <text x="900" y="228" font-size="12" fill="#7a93b4" text-anchor="middle">language data unavailable this run</text>
+    <rect x="658" y="124" width="484" height="12" rx="6" fill="#050c16" stroke="#1c3350" stroke-width="1"/>
+    <g clip-path="url(#barClip)"><rect x="658.00" y="124" width="271.81" height="12" fill="#dea584"/><rect x="929.81" y="124" width="102.08" height="12" fill="#00b4ab"/><rect x="1031.89" y="124" width="35.43" height="12" fill="#f1e05a"/><rect x="1067.32" y="124" width="22.79" height="12" fill="#dbb284"/><rect x="1090.11" y="124" width="21.24" height="12" fill="#a97bff"/><rect x="1111.35" y="124" width="12.65" height="12" fill="#f34b7d"/><rect x="1124.00" y="124" width="6.37" height="12" fill="#e34c26"/><rect x="1130.37" y="124" width="2.34" height="12" fill="#da3434"/></g>
+    <rect x="658" y="124" width="484" height="12" rx="6" fill="none" stroke="#2b4a72" stroke-width="1"/>
+    
+        <g>
+          <rect x="658" y="162" width="9" height="9" rx="2" fill="#dea584"/>
+          <text x="674" y="170" font-size="12" fill="#e8f1ff">Rust</text>
+          <text x="894" y="170" font-size="12" fill="#a9c8ee" text-anchor="end">56.16%</text>
+          <text x="674" y="185" font-size="10" fill="#7a93b4">17.9 MB</text>
+        </g>
+        <g>
+          <rect x="658" y="198" width="9" height="9" rx="2" fill="#00b4ab"/>
+          <text x="674" y="206" font-size="12" fill="#e8f1ff">Dart</text>
+          <text x="894" y="206" font-size="12" fill="#a9c8ee" text-anchor="end">21.09%</text>
+          <text x="674" y="221" font-size="10" fill="#7a93b4">6.7 MB</text>
+        </g>
+        <g>
+          <rect x="658" y="234" width="9" height="9" rx="2" fill="#f1e05a"/>
+          <text x="674" y="242" font-size="12" fill="#e8f1ff">JavaScript</text>
+          <text x="894" y="242" font-size="12" fill="#a9c8ee" text-anchor="end">7.32%</text>
+          <text x="674" y="257" font-size="10" fill="#7a93b4">2.3 MB</text>
+        </g>
+        <g>
+          <rect x="658" y="270" width="9" height="9" rx="2" fill="#dbb284"/>
+          <text x="674" y="278" font-size="12" fill="#e8f1ff">Pawn</text>
+          <text x="894" y="278" font-size="12" fill="#a9c8ee" text-anchor="end">4.71%</text>
+          <text x="674" y="293" font-size="10" fill="#7a93b4">1.5 MB</text>
+        </g>
+        <g>
+          <rect x="908" y="162" width="9" height="9" rx="2" fill="#a97bff"/>
+          <text x="924" y="170" font-size="12" fill="#e8f1ff">Kotlin</text>
+          <text x="1144" y="170" font-size="12" fill="#a9c8ee" text-anchor="end">4.39%</text>
+          <text x="924" y="185" font-size="10" fill="#7a93b4">1.4 MB</text>
+        </g>
+        <g>
+          <rect x="908" y="198" width="9" height="9" rx="2" fill="#f34b7d"/>
+          <text x="924" y="206" font-size="12" fill="#e8f1ff">C++</text>
+          <text x="1144" y="206" font-size="12" fill="#a9c8ee" text-anchor="end">2.61%</text>
+          <text x="924" y="221" font-size="10" fill="#7a93b4">854 KB</text>
+        </g>
+        <g>
+          <rect x="908" y="234" width="9" height="9" rx="2" fill="#e34c26"/>
+          <text x="924" y="242" font-size="12" fill="#e8f1ff">HTML</text>
+          <text x="1144" y="242" font-size="12" fill="#a9c8ee" text-anchor="end">1.32%</text>
+          <text x="924" y="257" font-size="10" fill="#7a93b4">430 KB</text>
+        </g>
+        <g>
+          <rect x="908" y="270" width="9" height="9" rx="2" fill="#da3434"/>
+          <text x="924" y="278" font-size="12" fill="#e8f1ff">CMake</text>
+          <text x="1144" y="278" font-size="12" fill="#a9c8ee" text-anchor="end">0.48%</text>
+          <text x="924" y="293" font-size="10" fill="#7a93b4">158 KB</text>
+        </g>
+    <text x="658" y="420" font-size="10" letter-spacing="1" fill="#7a93b4">bytes aggregated across 33 repositories</text>
   </g>
 
   <g class="mono">
