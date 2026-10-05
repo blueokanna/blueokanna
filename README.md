@@ -8,14 +8,14 @@
   a texture. The banner carries a sharper, watermarked crop on top of that.
 
   Statistics are collected from the GitHub API during the run and drawn into
-  assets/telemetry.svg, which is why the numbers sit on the artwork instead of on
+  assets/telemetry.svg?v=37272773841, which is why the numbers sit on the artwork instead of on
   a third-party card. Rows whose data was unavailable are omitted, never zeroed.
 -->
 
 <div align="center">
 
 <a href="https://github.com/blueokanna">
-  <img src="assets/banner.svg?v=1" alt="blueokanna" width="100%" />
+  <img src="assets/banner.svg?v=37272773841" alt="blueokanna" width="100%" />
 </a>
 
 <br />
@@ -27,23 +27,23 @@
 
 </div>
 
-<img src="assets/divider.svg?v=1" width="100%" alt="" />
+<img src="assets/divider.svg?v=37272773841" width="100%" alt="" />
 
 <h3 align="center">⟨ 01 ⟩ TELEMETRY · 数据</h3>
 
 <div align="center">
-  <img src="assets/telemetry.svg?v=1" alt="github statistics and most used languages" width="100%" />
+  <img src="assets/telemetry.svg?v=37272773841" alt="github statistics and most used languages" width="100%" />
 </div>
 
-<img src="assets/divider.svg?v=1" width="100%" alt="" />
+<img src="assets/divider.svg?v=37272773841" width="100%" alt="" />
 
 <h3 align="center">⟨ 02 ⟩ ARSENAL · 技术栈</h3>
 
 <div align="center">
-  <img src="assets/about.svg?v=1" alt="arsenal" width="100%" />
+  <img src="assets/about.svg?v=37272773841" alt="arsenal" width="100%" />
 </div>
 
-<img src="assets/divider.svg?v=1" width="100%" alt="" />
+<img src="assets/divider.svg?v=37272773841" width="100%" alt="" />
 
 <h3 align="center">⟨ 03 ⟩ SUPPORT · 支持</h3>
 
@@ -54,5 +54,5 @@
 </p>
 
 <p align="center">
-  <img src="assets/footer.svg?v=1" alt="footer" width="100%" />
+  <img src="assets/footer.svg?v=37272773841" alt="footer" width="100%" />
 </p>
