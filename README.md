@@ -13,14 +13,14 @@
   box GitHub wraps each image in. Section labels live inside the cards.
 
   Statistics are collected from the GitHub API by the daily workflow and drawn
-  into assets/telemetry.svg?v=37277028409.
+  into assets/telemetry.svg?v=37391991400.
 -->
 
 <div align="center">
-<a href="https://github.com/blueokanna"><img src="assets/banner.svg?v=37277028409" alt="blueokanna" width="100%" /></a>
-<img src="assets/telemetry.svg?v=37277028409" alt="github statistics and most used languages" width="100%" />
-<img src="assets/about.svg?v=37277028409" alt="arsenal" width="100%" />
-<img src="assets/footer.svg?v=37277028409" alt="footer" width="100%" />
+<a href="https://github.com/blueokanna"><img src="assets/banner.svg?v=37391991400" alt="blueokanna" width="100%" /></a>
+<img src="assets/telemetry.svg?v=37391991400" alt="github statistics and most used languages" width="100%" />
+<img src="assets/about.svg?v=37391991400" alt="arsenal" width="100%" />
+<img src="assets/footer.svg?v=37391991400" alt="footer" width="100%" />
 <br />
 <a href="https://www.buymeacoffee.com/blueokanna"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="42" width="178" alt="Buy Me A Coffee" /></a>
 </div>
