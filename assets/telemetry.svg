@@ -41,7 +41,7 @@
 
   <g class="mono">
     <text x="40" y="37" font-size="12" letter-spacing="2" fill="#a9c8ee">⟨ 01 ⟩ TELEMETRY · GITHUB API</text>
-    <text x="1160" y="37" font-size="11" fill="#a9c8ee" fill-opacity="0.85" text-anchor="end">rendered 2026-10-06 · graphql contributions · languages from 33 repos</text>
+    <text x="1160" y="37" font-size="11" fill="#a9c8ee" fill-opacity="0.85" text-anchor="end">rendered 2026-10-07 · graphql contributions · languages from 33 repos</text>
   </g>
 
   <rect x="40" y="78" width="560" height="348" rx="12" fill="#050c16" fill-opacity="0.34" stroke="#2b4a72" stroke-width="1"/>
@@ -97,19 +97,19 @@
     <text x="658" y="108" font-size="11" letter-spacing="3" fill="#66c0f4">MOST USED LANGUAGES</text>
     
     <rect x="658" y="124" width="484" height="12" rx="6" fill="#050c16" stroke="#1c3350" stroke-width="1"/>
-    <g clip-path="url(#barClip)"><rect x="658.00" y="124" width="271.49" height="12" fill="#dea584"/><rect x="929.49" y="124" width="103.01" height="12" fill="#00b4ab"/><rect x="1032.50" y="124" width="35.20" height="12" fill="#f1e05a"/><rect x="1067.70" y="124" width="22.64" height="12" fill="#dbb284"/><rect x="1090.34" y="124" width="21.20" height="12" fill="#a97bff"/><rect x="1111.54" y="124" width="12.57" height="12" fill="#f34b7d"/><rect x="1124.11" y="124" width="6.33" height="12" fill="#e34c26"/><rect x="1130.44" y="124" width="2.32" height="12" fill="#da3434"/></g>
+    <g clip-path="url(#barClip)"><rect x="658.00" y="124" width="271.55" height="12" fill="#dea584"/><rect x="929.55" y="124" width="102.93" height="12" fill="#00b4ab"/><rect x="1032.48" y="124" width="35.17" height="12" fill="#f1e05a"/><rect x="1067.66" y="124" width="22.62" height="12" fill="#dbb284"/><rect x="1090.28" y="124" width="21.29" height="12" fill="#a97bff"/><rect x="1111.56" y="124" width="12.56" height="12" fill="#f34b7d"/><rect x="1124.12" y="124" width="6.33" height="12" fill="#e34c26"/><rect x="1130.45" y="124" width="2.32" height="12" fill="#da3434"/></g>
     <rect x="658" y="124" width="484" height="12" rx="6" fill="none" stroke="#2b4a72" stroke-width="1"/>
     
         <g>
           <rect x="658" y="162" width="9" height="9" rx="2" fill="#dea584"/>
           <text x="674" y="170" font-size="12" fill="#e8f1ff">Rust</text>
-          <text x="894" y="170" font-size="12" fill="#a9c8ee" text-anchor="end">56.09%</text>
+          <text x="894" y="170" font-size="12" fill="#a9c8ee" text-anchor="end">56.11%</text>
           <text x="674" y="185" font-size="10" fill="#7a93b4">18.0 MB</text>
         </g>
         <g>
           <rect x="658" y="198" width="9" height="9" rx="2" fill="#00b4ab"/>
           <text x="674" y="206" font-size="12" fill="#e8f1ff">Dart</text>
-          <text x="894" y="206" font-size="12" fill="#a9c8ee" text-anchor="end">21.28%</text>
+          <text x="894" y="206" font-size="12" fill="#a9c8ee" text-anchor="end">21.27%</text>
           <text x="674" y="221" font-size="10" fill="#7a93b4">6.8 MB</text>
         </g>
         <g>
@@ -121,13 +121,13 @@
         <g>
           <rect x="658" y="270" width="9" height="9" rx="2" fill="#dbb284"/>
           <text x="674" y="278" font-size="12" fill="#e8f1ff">Pawn</text>
-          <text x="894" y="278" font-size="12" fill="#a9c8ee" text-anchor="end">4.68%</text>
+          <text x="894" y="278" font-size="12" fill="#a9c8ee" text-anchor="end">4.67%</text>
           <text x="674" y="293" font-size="10" fill="#7a93b4">1.5 MB</text>
         </g>
         <g>
           <rect x="908" y="162" width="9" height="9" rx="2" fill="#a97bff"/>
           <text x="924" y="170" font-size="12" fill="#e8f1ff">Kotlin</text>
-          <text x="1144" y="170" font-size="12" fill="#a9c8ee" text-anchor="end">4.38%</text>
+          <text x="1144" y="170" font-size="12" fill="#a9c8ee" text-anchor="end">4.40%</text>
           <text x="924" y="185" font-size="10" fill="#7a93b4">1.4 MB</text>
         </g>
         <g>
