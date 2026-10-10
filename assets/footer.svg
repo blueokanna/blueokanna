@@ -61,7 +61,7 @@
 
   <g class="mono">
     <text x="40" y="37" font-size="11" letter-spacing="3" fill="#a9c8ee">⟨ 03 ⟩ SUPPORT · 支持</text>
-    <text x="1160" y="37" font-size="11" fill="#a9c8ee" text-anchor="end">EOF · 2026-10-09</text>
+    <text x="1160" y="37" font-size="11" fill="#a9c8ee" text-anchor="end">EOF · 2026-10-10</text>
     <rect x="1170" y="27" width="7" height="12" fill="#cfe4ff">
       <animate attributeName="opacity" values="1;0;1" dur="1.2s" repeatCount="indefinite"/>
     </rect>
