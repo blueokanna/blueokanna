@@ -191,9 +191,9 @@
       <rect x="214" y="879" width="82" height="24" rx="12" fill="#050c16" fill-opacity="0.42" stroke="#2b4a72" stroke-width="1"/>
       <text x="255" y="895" font-size="11" letter-spacing="1" fill="#a9c8ee" text-anchor="middle">REPOS 42</text>
       <rect x="306" y="879" width="112" height="24" rx="12" fill="#050c16" fill-opacity="0.42" stroke="#2b4a72" stroke-width="1"/>
-      <text x="362" y="895" font-size="11" letter-spacing="1" fill="#a9c8ee" text-anchor="middle">FOLLOWERS 19</text>
+      <text x="362" y="895" font-size="11" letter-spacing="1" fill="#a9c8ee" text-anchor="middle">FOLLOWERS 20</text>
       <rect x="428" y="879" width="112" height="24" rx="12" fill="#050c16" fill-opacity="0.42" stroke="#2b4a72" stroke-width="1"/>
-      <text x="484" y="895" font-size="11" letter-spacing="1" fill="#a9c8ee" text-anchor="middle">FOLLOWING 10</text>
+      <text x="484" y="895" font-size="11" letter-spacing="1" fill="#a9c8ee" text-anchor="middle">FOLLOWING 11</text>
       <rect x="550" y="879" width="97" height="24" rx="12" fill="#050c16" fill-opacity="0.42" stroke="#2b4a72" stroke-width="1"/>
       <text x="598.5" y="895" font-size="11" letter-spacing="1" fill="#a9c8ee" text-anchor="middle">SINCE 2019</text>
     
@@ -242,7 +242,7 @@
       <text x="1148" y="911" font-size="12" fill="#e8f1ff" text-anchor="end">node · 0 deps · static svg</text>
       <path d="M792 919 H1148" stroke="#2b4a72" stroke-width="1" stroke-opacity="0.55"/>
       <text x="792" y="937" font-size="11" fill="#7a93b4">RENDERED</text>
-      <text x="1148" y="937" font-size="12" fill="#e8f1ff" text-anchor="end">2026-10-29</text>
+      <text x="1148" y="937" font-size="12" fill="#e8f1ff" text-anchor="end">2026-10-30</text>
       <path d="M792 945 H1148" stroke="#2b4a72" stroke-width="1" stroke-opacity="0.55"/>
   </g>
 
