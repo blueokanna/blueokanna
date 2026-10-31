@@ -41,7 +41,7 @@
 
   <g class="mono">
     <text x="40" y="37" font-size="12" letter-spacing="2" fill="#a9c8ee">⟨ 01 ⟩ TELEMETRY · GITHUB API</text>
-    <text x="1160" y="37" font-size="11" fill="#a9c8ee" fill-opacity="0.85" text-anchor="end">rendered 2026-10-30 · graphql contributions · languages from 33 repos</text>
+    <text x="1160" y="37" font-size="11" fill="#a9c8ee" fill-opacity="0.85" text-anchor="end">rendered 2026-10-31 · graphql contributions · languages from 33 repos</text>
   </g>
 
   <rect x="40" y="78" width="560" height="348" rx="12" fill="#050c16" fill-opacity="0.34" stroke="#2b4a72" stroke-width="1"/>
@@ -97,55 +97,55 @@
     <text x="658" y="108" font-size="11" letter-spacing="3" fill="#66c0f4">MOST USED LANGUAGES</text>
     
     <rect x="658" y="124" width="484" height="12" rx="6" fill="#050c16" stroke="#1c3350" stroke-width="1"/>
-    <g clip-path="url(#barClip)"><rect x="658.00" y="124" width="254.68" height="12" fill="#dea584"/><rect x="912.68" y="124" width="95.38" height="12" fill="#00b4ab"/><rect x="1008.06" y="124" width="40.79" height="12" fill="#f34b7d"/><rect x="1048.86" y="124" width="33.15" height="12" fill="#f1e05a"/><rect x="1082.01" y="124" width="20.96" height="12" fill="#dbb284"/><rect x="1102.97" y="124" width="20.67" height="12" fill="#a97bff"/><rect x="1123.64" y="124" width="6.00" height="12" fill="#e34c26"/><rect x="1129.65" y="124" width="2.86" height="12" fill="#89e051"/></g>
+    <g clip-path="url(#barClip)"><rect x="658.00" y="124" width="252.16" height="12" fill="#dea584"/><rect x="910.16" y="124" width="94.44" height="12" fill="#00b4ab"/><rect x="1004.60" y="124" width="44.84" height="12" fill="#f34b7d"/><rect x="1049.45" y="124" width="32.90" height="12" fill="#f1e05a"/><rect x="1082.35" y="124" width="20.76" height="12" fill="#dbb284"/><rect x="1103.10" y="124" width="20.47" height="12" fill="#a97bff"/><rect x="1123.57" y="124" width="5.94" height="12" fill="#e34c26"/><rect x="1129.51" y="124" width="2.83" height="12" fill="#89e051"/></g>
     <rect x="658" y="124" width="484" height="12" rx="6" fill="none" stroke="#2b4a72" stroke-width="1"/>
     
         <g>
           <rect x="658" y="162" width="9" height="9" rx="2" fill="#dea584"/>
           <text x="674" y="170" font-size="12" fill="#e8f1ff">Rust</text>
-          <text x="894" y="170" font-size="12" fill="#a9c8ee" text-anchor="end">52.62%</text>
+          <text x="894" y="170" font-size="12" fill="#a9c8ee" text-anchor="end">52.10%</text>
           <text x="674" y="185" font-size="10" fill="#7a93b4">18.3 MB</text>
         </g>
         <g>
           <rect x="658" y="198" width="9" height="9" rx="2" fill="#00b4ab"/>
           <text x="674" y="206" font-size="12" fill="#e8f1ff">Dart</text>
-          <text x="894" y="206" font-size="12" fill="#a9c8ee" text-anchor="end">19.71%</text>
+          <text x="894" y="206" font-size="12" fill="#a9c8ee" text-anchor="end">19.51%</text>
           <text x="674" y="221" font-size="10" fill="#7a93b4">6.8 MB</text>
         </g>
         <g>
           <rect x="658" y="234" width="9" height="9" rx="2" fill="#f34b7d"/>
           <text x="674" y="242" font-size="12" fill="#e8f1ff">C++</text>
-          <text x="894" y="242" font-size="12" fill="#a9c8ee" text-anchor="end">8.43%</text>
-          <text x="674" y="257" font-size="10" fill="#7a93b4">2.9 MB</text>
+          <text x="894" y="242" font-size="12" fill="#a9c8ee" text-anchor="end">9.27%</text>
+          <text x="674" y="257" font-size="10" fill="#7a93b4">3.2 MB</text>
         </g>
         <g>
           <rect x="658" y="270" width="9" height="9" rx="2" fill="#f1e05a"/>
           <text x="674" y="278" font-size="12" fill="#e8f1ff">JavaScript</text>
-          <text x="894" y="278" font-size="12" fill="#a9c8ee" text-anchor="end">6.85%</text>
+          <text x="894" y="278" font-size="12" fill="#a9c8ee" text-anchor="end">6.80%</text>
           <text x="674" y="293" font-size="10" fill="#7a93b4">2.4 MB</text>
         </g>
         <g>
           <rect x="908" y="162" width="9" height="9" rx="2" fill="#dbb284"/>
           <text x="924" y="170" font-size="12" fill="#e8f1ff">Pawn</text>
-          <text x="1144" y="170" font-size="12" fill="#a9c8ee" text-anchor="end">4.33%</text>
+          <text x="1144" y="170" font-size="12" fill="#a9c8ee" text-anchor="end">4.29%</text>
           <text x="924" y="185" font-size="10" fill="#7a93b4">1.5 MB</text>
         </g>
         <g>
           <rect x="908" y="198" width="9" height="9" rx="2" fill="#a97bff"/>
           <text x="924" y="206" font-size="12" fill="#e8f1ff">Kotlin</text>
-          <text x="1144" y="206" font-size="12" fill="#a9c8ee" text-anchor="end">4.27%</text>
+          <text x="1144" y="206" font-size="12" fill="#a9c8ee" text-anchor="end">4.23%</text>
           <text x="924" y="221" font-size="10" fill="#7a93b4">1.5 MB</text>
         </g>
         <g>
           <rect x="908" y="234" width="9" height="9" rx="2" fill="#e34c26"/>
           <text x="924" y="242" font-size="12" fill="#e8f1ff">HTML</text>
-          <text x="1144" y="242" font-size="12" fill="#a9c8ee" text-anchor="end">1.24%</text>
+          <text x="1144" y="242" font-size="12" fill="#a9c8ee" text-anchor="end">1.23%</text>
           <text x="924" y="257" font-size="10" fill="#7a93b4">441 KB</text>
         </g>
         <g>
           <rect x="908" y="270" width="9" height="9" rx="2" fill="#89e051"/>
           <text x="924" y="278" font-size="12" fill="#e8f1ff">Shell</text>
-          <text x="1144" y="278" font-size="12" fill="#a9c8ee" text-anchor="end">0.59%</text>
+          <text x="1144" y="278" font-size="12" fill="#a9c8ee" text-anchor="end">0.58%</text>
           <text x="924" y="293" font-size="10" fill="#7a93b4">210 KB</text>
         </g>
     <text x="658" y="420" font-size="10" letter-spacing="1" fill="#7a93b4">bytes aggregated across 33 repositories</text>
